@@ -331,7 +331,7 @@
             }
         }
 
-        /* Dark Mode Toggle Button */
+        /* Dark Mode Toggle Button - 方案C：默认隐藏，手动切换后显示 */
         .dark-mode-toggle {
             position: fixed;
             bottom: 80px;
@@ -346,7 +346,13 @@
             font-size: 1.5rem;
             cursor: pointer;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: transform 0.2s;
+            transition: transform 0.2s, opacity 0.3s;
+            opacity: 0; /* 默认隐藏 */
+            visibility: hidden;
+        }
+        .dark-mode-toggle.visible {
+            opacity: 1;
+            visibility: visible;
         }
         .dark-mode-toggle:hover {
             transform: scale(1.1);
@@ -451,13 +457,45 @@
             <h2 class="section-title">📜 OpenClaw发展史</h2>
             <p class="text-muted mb-3">记录OpenClaw的重要里程碑</p>
             
-            <!-- 自动生成时间轴 -->
-            <div id="auto-timeline" class="timeline-container">
-                <div class="text-center py-5">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">加载中...</span>
+            <!-- 静态时间轴（已恢复） -->
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h5>2025年 - 项目启动</h5>
+                        <p class="text-muted mb-0">OpenClaw项目正式启动，致力于打造智能Agent平台...</p>
                     </div>
-                    <p class="mt-2 text-muted">正在加载发展史...</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h5>2025年底 - v1.0.0 首次发布</h5>
+                        <p class="text-muted mb-0">OpenClaw v1.0.0发布，支持基础Agent功能和插件系统...</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h5>2026.03.07 - v3.7 记忆热插拔</h5>
+                        <p class="text-muted mb-0">革命性功能：AI记忆可自由插拔。新增GPT-5.4和Gemini 3.1 Flash支持...</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h5>2026.03.08 - v3.8 ACP溯源</h5>
+                        <p class="text-muted mb-0">新增ACP来源（agent provenance），更好地识别用户交互。修复12+安全漏洞...</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h5>2026.03.13 - OpenClaw-zh v2026.3.13</h5>
+                        <p class="text-muted mb-0">中文汉化版发布！全面本地化，更好的国内用户体验...</p>
+                    </div>
+                </div>
+                <div class="coming-soon">
+                    <strong>🚧 正在开发：</strong> 龙形时间轴 + Git自动生成（即将上线）
                 </div>
             </div>
         </section>
@@ -560,50 +598,71 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Dark Mode Toggle (智能模式：跟随系统 vs 手动覆盖)
+        // Dark Mode Toggle (方案C：智能显示按钮)
         const darkModeToggle = document.getElementById('darkModeToggle');
         const darkModeIcon = document.getElementById('darkModeIcon');
         const html = document.documentElement;
 
-        // 初始化：检查用户是否手动设置过
+        // 检查用户是否有手动设置
         const savedTheme = localStorage.getItem('theme');
-        
-        function updateDarkModeUI(isDark) {
+        const hasManualTheme = savedTheme !== null;
+
+        function updateDarkModeUI(forceDark = null) {
+            let isDark;
+            
+            if (forceDark !== null) {
+                // 强制设置（用于点击切换）
+                isDark = forceDark;
+            } else {
+                // 读取当前状态
+                isDark = html.getAttribute('data-bs-theme') === 'dark';
+            }
+
+            // 更新UI
             if (isDark) {
                 html.setAttribute('data-bs-theme', 'dark');
-                darkModeIcon.textContent = '☀️'; // 显示太阳图标，表示当前暗色
-                darkModeToggle.setAttribute('title', '当前：手动暗色（点击恢复跟随系统）');
+                darkModeIcon.textContent = '☀️';
+                darkModeToggle.setAttribute('title', '当前：手动暗色（点击恢复系统自动）');
             } else {
-                html.removeAttribute('data-bs-theme'); // 恢复系统自动
+                html.removeAttribute('data-bs-theme');
                 darkModeIcon.textContent = '🌙';
                 darkModeToggle.setAttribute('title', '当前：跟随系统（点击切换手动暗色）');
             }
+
+            // 方案C：按钮显示逻辑
+            if (hasManualTheme || forceDark === true) {
+                // 用户有手动设置或刚切换到手动 → 显示按钮
+                darkModeToggle.classList.add('visible');
+            } else {
+                // 系统自动模式 → 隐藏按钮
+                darkModeToggle.classList.remove('visible');
+            }
         }
 
-        // 启动时应用保存的设置
-        if (savedTheme !== null) {
-            // 用户手动设置过，应用保存的偏好
+        // 初始化
+        if (hasManualTheme) {
+            // 有保存的设置，应用并显示按钮
             updateDarkModeUI(savedTheme === 'dark');
         } else {
-            // 没有保存设置，跟随系统
-            updateDarkModeUI(false); // 清除手动设置，让CSS媒体查询生效
+            // 无设置，跟随系统，隐藏按钮
+            updateDarkModeUI(false);
         }
 
-        // 点击切换逻辑
+        // 点击切换
         darkModeToggle.addEventListener('click', function() {
+            const currentIsDark = html.getAttribute('data-bs-theme') === 'dark';
             const currentTheme = localStorage.getItem('theme');
-            const isCurrentlyDark = html.getAttribute('data-bs-theme') === 'dark';
-            
+
             if (currentTheme !== null) {
-                // 当前是手动模式 → 清除设置，恢复跟随系统
+                // 当前是手动模式 → 清除设置，恢复系统自动
                 localStorage.removeItem('theme');
                 updateDarkModeUI(false);
-                console.log('🌓 恢复系统自动模式');
+                console.log('🌓 恢复系统自动模式，按钮将隐藏');
             } else {
                 // 当前是系统自动 → 切换到手动暗色
                 localStorage.setItem('theme', 'dark');
                 updateDarkModeUI(true);
-                console.log('🌓 切换到手动暗色模式');
+                console.log('🌓 切换到手动暗色模式，按钮保持显示');
             }
         });
 
