@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw 发展史</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      min-height: 100vh;
+      padding: 40px 20px;
+      margin: 0;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 {
+      color: white; text-align: center; margin-bottom: 40px;
+      font-size: 2.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .timeline { position: relative; padding: 20px 0; }
+    .timeline::before {
+      content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+      width: 4px; height: 100%; background: rgba(255,255,255,0.3); border-radius: 2px;
+    }
+    .version {
+      position: relative; margin-bottom: 40px; width: 45%; background: white;
+      padding: 24px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .version:hover { transform: translateY(-5px); }
+    .version:nth-child(odd) { margin-left: auto; }
+    .version:nth-child(even) { margin-right: auto; }
+    .version::before {
+      content: ''; position: absolute; top: 30px; width: 20px; height: 20px;
+      background: #667eea; border: 4px solid white; border-radius: 50%;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .version:nth-child(odd)::before { left: -40px; }
+    .version:nth-child(even)::before { right: -40px; }
+    .version-header { display: flex; justify-content: space-between; margin-bottom: 12px; }
+    .version-badge {
+      background: linear-gradient(135deg, #667eea, #764ba2); color: white;
+      padding: 6px 16px; border-radius: 20px; font-weight: bold; font-size: 0.9rem;
+    }
+    .date { color: #666; font-size: 0.9rem; }
+    .version-title { color: #333; font-size: 1.3rem; margin-bottom: 8px; font-weight: 600; }
+    .version-desc { color: #666; line-height: 1.6; margin-bottom: 12px; }
+    .commit-info { font-size: 0.85rem; color: #999; border-top: 1px solid #eee; padding-top: 12px; }
+    .commit-hash { font-family: monospace; background: #f5f5f5; padding: 2px 8px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🐉 OpenClaw 发展史</h1>
+    <div class="timeline">
+      
+      <div class="version">
+        <div class="version-header">
+          <span class="version-badge">v3.7</span>
+          <span class="date">2026-03-28</span>
+        </div>
+        <h3 class="version-title">完善发展史：增加真实版本里程碑（v3.7/3.8/汉化版）</h3>
+        <p class="version-desc">完善发展史：增加真实版本里程碑（v3.7/3.8/汉化版）</p>
+        <div class="commit-info">
+          <span class="commit-hash">39f5de4</span> · shuo65
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</body>
+</html>

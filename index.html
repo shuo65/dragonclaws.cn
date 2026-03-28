@@ -371,44 +371,13 @@
             <h2 class="section-title">📜 OpenClaw发展史</h2>
             <p class="text-muted mb-3">记录OpenClaw的重要里程碑</p>
             
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h5>2025年 - 项目启动</h5>
-                        <p class="text-muted mb-0">OpenClaw项目正式启动，致力于打造智能Agent平台...</p>
+            <!-- 自动生成时间轴 -->
+            <div id="auto-timeline" class="timeline-container">
+                <div class="text-center py-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">加载中...</span>
                     </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h5>2025年底 - v1.0.0 首次发布</h5>
-                        <p class="text-muted mb-0">OpenClaw v1.0.0发布，支持基础Agent功能和插件系统...</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h5>2026.03.07 - v3.7 记忆热插拔</h5>
-                        <p class="text-muted mb-0">革命性功能：AI记忆可自由插拔。新增GPT-5.4和Gemini 3.1 Flash支持...</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h5>2026.03.08 - v3.8 ACP溯源</h5>
-                        <p class="text-muted mb-0">新增ACP来源（agent provenance），更好地识别用户交互。修复12+安全漏洞...</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h5>2026.03.13 - OpenClaw-zh v2026.3.13</h5>
-                        <p class="text-muted mb-0">中文汉化版发布！全面本地化，更好的国内用户体验...</p>
-                    </div>
-                </div>
-                <div class="coming-soon">
-                    <strong>🚧 正在开发：</strong> 龙形时间轴 + Git自动生成（即将上线）
+                    <p class="mt-2 text-muted">正在加载发展史...</p>
                 </div>
             </div>
         </section>
@@ -543,7 +512,65 @@
             if (copyright) {
                 copyright.innerHTML = `© ${year} 龙爪中国. All rights reserved.`;
             }
+
+            // Load Git timeline
+            loadTimeline();
         });
+
+        // Git Timeline Loader
+        async function loadTimeline() {
+            const container = document.getElementById('auto-timeline');
+            if (!container) return;
+
+            try {
+                const response = await fetch('timeline.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                const timeline = data.versions || [];
+
+                if (timeline.length === 0) {
+                    container.innerHTML = `
+                        <div class="text-center py-4">
+                            <p class="text-muted">暂无版本历史记录</p>
+                        </div>`;
+                    console.warn('⚠️ timeline.json 中没有版本记录');
+                    return;
+                }
+
+                // 生成时间轴HTML
+                let html = '<div class="timeline">';
+                timeline.forEach(v => {
+                    html += `
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h5>${v.version} · ${v.date}</h5>
+                                <p class="text-muted mb-0">${v.title}</p>
+                                <small class="text-muted">提交: ${v.commit}</small>
+                            </div>
+                        </div>`;
+                });
+                html += '</div>';
+
+                // 添加"开发中"提示（保持原有结构）
+                html += `
+                    <div class="coming-soon">
+                        <strong>🚧 正在开发：</strong> 龙形时间轴 + Git自动生成（即将上线）
+                    </div>`;
+
+                container.innerHTML = html;
+                console.log(`✅ 加载 ${timeline.length} 个版本记录到时间轴`);
+            } catch (error) {
+                console.error('❌ 时间轴加载失败:', error);
+                container.innerHTML = `
+                    <div class="alert alert-warning">
+                        ⚠️ 无法加载发展史数据
+                    </div>`;
+            }
+        }
     </script>
 </body>
 </html>
