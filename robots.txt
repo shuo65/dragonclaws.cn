@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.dragonclaws.cn/sitemap.xml
+
+# 重要页面优先抓取
+Disallow: /temp/
+Disallow: /admin/
+
+# 爬虫友好的缓存策略（如果服务器支持）
+# 大多数GitHub Pages托管已经配置了合理的缓存头

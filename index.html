@@ -3,22 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="龙爪中国 - 专业的OpenClaw汉化版展示平台，提供OpenClaw中文版本、商业版本信息、发展历程及技术支持。">
-    <meta name="keywords" content="OpenClaw,汉化版,AI Agent,智能体,LangChain,GitHub,开源,机器人自动化">
+    <!-- Manifest (PWA) -->
+    <link rel="manifest" href="manifest.json">
+    <!-- Smooth Scroll -->
+    <style>html { scroll-behavior: smooth; }</style>
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.dragonclaws.cn/">
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐉</text></svg>">
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2A5CAA">
+    <!-- SEO Meta -->
+    <meta name="description" content="龙爪中国 - OpenClaw汉化版官方展示平台。提供OpenClaw中文版本、商业版信息、完整发展历程、版本下载和技术支持。">
+    <meta name="keywords" content="OpenClaw,汉化版,AI Agent,智能体,LangChain,GitHub,开源,机器人自动化,OpenClaw中文版">
     <meta name="author" content="龙爪中国">
-    <!-- Open Graph -->
-    <meta property="og:title" content="龙爪中国 - OpenClaw汉化版">
-    <meta property="og:description" content="OpenClaw中文汉化版展示平台，提供版本历史、技术支持和商业服务。">
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.dragonclaws.cn">
+    <meta property="og:url" content="https://www.dragonclaws.cn/">
+    <meta property="og:title" content="龙爪中国 - OpenClaw汉化版">
+    <meta property="og:description" content="OpenClaw中文汉化版官方展示。查看版本历史、发展里程碑、获取技术支持。">
     <meta property="og:image" content="https://www.dragonclaws.cn/images/og-image.png">
-    <!-- Twitter Card -->
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="龙爪中国">
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.dragonclaws.cn/">
     <meta name="twitter:title" content="龙爪中国 - OpenClaw汉化版">
-    <meta name="twitter:description" content="OpenClaw中文汉化版展示平台，提供版本历史、技术支持和商业服务。">
+    <meta name="twitter:description" content="OpenClaw中文汉化版官方展示。查看版本历史、发展里程碑、获取技术支持。">
     <meta name="twitter:image" content="https://www.dragonclaws.cn/images/twitter-card.png">
     <title>龙爪中国 - OpenClaw汉化版</title>
-    <meta name="description" content="龙爪中国 - 专业的OpenClaw汉化版展示平台，提供OpenClaw中文版本、商业版本信息及发展历程。">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" as="script">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "龙爪中国",
+      "url": "https://www.dragonclaws.cn",
+      "logo": "https://www.dragonclaws.cn/images/logo.png",
+      "description": "OpenClaw汉化版官方展示平台，提供中文版本、商业服务和技术支持。",
+      "sameAs": [
+        "https://github.com/OpenClaw"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "shuo65@qq.com",
+        "contactType": "customer service"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "龙爪中国",
+      "url": "https://www.dragonclaws.cn",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.dragonclaws.cn/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "龙爪中国 - OpenClaw汉化版",
+      "url": "https://www.dragonclaws.cn",
+      "description": "OpenClaw汉化版展示平台，包含发展史、版本信息、技术支持。",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "龙爪中国",
+        "url": "https://www.dragonclaws.cn"
+      },
+      "datePublished": "2026-03-28",
+      "dateModified": "2026-03-28"
+    }
+    </script>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -165,6 +232,76 @@
             padding: 1rem;
             border-radius: 0 8px 8px 0;
             margin: 1.5rem 0;
+        }
+
+        /* Dark Mode */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --text-color: #e0e0e0;
+            }
+            body {
+                background-color: var(--bg-color);
+                color: var(--text-color);
+            }
+            .timeline-content,
+            .version-card {
+                background: #2d2d2d;
+                color: var(--text-color);
+            }
+        }
+
+        /* Dark Mode Toggle Button */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 140px;
+            right: 20px;
+            z-index: 999;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Sticky Navbar */
+        .navbar {
+            transition: transform 0.3s;
+        }
+        .navbar.navbar-hidden {
+            transform: translateY(-100%);
         }
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
@@ -333,7 +470,80 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="返回顶部">↑</button>
+
+    <!-- Dark Mode Toggle Button -->
+    <button id="darkModeToggle" class="dark-mode-toggle" aria-label="切换暗色模式">
+        <span id="darkModeIcon">🌙</span>
+    </button>
+
+    <!-- Bootstrap JS (deferred) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+        const navbar = document.querySelector('.navbar');
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // Show/Hide Back to Top button
+            if (scrollTop > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+
+            // Hide/Show Navbar on scroll
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.classList.add('navbar-hidden');
+            } else {
+                navbar.classList.remove('navbar-hidden');
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkModeIcon = document.getElementById('darkModeIcon');
+        const html = document.documentElement;
+
+        // Check saved preference
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            html.setAttribute('data-bs-theme', 'dark');
+            darkModeIcon.textContent = '☀️';
+        }
+
+        darkModeToggle.addEventListener('click', function() {
+            const isDark = html.getAttribute('data-bs-theme') === 'dark';
+            if (isDark) {
+                html.setAttribute('data-bs-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                darkModeIcon.textContent = '🌙';
+            } else {
+                html.setAttribute('data-bs-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                darkModeIcon.textContent = '☀️';
+            }
+        });
+
+        // Update copyright year
+        document.addEventListener('DOMContentLoaded', function() {
+            const year = new Date().getFullYear();
+            const copyright = document.querySelector('footer p.text-center.small');
+            if (copyright) {
+                copyright.innerHTML = `© ${year} 龙爪中国. All rights reserved.`;
+            }
+        });
+    </script>
 </body>
 </html>
