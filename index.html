@@ -560,28 +560,50 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Dark Mode Toggle
+        // Dark Mode Toggle (智能模式：跟随系统 vs 手动覆盖)
         const darkModeToggle = document.getElementById('darkModeToggle');
         const darkModeIcon = document.getElementById('darkModeIcon');
         const html = document.documentElement;
 
-        // Check saved preference
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme === 'dark') {
-            html.setAttribute('data-bs-theme', 'dark');
-            darkModeIcon.textContent = '☀️';
+        // 初始化：检查用户是否手动设置过
+        const savedTheme = localStorage.getItem('theme');
+        
+        function updateDarkModeUI(isDark) {
+            if (isDark) {
+                html.setAttribute('data-bs-theme', 'dark');
+                darkModeIcon.textContent = '☀️'; // 显示太阳图标，表示当前暗色
+                darkModeToggle.setAttribute('title', '当前：手动暗色（点击恢复跟随系统）');
+            } else {
+                html.removeAttribute('data-bs-theme'); // 恢复系统自动
+                darkModeIcon.textContent = '🌙';
+                darkModeToggle.setAttribute('title', '当前：跟随系统（点击切换手动暗色）');
+            }
         }
 
+        // 启动时应用保存的设置
+        if (savedTheme !== null) {
+            // 用户手动设置过，应用保存的偏好
+            updateDarkModeUI(savedTheme === 'dark');
+        } else {
+            // 没有保存设置，跟随系统
+            updateDarkModeUI(false); // 清除手动设置，让CSS媒体查询生效
+        }
+
+        // 点击切换逻辑
         darkModeToggle.addEventListener('click', function() {
-            const isDark = html.getAttribute('data-bs-theme') === 'dark';
-            if (isDark) {
-                html.setAttribute('data-bs-theme', 'light');
-                localStorage.setItem('theme', 'light');
-                darkModeIcon.textContent = '🌙';
+            const currentTheme = localStorage.getItem('theme');
+            const isCurrentlyDark = html.getAttribute('data-bs-theme') === 'dark';
+            
+            if (currentTheme !== null) {
+                // 当前是手动模式 → 清除设置，恢复跟随系统
+                localStorage.removeItem('theme');
+                updateDarkModeUI(false);
+                console.log('🌓 恢复系统自动模式');
             } else {
-                html.setAttribute('data-bs-theme', 'dark');
+                // 当前是系统自动 → 切换到手动暗色
                 localStorage.setItem('theme', 'dark');
-                darkModeIcon.textContent = '☀️';
+                updateDarkModeUI(true);
+                console.log('🌓 切换到手动暗色模式');
             }
         });
 
