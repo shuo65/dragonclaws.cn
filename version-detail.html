@@ -99,11 +99,18 @@
 
     <!-- Main Content -->
     <main class="container py-4">
-        <!-- 版本卡片 -->
-        <div class="version-card mb-4">
+        <!-- 锚点导航 -->
+        <div class="alert alert-info small">
+            <strong>快速导航：</strong>
+            <a href="#zh">中文版 (zh)</a> |
+            <a href="#cn">社区版 (cn)</a>
+        </div>
+
+        <!-- zh 版本卡片 -->
+        <div class="version-card mb-4" id="zh">
             <div class="d-flex justify-content-between align-items-start mb-3">
                 <div>
-                    <span class="badge badge-custom mb-2">汉化版</span>
+                    <span class="badge badge-custom mb-2">zh</span>
                     <h2 class="h4 mb-1">OpenClaw-zh v2026.3.13</h2>
                     <p class="text-muted mb-0">发布日期: 2026-03-13 | 维护者: 龙爪中国团队</p>
                 </div>
@@ -222,29 +229,84 @@ openclaw-zh start</code></pre>
             </div>
         </div>
 
+        <!-- cn 社区版卡片 -->
+        <div class="version-card mb-4" id="cn">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                    <span class="badge bg-info mb-2">cn</span>
+                    <h2 class="h4 mb-1">OpenClaw 社区版 (cn)</h2>
+                    <p class="text-muted mb-0">开源免费 | 社区驱动 | 灵活扩展</p>
+                </div>
+                <a href="https://github.com/OpenClaw/OpenClaw/releases" target="_blank" class="btn btn-primary">访问社区</a>
+            </div>
+
+            <h5>✨ 核心特性</h5>
+            <ul class="mb-3">
+                <li>✅ 完全开源（MIT协议），自由使用和修改</li>
+                <li>✅ 全球活跃社区，每周 releases 更新</li>
+                <li>✅ 支持全部主流平台和模型接入</li>
+                <li>✅ 插件生态丰富（官方+社区插件）</li>
+                <li>✅ 完善的文档和问题跟踪系统</li>
+            </ul>
+
+            <h5>⚙️ 系统要求</h5>
+            <pre class="bg-light p-2 rounded mb-3"><code>最低配置:
+- OS: Windows 10+ / Linux / macOS
+- Node.js: 22 LTS (推荐 24+)
+- 内存: 4GB (8GB+ 推荐)
+- 磁盘: 1GB 可用空间
+
+推荐配置:
+- Node.js: 24+
+- 内存: 16GB+
+- GPU: NVIDIA (可选)
+- 网络: 稳定连接（API调用）</code></pre>
+
+            <h5>📦 安装方式</h5>
+            <pre class="bg-light p-2 rounded"><code># 1. 安装社区版
+npm install -g openclaw
+
+# 2. 初始化配置
+openclaw onboard
+
+# 3. 启动服务
+openclaw start</code></pre>
+        </div>
+
         <!-- 适用场景 -->
         <div class="version-card">
             <h3 class="h5 mb-3">🎯 适用场景</h3>
             <div class="row g-3">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="p-3 border rounded">
-                        <h6>🟢 适合汉化版的情况</h6>
+                        <h6>🟢 适合中文版 (zh) 的情况</h6>
                         <ul class="small mb-0">
-                            <li>主要用户在国内，需要中文界面</li>
-                            <li>需要集成微信、钉钉等国内IM</li>
+                            <li>用户主要在国内，需要中文界面</li>
+                            <li>集成微信、钉钉、飞书等国内IM</li>
                             <li>使用百度文心、通义千问等国内模型</li>
                             <li>希望快速上手，有中文文档</li>
                         </ul>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="p-3 border rounded">
+                        <h6>🔵 适合社区版 (cn) 的情况</h6>
+                        <ul class="small mb-0">
+                            <li>追求开源自由，愿意参与社区</li>
+                            <li>需要最新功能和快速迭代</li>
+                            <li>使用国际主流模型和平台</li>
+                            <li>有技术能力自行定制和扩展</li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="col-md-6">
                     <div class="p-3 border rounded">
-                        <h6>🔵 适合官方版的情况</h6>
+                        <h6>🟣 适合企业版的情况</h6>
                         <ul class="small mb-0">
-                            <li>主要使用国际模型（GPT-4, Claude等）</li>
-                            <li>使用WhatsApp/Telegram/Discord为主</li>
-                            <li>有英文阅读能力</li>
-                            <li>需要最新功能（官方版更新快）</li>
+                            <li>大型企业，需要专业支持</li>
+                            <li>强安全合规与私有化部署</li>
+                            <li>定制行业解决方案</li>
+                            <li>需要SLA保障</li>
                         </ul>
                     </div>
                 </div>
