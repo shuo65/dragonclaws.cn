@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw 汉化版本专区 | 龙爪中国</title>
+    <link rel="canonical" href="https://www.dragonclaws.cn/chinese-editions.html">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        :root {
+            --primary-color: #2A5CAA;
+            --accent-color: #FF6B35;
+            --bg-color: #F5F7FA;
+            --text-color: #212529;
+            --card-bg: #ffffff;
+            --link-color: #0d6efd;
+            --border-color: #dee2e6;
+        }
+        [data-bs-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #f5f5f5;
+            --card-bg: #1e1e1e;
+            --link-color: #8ab4f8;
+            --border-color: #333333;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .navbar {
+            background-color: var(--primary-color);
+        }
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), #1e3d6f);
+            color: white;
+            padding: 3.5rem 1rem;
+        }
+        .edition-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .edition-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .badge-free { background-color: #28a745; color: white; }
+        .badge-commercial { background-color: #ffc107; color: #212529; }
+        .badge-community { background-color: #17a2b8; color: white; }
+        pre, code {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        footer {
+            margin-top: 3rem;
+            padding: 2rem 0;
+            background-color: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span>🐉</span>龙爪中国
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">首页</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">汉化版本</a></li>
+                    <li class="nav-item"><a class="nav-link" href="version-detail.html">版本详情</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero text-center">
+        <div class="container">
+            <h1 class="display-5 fw-bold mb-3">🇨🇳 OpenClaw 汉化版本专区</h1>
+            <p class="lead mb-0">收集整理国内外汉化版、中文增强版信息</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container py-4">
+        <!-- 说明 -->
+        <div class="alert alert-info" role="alert">
+            <strong>📌 说明：</strong> 本页面收集OpenClaw的中文版本信息，包括官方汉化版、社区增强版等。所有版本均基于MIT开源协议，请遵守原作者许可。
+        </div>
+
+        <!-- 免费汉化版 -->
+        <h3 class="mb-3">🆓 免费汉化版</h3>
+        <div class="edition-card">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+                <div>
+                    <span class="badge badge-free me-2">免费</span>
+                    <span class="badge bg-secondary me-2">社区维护</span>
+                    <strong>OpenClaw-zh (龙爪中国版)</strong>
+                </div>
+                <a href="version-detail.html" class="btn btn-sm btn-outline-primary">查看详情</a>
+            </div>
+            <p class="mb-1"><strong>版本号：</strong>v2026.3.13-zh.1</p>
+            <p class="mb-1"><strong>更新日期：</strong>2026-03-13</p>
+            <p class="mb-2"><strong>特点：</strong>完整中文界面，国内IM支持（微信/钉钉/飞书），百度网盘集成，国内模型API适配（文心、通义、智谷）</p>
+            <p class="mb-0"><strong>适用人群：</strong>国内用户，需要中文界面和国内IM集成</p>
+        </div>
+
+        <div class="edition-card">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+                <div>
+                    <span class="badge badge-free me-2">免费</span>
+                    <span class="badge bg-info me-2">非官方</span>
+                    <strong>OpenClaw-CN (中文社区版)</strong>
+                </div>
+                <button class="btn btn-sm btn-outline-secondary" disabled>待更新</button>
+            </div>
+            <p class="mb-1"><strong>版本号：</strong>v3.7 (社区 fork)</p>
+            <p class="mb-1"><strong>更新日期：</strong>2025-12-01 (示例)</p>
+            <p class="mb-2"><strong>特点：</strong>基于官方v3.7的汉化版本，包含部分社区增强功能</p>
+            <p class="mb-0"><strong>维护状态：</strong> ⚠️ 更新较慢，建议优先使用 OpenClaw-zh</p>
+        </div>
+
+        <!-- 商业汉化版 -->
+        <h3 class="mb-3 mt-4">💰 商业汉化版</h3>
+        <div class="edition-card">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+                <div>
+                    <span class="badge badge-commercial me-2">商业</span>
+                    <strong>OpenClaw Enterprise CN</strong>
+                </div>
+                <a href="mailto:shuo65@qq.com" class="btn btn-sm btn-warning">咨询购买</a>
+            </div>
+            <p class="mb-1"><strong>版本号：</strong>Enterprise 2025.2</p>
+            <p class="mb-1"><strong>授权：</strong>商业许可证（付费）</p>
+            <p class="mb-2"><strong>特点：</strong>企业级功能，包括高级Agent路由、审计日志、私有化部署支持、优先技术支持</p>
+            <p class="mb-0"><strong>适用人群：</strong>企业用户，需要SLA和专业服务</p>
+        </div>
+
+        <!-- 比较表格 -->
+        <div class="edition-card mt-4">
+            <h3 class="h5 mb-3">📋 汉化版本对比</h3>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>版本</th>
+                            <th>类型</th>
+                            <th>最新版本</th>
+                            <th>中文支持</th>
+                            <th>国内IM</th>
+                            <th>维护状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>OpenClaw-zh</strong></td>
+                            <td><span class="badge badge-free">免费</span></td>
+                            <td>v2026.3.13</td>
+                            <td>✅ 完整</td>
+                            <td>✅ 支持</td>
+                            <td><span class="badge bg-success">活跃</span></td>
+                            <td><a href="version-detail.html" class="btn btn-sm btn-primary">详情</a></td>
+                        </tr>
+                        <tr>
+                            <td>OpenClaw-CN</td>
+                            <td><span class="badge badge-free">免费</span></td>
+                            <td>v3.7</td>
+                            <td>✅ 部分</td>
+                            <td>❌ 无</td>
+                            <td><span class="badge bg-warning text-dark">缓慢</span></td>
+                            <td><button class="btn btn-sm btn-secondary" disabled>待更新</button></td>
+                        </tr>
+                        <tr>
+                            <td><strong>OpenClaw Enterprise CN</strong></td>
+                            <td><span class="badge badge-commercial">商业</span></td>
+                            <td>2025.2</td>
+                            <td>✅ 完整</td>
+                            <td>✅ 支持</td>
+                            <td><span class="badge bg-success">活跃</span></td>
+                            <td><a href="mailto:shuo65@qq.com" class="btn btn-sm btn-warning">咨询</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 贡献与反馈 -->
+        <div class="edition-card mt-4">
+            <h3 class="h5 mb-3">🤝 贡献与反馈</h3>
+            <p>如果您知道其他OpenClaw汉化版本，或发现本页信息有误，欢迎提交Issue或PR：</p>
+            <ul class="list-unstyled">
+                <li>🐙 <a href="https://github.com/OpenClaw-zh/OpenClaw-zh/issues" target="_blank">提交Issue</a></li>
+                <li>📧 邮件反馈: <a href="mailto:shuo65@qq.com">shuo65@qq.com</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">© 2026 龙爪中国. 本站为非官方中文社区站点。</p>
+            <p class="small mb-0 mt-1">OpenClaw 是 MIT 许可证开源项目。</p>
+        </div>
+    </footer>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
