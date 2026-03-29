@@ -233,101 +233,126 @@
             margin: 1.5rem 0;
         }
 
-        /* Dark Mode - 优化对比度，确保可读性 */
+        /* Dark Mode - 支持系统自动和手动切换 */
+        :root {
+            --bg-color: #F5F7FA;          /* 浅色背景 */
+            --text-color: #212529;        /* 深色文字 */
+            --muted-color: #6c757d;       /* 次级文字 */
+            --card-bg: #ffffff;           /* 卡片背景 */
+            --link-color: #0d6efd;        /* 蓝色链接 */
+            --border-color: #dee2e6;      /* 边框颜色 */
+        }
+
+        /* 手动暗色模式 (data-bs-theme="dark") */
+        [data-bs-theme="dark"] {
+            --bg-color: #121212;          /* 更深的背景 */
+            --text-color: #f5f5f5;        /* 接近白色，高对比度 */
+            --muted-color: #b0b0b0;       /* 次级文字，保持可读 */
+            --card-bg: #1e1e1e;          /* 卡片背景，比背景稍亮 */
+            --link-color: #8ab4f8;        /* 蓝色链接，在暗色清晰 */
+            --border-color: #333333;      /* 边框颜色 */
+        }
+
+        /* 系统自动暗色模式 (兼容) */
         @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #121212;      /* 更深的背景 */
-                --text-color: #f5f5f5;    /* 接近白色，高对比度 */
-                --muted-color: #b0b0b0;   /* 次级文字，保持可读 */
-                --card-bg: #1e1e1e;       /* 卡片背景，比背景稍亮 */
-                --link-color: #8ab4f8;    /* 蓝色链接，在暗色清晰 */
-                --border-color: #333333;  /* 边框颜色 */
+            :root:not([data-bs-theme="light"]) {
+                --bg-color: #121212;
+                --text-color: #f5f5f5;
+                --muted-color: #b0b0b0;
+                --card-bg: #1e1e1e;
+                --link-color: #8ab4f8;
+                --border-color: #333333;
             }
-            
-            body {
-                background-color: var(--bg-color);
-                color: var(--text-color);
-            }
-            
-            /* 导航栏 */
-            .navbar {
-                background-color: var(--primary-color);
-            }
-            .nav-link {
-                color: rgba(255,255,255,0.85) !important;
-            }
-            .nav-link:hover {
-                color: white !important;
-            }
-            
-            /* Hero区域 */
-            .hero {
-                background: linear-gradient(135deg, var(--primary-color), #1e3d6f);
-                color: white;
-            }
-            
-            /* 标题 */
-            .section-title {
-                color: var(--primary-color);
-            }
-            
-            /* 时间轴卡片 */
-            .timeline-content,
-            .version-card {
-                background: var(--card-bg);
-                color: var(--text-color);
-                border: 1px solid var(--border-color);
-            }
-            
-            /* 链接 */
-            a {
-                color: var(--link-color);
-            }
-            a:hover {
-                color: #a8c8ff;
-                text-decoration: none;
-            }
-            
-            /* 弱化文字 */
-            .text-muted {
-                color: var(--muted-color) !important;
-            }
-            
-            /* 标签页 */
-            .badge {
-                background-color: var(--accent-color);
-                color: white;
-            }
-            
-            /* 分割线 */
-            hr {
-                border-color: var(--border-color);
-            }
-            
-            /* Footer */
-            .footer-links a {
-                color: var(--link-color);
-            }
-            .footer-links a:hover {
-                color: #a8c8ff;
-            }
-            
-            /* 开发提示框 */
-            .coming-soon {
-                background: #2a2a00;
-                border-left-color: #ffc107;
-                color: var(--text-color);
-            }
-            
-            /* 按钮 */
-            .btn-outline-primary {
-                color: var(--primary-color);
-                border-color: var(--primary-color);
-            }
-            .btn-outline-primary:hover:not(:disabled) {
-                background-color: var(--primary-color);
-                color: white;
-            }
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            background-color: var(--primary-color);
+        }
+        .nav-link {
+            color: rgba(255,255,255,0.85) !important;
+        }
+        .nav-link:hover {
+            color: white !important;
+        }
+
+        /* Hero区域 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), #1e3d6f);
+            color: white;
+        }
+
+        /* 标题 */
+        .section-title {
+            color: var(--primary-color);
+        }
+
+        /* 时间轴卡片 */
+        .timeline-content,
+        .version-card {
+            background: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* 链接 */
+        a {
+            color: var(--link-color);
+        }
+        a:hover {
+            color: #a8c8ff;
+            text-decoration: none;
+        }
+
+        /* 弱化文字 */
+        .text-muted {
+            color: var(--muted-color) !important;
+        }
+
+        /* 标签页 */
+        .badge {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* 分割线 */
+        hr {
+            border-color: var(--border-color);
+        }
+
+        /* Footer */
+        .footer-links a {
+            color: var(--link-color);
+        }
+        .footer-links a:hover {
+            color: #a8c8ff;
+        }
+
+        /* 开发提示框 */
+        .coming-soon {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+            color: var(--text-color);
+        }
+
+        /* 按钮 */
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .btn-outline-primary:hover:not(:disabled) {
+            background-color: var(--primary-color);
+            color: white;
         }
 
         /* Dark Mode Toggle Button - 方案C：默认隐藏，手动切换后显示 */
