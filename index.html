@@ -124,20 +124,24 @@
         .hero {
             background: linear-gradient(135deg, var(--primary-color), #1e3d6f);
             color: white;
-            padding: 3.5rem 1rem;
-            margin-bottom: 2rem;
+            padding: 0.8rem 0.3rem;
+            margin-bottom: 0.6rem;
         }
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             font-weight: 700;
         }
         .hero .lead {
-            font-size: 1.25rem;
+            font-size: 0.9rem;
             opacity: 0.95;
         }
+            .hero .btn {
+            padding: 0.4rem 1rem;
+            font-size: 0.9rem;
+        }
         .hero .btn {
-            font-size: 1.1rem;
-            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            padding: 0.6rem 1.5rem;
         }
         .section-title {
             border-left: 4px solid var(--accent-color);
@@ -147,20 +151,20 @@
             color: var(--primary-color);
         }
         .timeline {
-            position: relative;
-            padding: 1rem 0 2rem 0;
+            display: flex;
+            overflow-x: auto;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            position: static;
+            scrollbar-width: thin;
         }
         .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--accent-color), #ff8c5a);
+            display: none; /* 横版隐藏垂直线 */
         }
         .timeline-item {
-            margin: 1.5rem 0;
+            flex: 0 0 auto;
+            width: 320px;
+            margin: 0;
             position: relative;
         }
         .timeline-content {
@@ -168,8 +172,12 @@
             padding: 1.25rem;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            width: 45%;
+            width: 100%;
             transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .timeline-content:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
         }
         .timeline-content:hover {
             transform: translateY(-3px);
@@ -476,9 +484,8 @@
             <p class="mb-4 text-white-50">个人技术博客 | 分享OpenClaw汉化版、使用技巧与部署经验</p>
             <p class="mb-4">
                 <strong>🎯 域名出售中：</strong>
-                <a href="mailto:shuo65@qq.com" class="text-white text-decoration-underline fw-bold">shuo65@qq.com</a>
+                <a href="mailto:shuo65@qq.net" class="text-white text-decoration-underline fw-bold">shuo65@qq.com</a>
             </p>
-            <a href="#history" class="btn btn-light btn-lg px-4">探索发展史</a>
         </div>
     </section>
 
@@ -523,7 +530,28 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h5>2026.03.13 - OpenClaw-zh v2026.3.13</h5>
-                        <p class="text-muted mb-0">中文汉化版发布！全面本地化，更好的国内用户体验...</p>
+                        <p class="text-muted mb-0">中文汉化版发布！全面本地化，支持微信/钉钉/飞书，百度网盘集成...</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h5>2026.03.22 - v2026.3.22</h5>
+                        <p class="text-muted mb-0">双版本连发 + 安全加固：配对安全增强（256-bit令牌），控制台恢复，插件系统改进...</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h5>2026.03.23 - v2026.3.23</h5>
+                        <p class="text-muted mb-0">Qwen随用随付 + DeepSeek可插拔：阿里云Qwen实现全球化"随用随付"，DeepSeek变为可插拔插件...</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h5>2026.03.24 - v2026.3.24</h5>
+                        <p class="text-muted mb-0">Microsoft Teams全面升级 + 安全增强：迁移至官方Teams SDK，流式回复，OpenAI兼容性增强...</p>
                     </div>
                 </div>
                 <div class="coming-soon">
@@ -558,6 +586,56 @@
                         <p class="text-muted small mb-0">检查服务运行状态</p>
                     </div>
                 </div>
+
+                <!-- 新增：日志查看 -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="version-card">
+                        <h5>📖 查看日志</h5>
+                        <pre class="bg-light p-2 rounded"><code>openclaw logs</code></pre>
+                        <p class="text-muted small mb-0">查看运行日志，支持--level调试</p>
+                    </div>
+                </div>
+                <!-- 新增：服务重启 -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="version-card">
+                        <h5>🔄 重启服务</h5>
+                        <pre class="bg-light p-2 rounded"><code>openclaw restart</code></pre>
+                        <p class="text-muted small mb-0">重启OpenClaw服务</p>
+                    </div>
+                </div>
+                <!-- 新增：插件管理 -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="version-card">
+                        <h5>🔌 插件管理</h5>
+                        <pre class="bg-light p-2 rounded"><code>openclaw plugin list</code></pre>
+                        <p class="text-muted small mb-0">列出已安装插件</p>
+                    </div>
+                </div>
+                <!-- 新增：配置检查 -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="version-card">
+                        <h5>✅ 配置检查</h5>
+                        <pre class="bg-light p-2 rounded"><code>openclaw check-config</code></pre>
+                        <p class="text-muted small mb-0">验证配置文件正确性</p>
+                    </div>
+                </div>
+                <!-- 新增：健康检查 -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="version-card">
+                        <h5>💊 健康检查</h5>
+                        <pre class="bg-light p-2 rounded"><code>openclaw health</code></pre>
+                        <p class="text-muted small mb-0">系统健康状态与资源使用</p>
+                    </div>
+                </div>
+                <!-- 新增：帮助命令 -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="version-card">
+                        <h5>❓ 帮助</h5>
+                        <pre class="bg-light p-2 rounded"><code>openclaw --help</code></pre>
+                        <p class="text-muted small mb-0">显示所有可用命令</p>
+                    </div>
+                </div>
+
             </div>
         </section>
 
