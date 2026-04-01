@@ -371,9 +371,13 @@
             background-color: var(--primary-color);
             color: white;
         }
+        .btn-outline-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
         .btn-xs {
             padding: 0.2rem 0.5rem;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
         }
         .very-small {
             font-size: 0.75rem;
@@ -612,204 +616,190 @@
             </div>
         </section>
 
-        <!-- 常用指令卡片 -->
+        <!-- 常用指令卡片 (移动端优化) -->
         <section id="quick-start">
             <h2 class="section-title">⚡ 常用指令</h2>
             <p class="text-muted mb-3">快速上手OpenClaw的常用命令参考</p>
-            <div class="row g-3">
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <h5>🚀 快速启动</h5>
-                        <pre class="bg-light p-2 rounded"><code>openclaw start</code></pre>
-                        <p class="text-muted small mb-0">启动OpenClaw服务</p>
+            <div class="row g-2 gy-2">
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <h6 class="mb-1 small">🚀 快速启动</h6>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw start</code></pre>
+                        <p class="text-muted mb-0 very-small">启动服务</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <h5>📦 安装模型</h5>
-                        <pre class="bg-light p-2 rounded"><code>openclaw model add &lt;model-name&gt;</code></pre>
-                        <p class="text-muted small mb-0">添加新模型到配置</p>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <h6 class="mb-1 small">📦 安装模型</h6>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw model add &lt;model&gt;</code></pre>
+                        <p class="text-muted mb-0 very-small">添加模型</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <h5>🔍 查看状态</h5>
-                        <pre class="bg-light p-2 rounded"><code>openclaw status</code></pre>
-                        <p class="text-muted small mb-0">检查服务运行状态</p>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <h6 class="mb-1 small">🔍 查看状态</h6>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw status</code></pre>
+                        <p class="text-muted mb-0 very-small">检查状态</p>
                     </div>
                 </div>
-
-                <!-- 新增：日志查看 -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <h5>📖 查看日志</h5>
-                        <pre class="bg-light p-2 rounded"><code>openclaw logs</code></pre>
-                        <p class="text-muted small mb-0">查看运行日志，支持--level调试</p>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <h6 class="mb-1 small">📖 查看日志</h6>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw logs</code></pre>
+                        <p class="text-muted mb-0 very-small">运行日志</p>
                     </div>
                 </div>
-                <!-- 新增：服务重启 -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <h5>🔄 重启服务</h5>
-                        <pre class="bg-light p-2 rounded"><code>openclaw restart</code></pre>
-                        <p class="text-muted small mb-0">重启OpenClaw服务</p>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <h6 class="mb-1 small">🔄 重启服务</h6>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw restart</code></pre>
+                        <p class="text-muted mb-0 very-small">重启服务</p>
                     </div>
                 </div>
-                <!-- 新增：插件管理 -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <h5>🔌 插件管理</h5>
-                        <pre class="bg-light p-2 rounded"><code>openclaw plugin list</code></pre>
-                        <p class="text-muted small mb-0">列出已安装插件</p>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <h6 class="mb-1 small">🔌 插件管理</h6>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw plugin list</code></pre>
+                        <p class="text-muted mb-0 very-small">列出插件</p>
                     </div>
                 </div>
-                <!-- 新增：配置检查 -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <h5>✅ 配置检查</h5>
-                        <pre class="bg-light p-2 rounded"><code>openclaw check-config</code></pre>
-                        <p class="text-muted small mb-0">验证配置文件正确性</p>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <h6 class="mb-1 small">✅ 配置检查</h6>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw check-config</code></pre>
+                        <p class="text-muted mb-0 very-small">验证配置</p>
                     </div>
                 </div>
-                <!-- 新增：健康检查 -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <h5>💊 健康检查</h5>
-                        <pre class="bg-light p-2 rounded"><code>openclaw health</code></pre>
-                        <p class="text-muted small mb-0">系统健康状态与资源使用</p>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <h6 class="mb-1 small">💊 健康检查</h6>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw health</code></pre>
+                        <p class="text-muted mb-0 very-small">系统状态</p>
                     </div>
                 </div>
-                <!-- 新增：帮助命令 -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <h5>❓ 帮助</h5>
-                        <pre class="bg-light p-2 rounded"><code>openclaw --help</code></pre>
-                        <p class="text-muted small mb-0">显示所有可用命令</p>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <h6 class="mb-1 small">❓ 帮助</h6>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw --help</code></pre>
+                        <p class="text-muted mb-0 very-small">所有命令</p>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- Version Showcase -->
+        <!-- Version Showcase (移动端优化) -->
         <section id="versions">
             <h2 class="section-title">📦 版本展示</h2>
-            <div class="row g-3">
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <span class="badge badge-custom mb-2">zh</span>
-                        <h5>OpenClaw 中文版 (zh)</h5>
-                        <p class="text-muted small">汉化版本 - 完全本地化的中文界面，适合国内用户</p>
-                        <a href="version-detail.html#zh" class="btn btn-sm btn-outline-primary">查看详情</a>
+            <div class="row g-2 gy-2">
+                <!-- zh/cn 核心版 -->
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <span class="badge badge-custom mb-1 small">zh</span>
+                        <h6 class="mb-1">中文版</h6>
+                        <p class="text-muted mb-1 very-small">汉化版本</p>
+                        <a href="version-detail.html#zh" class="btn btn-sm btn-outline-primary btn-xs py-1 px-2">详情</a>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <span class="badge bg-info mb-2">cn</span>
-                        <h5>OpenClaw 社区版 (cn)</h5>
-                        <p class="text-muted small">开源社区版 - 免费使用，社区驱动</p>
-                        <a href="version-detail.html#cn" class="btn btn-sm btn-outline-primary">查看详情</a>
-                    </div>
-                </div>
-
-                <!-- 商业版/企业版卡片 -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <span class="badge bg-warning mb-1">商业版</span>
-                        <h5>🏢 企业版总览</h5>
-                        <p class="text-muted small">国内大厂企业版生态，满足不同场景需求</p>
-                        <a href="business-editions.html" class="btn btn-sm btn-outline-primary">查看全部</a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <span class="badge bg-primary mb-1">腾讯</span>
-                        <h5>WorkBuddy & QClaw</h5>
-                        <p class="text-muted small">企业办公+微信原生，开箱即用</p>
-                        <a href="https://workbuddy.qq.com" target="_blank" class="btn btn-sm btn-outline-primary">了解</a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <span class="badge bg-info mb-1">字节</span>
-                        <h5>ArkClaw</h5>
-                        <p class="text-muted small">飞书原生SaaS，零部署云端托管</p>
-                        <a href="https://www.feishu.cn/arkclaw" target="_blank" class="btn btn-sm btn-outline-primary">了解</a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <span class="badge bg-success mb-1">阿里</span>
-                        <h5>HiClaw & CoPaw</h5>
-                        <p class="text-muted small">钉钉深度集成+开源定制版</p>
-                        <a href="https://www.aliyun.com/hi-claw" target="_blank" class="btn btn-sm btn-outline-primary">了解</a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <span class="badge bg-danger mb-1">百度</span>
-                        <h5>DuClaw</h5>
-                        <p class="text-muted small">零部署网页版，百度生态集成</p>
-                        <a href="https://duclaw.baidu.com" target="_blank" class="btn btn-sm btn-outline-primary">了解</a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <span class="badge bg-secondary mb-1">华为</span>
-                        <h5>HWClaw (小艺Claw)</h5>
-                        <p class="text-muted small">鸿蒙生态系统级，跨设备协同</p>
-                        <a href="https://consumer.huawei.com/hwclaw" target="_blank" class="btn btn-sm btn-outline-primary">了解</a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <span class="badge bg-primary mb-1">智谱</span>
-                        <h5>AutoClaw (澳龙)</h5>
-                        <p class="text-muted small">一键安装本地版，浏览器自动化强</p>
-                        <a href="https://autoclaw.zhipu.ai" target="_blank" class="btn btn-sm btn-outline-primary">了解</a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <span class="badge bg-info mb-1">月之暗面</span>
-                        <h5>Kimi Claw</h5>
-                        <p class="text-muted small">200万tokens超长上下文原生</p>
-                        <a href="https://kimi.moonshot.cn/claw" target="_blank" class="btn btn-sm btn-outline-primary">了解</a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <span class="badge bg-warning text-dark mb-1">MiniMax</span>
-                        <h5>MaxClaw</h5>
-                        <p class="text-muted small">10秒极速部署，企业级安全</p>
-                        <a href="https://maxclaw.minimax.chat" target="_blank" class="btn btn-sm btn-outline-primary">了解</a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <span class="badge bg-secondary mb-1">中兴</span>
-                        <h5>Co-Claw</h5>
-                        <p class="text-muted small">五维安全防线，政企专属</p>
-                        <a href="https://co-claw.zte.com.cn" target="_blank" class="btn btn-sm btn-outline-primary">了解</a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <span class="badge bg-dark mb-1">中关村科金</span>
-                        <h5>PowerClaw</h5>
-                        <p class="text-muted small">营销服一体化，金融零售行业</p>
-                        <a href="https://powerclaw.zkcjtech.com" target="_blank" class="btn btn-sm btn-outline-primary">了解</a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="version-card">
-                        <span class="badge bg-light text-dark mb-1">猎豹移动</span>
-                        <h5>EasyClaw</h5>
-                        <p class="text-muted small">极致轻量化，一键安装</p>
-                        <a href="https://easyclaw.cmcm.com" target="_blank" class="btn btn-sm btn-outline-primary">了解</a>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <span class="badge bg-info mb-1 small">cn</span>
+                        <h6 class="mb-1">社区版</h6>
+                        <p class="text-muted mb-1 very-small">开源免费</p>
+                        <a href="version-detail.html#cn" class="btn btn-sm btn-outline-primary btn-xs py-1 px-2">详情</a>
                     </div>
                 </div>
 
+                <!-- 商业版总览 -->
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <span class="badge bg-warning text-dark mb-1 small">商业版</span>
+                        <h6 class="mb-1">企业版总览</h6>
+                        <p class="text-muted mb-1 very-small">全部版本</p>
+                        <a href="business-editions.html" class="btn btn-sm btn-outline-primary btn-xs py-1 px-2">查看</a>
+                    </div>
+                </div>
+
+                <!-- 各大厂版本 -->
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <span class="badge bg-primary mb-1 small">腾讯</span>
+                        <h6 class="mb-1">WorkBuddy</h6>
+                        <p class="text-muted mb-1 very-small">企业办公</p>
+                        <a href="https://workbuddy.qq.com" target="_blank" class="btn btn-sm btn-outline-primary btn-xs py-1 px-2">了解</a>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <span class="badge bg-info mb-1 small">字节</span>
+                        <h6 class="mb-1">ArkClaw</h6>
+                        <p class="text-muted mb-1 very-small">飞书原生</p>
+                        <a href="https://www.feishu.cn/arkclaw" target="_blank" class="btn btn-sm btn-outline-primary btn-xs py-1 px-2">了解</a>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <span class="badge bg-success mb-1 small">阿里</span>
+                        <h6 class="mb-1">HiClaw</h6>
+                        <p class="text-muted mb-1 very-small">钉钉集成</p>
+                        <a href="https://www.aliyun.com/hi-claw" target="_blank" class="btn btn-sm btn-outline-primary btn-xs py-1 px-2">了解</a>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <span class="badge bg-danger mb-1 small">百度</span>
+                        <h6 class="mb-1">DuClaw</h6>
+                        <p class="text-muted mb-1 very-small">网页版</p>
+                        <a href="https://duclaw.baidu.com" target="_blank" class="btn btn-sm btn-outline-primary btn-xs py-1 px-2">了解</a>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <span class="badge bg-secondary mb-1 small">华为</span>
+                        <h6 class="mb-1">HWClaw</h6>
+                        <p class="text-muted mb-1 very-small">鸿蒙生态</p>
+                        <a href="https://consumer.huawei.com/hwclaw" target="_blank" class="btn btn-sm btn-outline-primary btn-xs py-1 px-2">了解</a>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <span class="badge bg-primary mb-1 small">智谱</span>
+                        <h6 class="mb-1">AutoClaw</h6>
+                        <p class="text-muted mb-1 very-small">本地版</p>
+                        <a href="https://autoclaw.zhipu.ai" target="_blank" class="btn btn-sm btn-outline-primary btn-xs py-1 px-2">了解</a>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <span class="badge bg-info mb-1 small">Moonshot</span>
+                        <h6 class="mb-1">Kimi Claw</h6>
+                        <p class="text-muted mb-1 very-small">超长上下文</p>
+                        <a href="https://kimi.moonshot.cn/claw" target="_blank" class="btn btn-sm btn-outline-primary btn-xs py-1 px-2">了解</a>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <span class="badge bg-warning text-dark mb-1 small">MiniMax</span>
+                        <h6 class="mb-1">MaxClaw</h6>
+                        <p class="text-muted mb-1 very-small">极速部署</p>
+                        <a href="https://maxclaw.minimax.chat" target="_blank" class="btn btn-sm btn-outline-primary btn-xs py-1 px-2">了解</a>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <span class="badge bg-secondary mb-1 small">中兴</span>
+                        <h6 class="mb-1">Co-Claw</h6>
+                        <p class="text-muted mb-1 very-small">政企专属</p>
+                        <a href="https://co-claw.zte.com.cn" target="_blank" class="btn btn-sm btn-outline-primary btn-xs py-1 px-2">了解</a>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="version-card p-2">
+                        <span class="badge bg-light text-dark mb-1 small">猎豹</span>
+                        <h6 class="mb-1">EasyClaw</h6>
+                        <p class="text-muted mb-1 very-small">轻量化</p>
+                        <a href="https://easyclaw.cmcm.com" target="_blank" class="btn btn-sm btn-outline-primary btn-xs py-1 px-2">了解</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
