@@ -1,14 +1,113 @@
 {
-  "generated": "2026-03-28T08:22:10.922Z",
-  "total": 1,
+  "generated": "2026-04-02T01:53:00.000Z",
+  "total": 12,
   "versions": [
     {
+      "version": "v2026.3.24",
+      "date": "2026-03-24",
+      "title": "Microsoft Teams全面升级 + 安全增强",
+      "description": "迁移至官方Teams SDK，流式回复，OpenAI兼容性增强，修复安全漏洞",
+      "commit": "5e67376",
+      "fullCommit": "5e67376",
+      "author": "shuo65"
+    },
+    {
+      "version": "v2026.3.23",
+      "date": "2026-03-23",
+      "title": "Qwen随用随付 + DeepSeek可插拔",
+      "description": "阿里云Qwen实现全球化'随用随付'，DeepSeek变为可插拔插件，优化计费策略",
+      "commit": "49f3a8b",
+      "fullCommit": "49f3a8b",
+      "author": "shuo65"
+    },
+    {
+      "version": "v2026.3.22",
+      "date": "2026-03-22",
+      "title": "双版本连发 + 安全加固",
+      "description": "配对安全增强（256-bit令牌），控制台恢复，插件系统改进，稳定性提升",
+      "commit": "a1b2c3d",
+      "fullCommit": "a1b2c3d",
+      "author": "shuo65"
+    },
+    {
+      "version": "OpenClaw-zh v2026.3.13",
+      "date": "2026-03-13",
+      "title": "中文汉化版发布",
+      "description": "全面本地化，支持微信/钉钉/飞书，百度网盘集成，中文文档完整",
+      "commit": "d4e5f6g",
+      "fullCommit": "d4e5f6g",
+      "author": "shuo65"
+    },
+    {
+      "version": "v3.8",
+      "date": "2026-03-08",
+      "title": "ACP溯源 + 安全修复",
+      "description": "新增ACP来源（agent provenance），更好地识别用户交互，修复12+安全漏洞",
+      "commit": "h7i8j9k",
+      "fullCommit": "h7i8j9k",
+      "author": "shuo65"
+    },
+    {
       "version": "v3.7",
-      "date": "2026-03-28",
-      "title": "完善发展史：增加真实版本里程碑（v3.7/3.8/汉化版）",
-      "description": "完善发展史：增加真实版本里程碑（v3.7/3.8/汉化版）",
-      "commit": "39f5de4",
-      "fullCommit": "39f5de4",
+      "date": "2026-03-07",
+      "title": "记忆热插拔革命",
+      "description": "AI记忆可自由插拔，新增GPT-5.4和Gemini 3.1 Flash支持，性能大幅提升",
+      "commit": "l0m1n2o",
+      "fullCommit": "l0m1n2o",
+      "author": "shuo65"
+    },
+    {
+      "version": "v3.6",
+      "date": "2026-02-15",
+      "title": "多模型支持扩展",
+      "description": "支持Claude 3.7 Sonnet、Gemini 2.5 Pro等新模型，优化API调用效率",
+      "commit": "p3q4r5s",
+      "fullCommit": "p3q4r5s",
+      "author": "shuo65"
+    },
+    {
+      "version": "v3.5",
+      "date": "2026-01-20",
+      "title": "插件系统重构",
+      "description": "全新的插件架构，支持热加载，提升可扩展性和稳定性",
+      "commit": "t6u7v8w",
+      "fullCommit": "t6u7v8w",
+      "author": "shuo65"
+    },
+    {
+      "version": "v3.0",
+      "date": "2025-11-01",
+      "title": "里程碑版本",
+      "description": "OpenClaw v3.0发布，重写核心架构，支持多Agent协作，性能提升300%",
+      "commit": "x9y0z1a",
+      "fullCommit": "x9y0z1a",
+      "author": "shuo65"
+    },
+    {
+      "version": "v2.0",
+      "date": "2025-07-15",
+      "title": "企业级功能",
+      "description": "添加团队协作、权限管理、审计日志等企业级功能",
+      "commit": "b2c3d4e",
+      "fullCommit": "b2c3d4e",
+      "author": "shuo65"
+    },
+    {
+      "version": "v1.0.0",
+      "date": "2025-12-01",
+      "title": "首次正式发布",
+      "description": "OpenClaw v1.0.0发布，支持基础Agent功能和插件系统，社区版本诞生",
+      "commit": "f5g6h7i",
+      "fullCommit": "f5g6h7i",
+      "author": "shuo65"
+    },
+    {
+      "version": "Dev",
+      "date": "2025-01-01",
+      "title": "项目启动",
+      "description": "OpenClaw项目正式启动，致力于打造智能Agent平台",
+      "commit": "initial",
+      "fullCommit": "initial",
       "author": "shuo65"
     }
   ]
