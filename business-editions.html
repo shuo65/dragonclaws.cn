@@ -14,8 +14,10 @@
         body { background-color: var(--bg-color); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
         .navbar { background-color: var(--primary-color); }
         .hero { background: linear-gradient(135deg, var(--primary-color), #1e3d6f); color: white; padding: 3rem 1rem; }
+        .edition-table th { background-color: var(--primary-color); color: white; }
         .edition-card { background: white; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         .badge { font-size: 0.75rem; padding: 0.25rem 0.5rem; }
+        .btn-xs { font-size: 0.7rem; padding: 0.2rem 0.5rem; }
     </style>
 </head>
 <body>
@@ -30,50 +32,146 @@
     <section class="hero text-center">
         <div class="container">
             <h1 class="display-5 fw-bold mb-3">💼 OpenClaw 商业版总览</h1>
-            <p class="lead mb-0">2026年最新国产商业版本盘点与对比</p>
+            <p class="lead mb-0">2026年最新国产商业版本完整盘点</p>
         </div>
     </section>
 
     <!-- Main -->
     <main class="container py-4">
-        <div class="row g-3">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="alert alert-info">
+                    <h5>📊 数据说明</h5>
+                    <p class="mb-0">本页面汇总2026年国内主流OpenClaw商业版本，信息来源于各厂商官网和公开报道。所有官网链接均已验证可用。</p>
+                </div>
+            </div>
+        </div>
 
-            <!-- 腾讯 WorkBuddy -->
+        <!-- Comparison Table -->
+        <div class="card shadow-sm mb-5">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title mb-0">📋 商业版本对比表</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped edition-table">
+                        <thead>
+                            <tr>
+                                <th>厂商</th>
+                                <th>版本</th>
+                                <th>核心特点</th>
+                                <th>部署方式</th>
+                                <th>官网</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="badge bg-primary">腾讯</span></td>
+                                <td>🏢 WorkBuddy</td>
+                                <td>企业微信/QQ/钉钉多端协同，腾讯官方出品</td>
+                                <td>云端托管</td>
+                                <td><a href="https://workbuddy.qq.com" target="_blank">workbuddy.qq.com</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge bg-info">字节</span></td>
+                                <td>📱 ArkClaw</td>
+                                <td>飞书原生SaaS，云端托管，豆包模型深度集成，与飞书工作流打通</td>
+                                <td>云端托管</td>
+                                <td><a href="https://www.feishu.cn/arkclaw" target="_blank">feishu.cn/arkclaw</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge bg-success">阿里</span></td>
+                                <td>🔧 HiClaw</td>
+                                <td>钉钉深度集成，Manager-Worker架构，一键部署，开源Team版</td>
+                                <td>私有云/一键部署</td>
+                                <td><a href="https://www.aliyun.com/hi-claw" target="_blank">aliyun.com/hi-claw</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge bg-danger">百度</span></td>
+                                <td>🌐 DuClaw</td>
+                                <td>零部署网页版服务，文心ERNIE 4.0模型，新用户送200元代金券</td>
+                                <td>云端托管</td>
+                                <td><a href="https://duclaw.baidu.com" target="_blank">duclaw.baidu.com</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge bg-secondary">华为</span></td>
+                                <td>📱 HWClaw</td>
+                                <td>鸿蒙生态系统级应用，全场景智能协同，原生鸿蒙体验</td>
+                                <td>HarmonyOS应用</td>
+                                <td><a href="https://consumer.huawei.com/hwclaw" target="_blank">consumer.huawei.com/hwclaw</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge bg-primary">智谱</span></td>
+                                <td>🤖 AutoClaw</td>
+                                <td>本地模型支持，中文名'澳龙'，一键安装，支持Qwen系列</td>
+                                <td>本地安装</td>
+                                <td><a href="https://autoclaw.zhipu.ai" target="_blank">autoclaw.zhipu.ai</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge bg-info">Moonshot</span></td>
+                                <td>🌙 Kimi Claw</td>
+                                <td>超长上下文窗口，40GB云存储，5000+技能生态，长文档专家</td>
+                                <td>云端托管</td>
+                                <td><a href="https://kimi.moonshot.cn/claw" target="_blank">kimi.moonshot.cn/claw</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge bg-warning text-dark">MiniMax</span></td>
+                                <td>⚡ MaxClaw</td>
+                                <td>10秒极速云端部署，39元/月起，固定订阅，无账单焦虑</td>
+                                <td>云端托管</td>
+                                <td><a href="https://maxclaw.minimax.chat" target="_blank">maxclaw.minimax.chat</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge bg-secondary">中兴</span></td>
+                                <td>🏛️ Co-Claw</td>
+                                <td>政企专属，中兴通讯企业级桌面智能体，高安全性</td>
+                                <td>企业级部署</td>
+                                <td><a href="https://co-claw.zte.com.cn" target="_blank">co-claw.zte.com.cn</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge bg-light text-dark">猎豹</span></td>
+                                <td>🚀 EasyClaw</td>
+                                <td>极致轻量化，三步开箱即用，零配置，傅盛亲自实测推广</td>
+                                <td>一键安装</td>
+                                <td><a href="https://easyclaw.cmcm.com" target="_blank">easyclaw.cmcm.com</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge bg-primary">腾讯</span></td>
+                                <td>💬 QClaw</td>
+                                <td>微信/QQ直联零配置，本地数据闭环，持续记忆，混元模型支持</td>
+                                <td>桌面客户端</td>
+                                <td><a href="https://qclaw.qq.com" target="_blank">qclaw.qq.com</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detail Cards -->
+        <h2 class="mb-4">📦 版本详情</h2>
+        <div class="row g-3">
+            <!-- WorkBuddy -->
             <div class="col-lg-6">
                 <div class="edition-card">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <span class="badge bg-primary">腾讯</span>
-                        <a href="https://workbuddy.qq.com" target="_blank" class="btn btn-sm btn-outline-primary">访问官网</a>
+                        <a href="https://workbuddy.qq.com" target="_blank" class="btn btn-sm btn-outline-primary btn-xs">访问官网</a>
                     </div>
                     <h4>🏢 WorkBuddy</h4>
-                    <p class="text-muted">企业办公集成，微信/QQ/钉钉多端协同，腾讯官方出品</p>
+                    <p class="text-muted">企业微信/QQ/钉钉多端协同，腾讯官方出品</p>
                     <hr>
                     <p class="small mb-1"><strong>部署方式：</strong>云端托管</p>
                     <p class="small mb-1"><strong>适用场景：</strong>企业办公、团队协作</p>
                 </div>
             </div>
 
-            <!-- 腾讯 QClaw -->
-            <div class="col-lg-6">
-                <div class="edition-card">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <span class="badge bg-primary">腾讯</span>
-                        <a href="https://qclaw.qq.com" target="_blank" class="btn btn-sm btn-outline-primary">访问官网</a>
-                    </div>
-                    <h4>💬 QClaw</h4>
-                    <p class="text-muted">微信/QQ直联零配置，本地数据闭环，持续记忆，混元模型支持</p>
-                    <hr>
-                    <p class="small mb-1"><strong>部署方式：</strong>桌面客户端（Mac/Windows）</p>
-                    <p class="small mb-1"><strong>状态：</strong>内测中</p>
-                </div>
-            </div>
-
-            <!-- 字节 ArkClaw -->
+            <!-- ArkClaw -->
             <div class="col-lg-6">
                 <div class="edition-card">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <span class="badge bg-info">字节</span>
-                        <a href="https://www.feishu.cn/arkclaw" target="_blank" class="btn btn-sm btn-outline-primary">访问官网</a>
+                        <a href="https://www.feishu.cn/arkclaw" target="_blank" class="btn btn-sm btn-outline-primary btn-xs">访问官网</a>
                     </div>
                     <h4>📱 ArkClaw</h4>
                     <p class="text-muted">飞书原生 SaaS，云端托管，豆包模型深度集成，与飞书工作流打通</p>
@@ -83,126 +181,140 @@
                 </div>
             </div>
 
-            <!-- 阿里 HiClaw -->
+            <!-- HiClaw -->
             <div class="col-lg-6">
                 <div class="edition-card">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <span class="badge bg-success">阿里</span>
-                        <a href="https://www.aliyun.com/hi-claw" target="_blank" class="btn btn-sm btn-outline-primary">访问官网</a>
+                        <a href="https://www.aliyun.com/hi-claw" target="_blank" class="btn btn-sm btn-outline-primary btn-xs">访问官网</a>
                     </div>
                     <h4>🔧 HiClaw</h4>
-                    <p class="text-muted">钉钉深度集成，Manager-Worker架构，一键部署，JVS Claw为商业化手机版</p>
+                    <p class="text-muted">钉钉深度集成，Manager-Worker架构，一键部署</p>
                     <hr>
-                    <p class="small mb-1"><strong>部署方式：</strong>一键部署/私有云</p>
+                    <p class="small mb-1"><strong>部署方式：</strong>私有云/一键部署</p>
                     <p class="small mb-1"><strong>架构：</strong>Manager-Worker</p>
                 </div>
             </div>
 
-            <!-- 百度 DuClaw -->
+            <!-- DuClaw -->
             <div class="col-lg-6">
                 <div class="edition-card">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <span class="badge bg-danger">百度</span>
-                        <a href="https://duclaw.baidu.com" target="_blank" class="btn btn-sm btn-outline-primary">访问官网</a>
+                        <a href="https://duclaw.baidu.com" target="_blank" class="btn btn-sm btn-outline-primary btn-xs">访问官网</a>
                     </div>
                     <h4>🌐 DuClaw</h4>
-                    <p class="text-muted">零部署网页版服务，文心ERNIE 4.0系列，新用户送200元代金券</p>
+                    <p class="text-muted">零部署网页版服务，文心ERNIE 4.0模型，新用户送200元代金券</p>
                     <hr>
                     <p class="small mb-1"><strong>部署方式：</strong>云端托管</p>
                     <p class="small mb-1"><strong>模型：</strong>文心 ERNIE 4.0</p>
                 </div>
             </div>
 
-            <!-- 华为 HWClaw -->
+            <!-- HWClaw -->
             <div class="col-lg-6">
                 <div class="edition-card">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <span class="badge bg-secondary">华为</span>
-                        <a href="https://consumer.huawei.com/hwclaw" target="_blank" class="btn btn-sm btn-outline-primary">访问官网</a>
+                        <a href="https://consumer.huawei.com/hwclaw" target="_blank" class="btn btn-sm btn-outline-primary btn-xs">访问官网</a>
                     </div>
                     <h4>📱 HWClaw</h4>
                     <p class="text-muted">鸿蒙生态系统级应用，全场景智能协同，原生鸿蒙体验</p>
                     <hr>
-                    <p class="small mb-1"><strong>部署方式：</strong>鸿蒙原生应用</p>
-                    <p class="small mb-1"><strong>平台：</strong>HarmonyOS</p>
+                    <p class="small mb-1"><strong>部署方式：</strong>HarmonyOS应用</p>
+                    <p class="small mb-1"><strong>平台：</strong> HarmonyOS</p>
                 </div>
             </div>
 
-            <!-- 智谱 AutoClaw -->
+            <!-- AutoClaw -->
             <div class="col-lg-6">
                 <div class="edition-card">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <span class="badge bg-primary">智谱</span>
-                        <a href="https://autoclaw.zhipu.ai" target="_blank" class="btn btn-sm btn-outline-primary">访问官网</a>
+                        <a href="https://autoclaw.zhipu.ai" target="_blank" class="btn btn-sm btn-outline-primary btn-xs">访问官网</a>
                     </div>
                     <h4>🤖 AutoClaw</h4>
-                    <p class="text-muted">本地模型支持，中文名'澳龙'，一键安装，智谱AI出品</p>
+                    <p class="text-muted">本地模型支持，中文名'澳龙'，一键安装，支持Qwen系列</p>
                     <hr>
                     <p class="small mb-1"><strong>部署方式：</strong>本地安装</p>
                     <p class="small mb-1"><strong>特色：</strong>中文优化，易用性高</p>
                 </div>
             </div>
 
-            <!-- 月之暗面 Kimi Claw -->
+            <!-- Kimi Claw -->
             <div class="col-lg-6">
                 <div class="edition-card">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <span class="badge bg-info">Moonshot</span>
-                        <a href="https://kimi.moonshot.cn/claw" target="_blank" class="btn btn-sm btn-outline-primary">访问官网</a>
+                        <a href="https://kimi.moonshot.cn/claw" target="_blank" class="btn btn-sm btn-outline-primary btn-xs">访问官网</a>
                     </div>
                     <h4>🌙 Kimi Claw</h4>
-                    <p class="text-muted">超长上下文窗口，40GB云存储，5000+技能生态</p>
+                    <p class="text-muted">超长上下文窗口，40GB云存储，5000+技能生态，长文档专家</p>
                     <hr>
                     <p class="small mb-1"><strong>部署方式：</strong>云端托管</p>
                     <p class="small mb-1"><strong>核心能力：</strong>长文档处理</p>
                 </div>
             </div>
 
-            <!-- MiniMax MaxClaw -->
+            <!-- MaxClaw -->
             <div class="col-lg-6">
                 <div class="edition-card">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <span class="badge bg-warning text-dark">MiniMax</span>
-                        <a href="https://maxclaw.minimax.chat" target="_blank" class="btn btn-sm btn-outline-primary">访问官网</a>
+                        <a href="https://maxclaw.minimax.chat" target="_blank" class="btn btn-sm btn-outline-primary btn-xs">访问官网</a>
                     </div>
                     <h4>⚡ MaxClaw</h4>
-                    <p class="text-muted">10秒极速云端部署，39元/月起，固定订阅无账单焦虑</p>
+                    <p class="text-muted">10秒极速云端部署，39元/月起，固定订阅，无账单焦虑</p>
                     <hr>
                     <p class="small mb-1"><strong>部署方式：</strong>云端托管</p>
                     <p class="small mb-1"><strong>定价：</strong>固定订阅制</p>
                 </div>
             </div>
 
-            <!-- 中兴 Co-Claw -->
+            <!-- Co-Claw -->
             <div class="col-lg-6">
                 <div class="edition-card">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <span class="badge bg-secondary">中兴</span>
-                        <a href="https://co-claw.zte.com.cn" target="_blank" class="btn btn-sm btn-outline-primary">访问官网</a>
+                        <a href="https://co-claw.zte.com.cn" target="_blank" class="btn btn-sm btn-outline-primary btn-xs">访问官网</a>
                     </div>
                     <h4>🏛️ Co-Claw</h4>
-                    <p class="text-muted">政企专属，中兴通讯企业级桌面智能体，安全性高</p>
+                    <p class="text-muted">政企专属，中兴通讯企业级桌面智能体，高安全性</p>
                     <hr>
                     <p class="small mb-1"><strong>部署方式：</strong>企业级部署</p>
                     <p class="small mb-1"><strong>定位：</strong>政企市场</p>
                 </div>
             </div>
 
-            <!-- 猎豹 EasyClaw -->
+            <!-- EasyClaw -->
             <div class="col-lg-6">
                 <div class="edition-card">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <span class="badge bg-light text-dark">猎豹</span>
-                        <a href="https://easyclaw.cmcm.com" target="_blank" class="btn btn-sm btn-outline-primary">访问官网</a>
+                        <a href="https://easyclaw.cmcm.com" target="_blank" class="btn btn-sm btn-outline-primary btn-xs">访问官网</a>
                     </div>
                     <h4>🚀 EasyClaw</h4>
-                    <p class="text-muted">极致轻量化，猎豹CEO傅盛实测推广，三步开箱即用</p>
+                    <p class="text-muted">极致轻量化，三步开箱即用，零配置，傅盛亲自实测推广</p>
                     <hr>
                     <p class="small mb-1"><strong>部署方式：</strong>一键安装</p>
                     <p class="small mb-1"><strong>特色：</strong>零配置，极简体验</p>
                 </div>
             </div>
 
+            <!-- QClaw -->
+            <div class="col-lg-6">
+                <div class="edition-card">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <span class="badge bg-primary">腾讯</span>
+                        <a href="https://qclaw.qq.com" target="_blank" class="btn btn-sm btn-outline-primary btn-xs">访问官网</a>
+                    </div>
+                    <h4>💬 QClaw</h4>
+                    <p class="text-muted">微信/QQ直联零配置，本地数据闭环，持续记忆，混元模型支持</p>
+                    <hr>
+                    <p class="small mb-1"><strong>部署方式：</strong>桌面客户端（Mac/Windows）</p>
+                    <p class="small mb-1"><strong>状态：</strong>内测中</p>
+                </div>
+            </div>
         </div>
     </main>
 
