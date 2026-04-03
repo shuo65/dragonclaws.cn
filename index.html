@@ -257,6 +257,82 @@
             margin: 1.5rem 0;
         }
 
+        /* Timeline Filters (移动端优化) */
+        .timeline-filters {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding: 0.5rem 0;
+            margin-bottom: 1rem;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+        .timeline-filters::-webkit-scrollbar {
+            display: none;
+        }
+        .timeline-filters .filter-btn {
+            padding: 0.25rem 0.75rem;
+            font-size: 0.85rem;
+            border: 1px solid #ddd;
+            border-radius: 1rem;
+            background: #fff;
+            color: #666;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        .timeline-filters .filter-btn.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        .timeline-filters .filter-btn:hover {
+            border-color: var(--accent-color);
+        }
+
+        /* Timeline Groups (折叠分组) */
+        .timeline-group {
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--card-bg);
+        }
+        .group-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            user-select: none;
+            background: var(--card-bg);
+            transition: background 0.2s;
+        }
+        .group-header:hover {
+            background: rgba(0,0,0,0.03);
+        }
+        .group-header .year-label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .group-header .badge {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+        }
+        .group-items {
+            padding: 0 1rem 1rem 1rem;
+        }
+        .group-items.collapsed {
+            display: none;
+        }
+        .group-toggle-icon {
+            margin-left: 0.5rem;
+            transition: transform 0.2s;
+        }
+        .group-items.collapsed + .group-header .group-toggle-icon,
+        .group-header[data-expanded="false"] .group-toggle-icon {
+            transform: rotate(-90deg);
+        }
+
         /* Dark Mode - 支持系统自动和手动切换 */
         :root {
             --bg-color: #F5F7FA;          /* 浅色背景 */
@@ -979,7 +1055,7 @@
             loadTimeline();
         });
 
-        // Git Timeline Loader
+        // Git Timeline Loader (Optimized for Mobile)
         async function loadTimeline() {
             const container = document.getElementById('auto-timeline');
             if (!container) return;
@@ -1002,114 +1078,208 @@
                     return;
                 }
 
-                // 生成时间轴HTML
-                let html = '<div class="timeline">';
+                // 按年份分组
+                const groups = {};
                 timeline.forEach(v => {
+                    const year = v.date.split('-')[0]; // 提取年份
+                    if (!groups[year]) {
+                        groups[year] = [];
+                    }
+                    groups[year].push(v);
+                });
+
+                // 年份排序（降序）
+                const yearList = Object.keys(groups).sort((a, b) => b - a);
+
+                // 渲染筛选按钮
+                let html = '<div class="timeline-filters">';
+                html += '<button class="filter-btn active" data-year="all">全部</button>';
+                yearList.forEach(year => {
+                    html += `<button class="filter-btn" data-year="${year}">${year}</button>`;
+                });
+                html += '</div><div class="timeline-groups">';
+
+                // 渲染分组
+                yearList.forEach((year, idx) => {
+                    const items = groups[year];
+                    const isFirst = idx === 0;
                     html += `
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h5>${v.version} · ${v.date}</h5>
-                                <p class="text-muted mb-0">${v.title}</p>
-                                <small class="text-muted">提交: ${v.commit}</small>
+                        <div class="timeline-group" data-year="${year}">
+                            <div class="group-header" onclick="toggleTimelineGroup(this)">
+                                <span class="year-label">${year}年</span>
+                                <span class="badge bg-secondary">${items.length}</span>
+                                <span class="group-toggle-icon">▼</span>
+                            </div>
+                            <div class="group-items ${isFirst ? '' : 'collapsed'}" data-expanded="${isFirst}">
+                                <div class="timeline">
+                                    ${items.map(v => `
+                                        <div class="timeline-item">
+                                            <div class="timeline-dot"></div>
+                                            <div class="timeline-content">
+                                                <h5>${escapeHtml(v.version)} · ${escapeHtml(v.date)}</h5>
+                                                <p class="text-muted mb-0">${escapeHtml(v.title)}</p>
+                                                <small class="text-muted">提交: ${escapeHtml(v.commit)}</small>
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
                             </div>
                         </div>`;
                 });
                 html += '</div>';
 
                 container.innerHTML = html;
+
+                // 绑定筛选按钮事件
+                container.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        container.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        const selectedYear = btn.dataset.year;
+
+                        container.querySelectorAll('.timeline-group').forEach(group => {
+                            const groupYear = group.dataset.year;
+                            if (selectedYear === 'all' || groupYear === selectedYear) {
+                                group.style.display = 'block';
+                            } else {
+                                group.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+
             } catch (error) {
                 console.error('Failed to load timeline:', error);
                 // Fallback: 显示静态发展史（当网络或JSON加载失败时）
                 container.innerHTML = `
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h5>2025年初 - 项目启动</h5>
-                                <p class="text-muted mb-0">OpenClaw项目正式启动，致力于打造跨平台智能Agent助手...</p>
+                    <div class="timeline-filters">
+                        <button class="filter-btn active">全部</button>
+                    </div>
+                    <div class="timeline-groups">
+                        <div class="timeline-group" data-year="2025">
+                            <div class="group-header" onclick="toggleTimelineGroup(this)">
+                                <span class="year-label">2025年</span>
+                                <span class="badge bg-secondary">3</span>
+                                <span class="group-toggle-icon">▼</span>
+                            </div>
+                            <div class="group-items">
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="timeline-content">
+                                            <h5>2025年初 - 项目启动</h5>
+                                            <p class="text-muted mb-0">OpenClaw项目正式启动，致力于打造跨平台智能Agent助手...</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="timeline-content">
+                                            <h5>2025年夏 - v2.0 企业级功能</h5>
+                                            <p class="text-muted mb-0">添加团队协作、权限管理、审计日志等企业级功能...</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="timeline-content">
+                                            <h5>2025年秋 - v3.0 里程碑版本</h5>
+                                            <p class="text-muted mb-0">OpenClaw v3.0发布，重写核心架构，支持多Agent协作，性能提升300%...</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="timeline-content">
+                                            <h5>2025年冬 - v1.0.0 首次正式发布</h5>
+                                            <p class="text-muted mb-0">OpenClaw v1.0.0发布，支持基础Agent功能和插件系统，社区版本诞生...</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h5>2025年夏 - v2.0 企业级功能</h5>
-                                <p class="text-muted mb-0">添加团队协作、权限管理、审计日志等企业级功能...</p>
+                        <div class="timeline-group" data-year="2026">
+                            <div class="group-header" onclick="toggleTimelineGroup(this)">
+                                <span class="year-label">2026年</span>
+                                <span class="badge bg-secondary">9</span>
+                                <span class="group-toggle-icon">▼</span>
                             </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h5>2025年秋 - v3.0 里程碑版本</h5>
-                                <p class="text-muted mb-0">OpenClaw v3.0发布，重写核心架构，支持多Agent协作，性能提升300%...</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h5>2025年冬 - v1.0.0 首次正式发布</h5>
-                                <p class="text-muted mb-0">OpenClaw v1.0.0发布，支持基础Agent功能和插件系统，社区版本诞生...</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h5>2026年元旦 - v3.5 插件系统重构</h5>
-                                <p class="text-muted mb-0">全新的插件架构，支持热加载，提升可扩展性和稳定性...</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h5>2026年春节 - v3.6 多模型支持扩展</h5>
-                                <p class="text-muted mb-0">支持Claude 3.7 Sonnet、Gemini 2.5 Pro等新模型，优化API调用效率...</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h5>2026.03.07 - v3.7 记忆热插拔</h5>
-                                <p class="text-muted mb-0">革命性功能：AI记忆可自由插拔。新增GPT-5.4和Gemini 3.1 Flash支持...</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h5>2026.03.08 - v3.8 ACP溯源</h5>
-                                <p class="text-muted mb-0">新增ACP来源（agent provenance），更好地识别用户交互。修复12+安全漏洞...</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h5>2026.03.13 - OpenClaw-zh v2026.3.13</h5>
-                                <p class="text-muted mb-0">中文汉化版发布！全面本地化，支持微信/钉钉/飞书，百度网盘集成...</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h5>2026.03.22 - v2026.3.22</h5>
-                                <p class="text-muted mb-0">双版本连发 + 安全加固：配对安全增强（256-bit令牌），控制台恢复，插件系统改进...</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h5>2026.03.23 - v2026.3.23</h5>
-                                <p class="text-muted mb-0">Qwen随用随付 + DeepSeek可插拔：阿里云Qwen实现全球化"随用随付"，DeepSeek变为可插拔插件...</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h5>2026.03.24 - v2026.3.24</h5>
-                                <p class="text-muted mb-0">Microsoft Teams全面升级 + 安全增强：迁移至官方Teams SDK，流式回复，OpenAI兼容性增强...</p>
+                            <div class="group-items">
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="timeline-content">
+                                            <h5>2026年元旦 - v3.5 插件系统重构</h5>
+                                            <p class="text-muted mb-0">全新的插件架构，支持热加载，提升可扩展性和稳定性...</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="timeline-content">
+                                            <h5>2026年春节 - v3.6 多模型支持扩展</h5>
+                                            <p class="text-muted mb-0">支持Claude 3.7 Sonnet、Gemini 2.5 Pro等新模型，优化API调用效率...</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="timeline-content">
+                                            <h5>2026.03.07 - v3.7 记忆热插拔</h5>
+                                            <p class="text-muted mb-0">革命性功能：AI记忆可自由插拔。新增GPT-5.4和Gemini 3.1 Flash支持...</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="timeline-content">
+                                            <h5>2026.03.08 - v3.8 ACP溯源</h5>
+                                            <p class="text-muted mb-0">新增ACP来源（agent provenance），更好地识别用户交互。修复12+安全漏洞...</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="timeline-content">
+                                            <h5>2026.03.13 - OpenClaw-zh v2026.3.13</h5>
+                                            <p class="text-muted mb-0">中文汉化版发布！全面本地化，支持微信/钉钉/飞书，百度网盘集成...</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="timeline-content">
+                                            <h5>2026.03.22 - v2026.3.22</h5>
+                                            <p class="text-muted mb-0">双版本连发 + 安全加固：配对安全增强（256-bit令牌），控制台恢复，插件系统改进...</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="timeline-content">
+                                            <h5>2026.03.23 - v2026.3.23</h5>
+                                            <p class="text-muted mb-0">Qwen随用随付 + DeepSeek可插拔：阿里云Qwen实现全球化"随用随付"，DeepSeek变为可插拔插件...</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot"></div>
+                                        <div class="timeline-content">
+                                            <h5>2026.03.24 - v2026.3.24</h5>
+                                            <p class="text-muted mb-0">Microsoft Teams全面升级 + 安全增强：迁移至官方Teams SDK，流式回复，OpenAI兼容性增强...</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 `;
             }
+        }
+
+        // Toggle timeline group collapse/expand
+        function toggleTimelineGroup(header) {
+            const group = header.closest('.timeline-group');
+            const items = group.querySelector('.group-items');
+            const isCollapsed = items.classList.toggle('collapsed');
+            header.dataset.expanded = !isCollapsed;
+        }
+
+        // XSS 防护：转义HTML特殊字符
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
     </script>
 </body>
