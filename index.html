@@ -634,17 +634,6 @@
             </div>
         </section>
 
-        <!-- Development History -->
-        <section id="history">
-            <h2 class="section-title">📜 OpenClaw发展史</h2>
-            <p class="text-muted mb-3">记录OpenClaw的重要里程碑</p>
-            
-            <!-- 动态时间轴容器 -->
-            <div class="timeline">
-                <div id="auto-timeline"></div>
-            </div>
-        </section>
-
         <!-- Version Showcase (移动端优化) -->
         <section id="versions">
             <h2 class="section-title">📦 OpenClaw汉化版</h2>
@@ -808,6 +797,17 @@
                         <a href="https://qclaw.qq.com" target="_blank" class="btn btn-sm btn-outline-primary btn-xs py-1 px-2">了解</a>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Development History -->
+        <section id="history">
+            <h2 class="section-title">📜 OpenClaw发展史</h2>
+            <p class="text-muted mb-3">记录OpenClaw的重要里程碑</p>
+            
+            <!-- 动态时间轴容器 -->
+            <div class="timeline">
+                <div id="auto-timeline"></div>
             </div>
         </section>
 
@@ -1149,10 +1149,12 @@
 
             } catch (error) {
                 console.error('Failed to load timeline:', error);
-                // Fallback: 显示静态发展史（当网络或JSON加载失败时）
-                container.innerHTML = `
+// Fallback: 显示静态发展史（当网络或JSON加载失败时）
+container.innerHTML = `
                     <div class="timeline-filters">
-                        <button class="filter-btn active">全部</button>
+                        <button class="filter-btn active" data-year="all">全部</button>
+                        <button class="filter-btn" data-year="2025">2025</button>
+                        <button class="filter-btn" data-year="2026">2026</button>
                     </div>
                     <div class="timeline-groups">
                         <div class="timeline-group" data-year="2025">
@@ -1161,7 +1163,7 @@
                                 <span class="badge bg-secondary">3</span>
                                 <span class="group-toggle-icon">▼</span>
                             </div>
-                            <div class="group-items">
+                            <div class="group-items collapsed" data-expanded="false">
                                 <div class="timeline">
                                     <div class="timeline-item">
                                         <div class="timeline-dot"></div>
@@ -1200,7 +1202,7 @@
                                 <span class="badge bg-secondary">9</span>
                                 <span class="group-toggle-icon">▼</span>
                             </div>
-                            <div class="group-items">
+                            <div class="group-items collapsed" data-expanded="false">
                                 <div class="timeline">
                                     <div class="timeline-item">
                                         <div class="timeline-dot"></div>
