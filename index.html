@@ -1099,10 +1099,9 @@
                 });
                 html += '</div><div class="timeline-groups">';
 
-                // 渲染分组
-                yearList.forEach((year, idx) => {
+                // 渲染分组（默认全部折叠）
+                yearList.forEach((year) => {
                     const items = groups[year];
-                    const isFirst = idx === 0;
                     html += `
                         <div class="timeline-group" data-year="${year}">
                             <div class="group-header" onclick="toggleTimelineGroup(this)">
@@ -1110,7 +1109,7 @@
                                 <span class="badge bg-secondary">${items.length}</span>
                                 <span class="group-toggle-icon">▼</span>
                             </div>
-                            <div class="group-items ${isFirst ? '' : 'collapsed'}" data-expanded="${isFirst}">
+                            <div class="group-items collapsed" data-expanded="false">
                                 <div class="timeline">
                                     ${items.map(v => `
                                         <div class="timeline-item">
