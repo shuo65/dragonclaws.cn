@@ -169,6 +169,16 @@
             font-size: 1rem;
             padding: 0.6rem 1.5rem;
         }
+        /* 移动端Hero按钮优化 */
+        @media (max-width: 768px) {
+            .hero .btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+            .hero .lead {
+                font-size: 0.85rem;
+            }
+        }
         .section-title {
             border-left: 4px solid var(--accent-color);
             padding-left: 1rem;
@@ -569,7 +579,7 @@
     </style>
 </style>
 <style>
-.btn-copy{position:absolute;top:5px;right:5px;padding:4px 8px;font-size:0.65rem;background:#0d6efd;color:#fff;border:none;border-radius:3px;cursor:pointer;opacity:0;transition:opacity 0.2s}
+.btn-copy{position:absolute;top:5px;right:5px;padding:6px 12px;font-size:0.7rem;background:#0d6efd;color:#fff;border:none;border-radius:3px;cursor:pointer;opacity:0;transition:opacity 0.2s}
 .version-card{position:relative}
 .version-card:hover .btn-copy{opacity:1}
 .btn-copy:active{background:#0a58ca}
@@ -846,7 +856,7 @@
                     <div class="version-card p-2">
                         <button class="btn-copy" onclick="copyCmd(this,'openclaw start')">Copy</button>
                         <h6 class="mb-1 small">🚀 启动</h6>
-                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw start</code></pre>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.65rem;"><code>openclaw start</code></pre>
                         <p class="text-muted mb-0 very-small">启动服务</p>
                     </div>
                 </div>
@@ -854,7 +864,7 @@
                     <div class="version-card p-2">
                         <button class="btn-copy" onclick="copyCmd(this,'openclaw stop')">Copy</button>
                         <h6 class="mb-1 small">🛑 停止</h6>
-                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw stop</code></pre>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.65rem;"><code>openclaw stop</code></pre>
                         <p class="text-muted mb-0 very-small">停止服务</p>
                     </div>
                 </div>
@@ -862,7 +872,7 @@
                     <div class="version-card p-2">
                         <button class="btn-copy" onclick="copyCmd(this,'openclaw restart')">Copy</button>
                         <h6 class="mb-1 small">🔄 重启</h6>
-                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw restart</code></pre>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.65rem;"><code>openclaw restart</code></pre>
                         <p class="text-muted mb-0 very-small">重启服务</p>
                     </div>
                 </div>
@@ -870,7 +880,7 @@
                     <div class="version-card p-2">
                         <button class="btn-copy" onclick="copyCmd(this,'openclaw model add <model>')">Copy</button>
                         <h6 class="mb-1 small">📦 安装模型</h6>
-                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw model add &lt;model&gt;</code></pre>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.65rem;"><code>openclaw model add &lt;model&gt;</code></pre>
                         <p class="text-muted mb-0 very-small">添加模型</p>
                     </div>
                 </div>
@@ -878,7 +888,7 @@
                     <div class="version-card p-2">
                         <button class="btn-copy" onclick="copyCmd(this,'openclaw status')">Copy</button>
                         <h6 class="mb-1 small">📋 查看状态</h6>
-                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw status</code></pre>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.65rem;"><code>openclaw status</code></pre>
                         <p class="text-muted mb-0 very-small">检查状态</p>
                     </div>
                 </div>
@@ -886,7 +896,7 @@
                     <div class="version-card p-2">
                         <button class="btn-copy" onclick="copyCmd(this,'openclaw logs')">Copy</button>
                         <h6 class="mb-1 small">👀 查看日志</h6>
-                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw logs</code></pre>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.65rem;"><code>openclaw logs</code></pre>
                         <p class="text-muted mb-0 very-small">运行日志</p>
                     </div>
                 </div>
