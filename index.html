@@ -1322,24 +1322,71 @@ container.innerHTML = `
             return div.innerHTML;
         }
 
-        // 一键复制命令功能
+        // 一键复制命令功能（支持 Clipboard API + execCommand fallback）
         function copyCmd(btn, cmd) {
-            navigator.clipboard.writeText(cmd).then(function() {
-                const originalText = btn.textContent;
-                btn.textContent = '✓ 已复制';
-                btn.style.background = '#198754';
-                setTimeout(function() {
-                    btn.textContent = originalText;
-                    btn.style.background = '';
-                }, 1500);
-            }).catch(function(err) {
-                btn.textContent = '复制失败';
-                btn.style.background = '#dc3545';
-                setTimeout(function() {
-                    btn.textContent = 'Copy';
-                    btn.style.background = '';
-                }, 1500);
-            });
+            // 优先使用 Clipboard API
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(cmd).then(function() {
+                    showCopySuccess(btn);
+                }).catch(function(err) {
+                    // 失败时使用 fallback
+                    fallbackCopy(btn, cmd);
+                });
+            } else {
+                // 不支持 Clipboard API，直接使用 fallback
+                fallbackCopy(btn, cmd);
+            }
+        }
+
+        // 复制成功提示
+        function showCopySuccess(btn) {
+            const originalText = btn.textContent;
+            btn.textContent = '✓ 已复制';
+            btn.style.background = '#198754';
+            setTimeout(function() {
+                btn.textContent = originalText;
+                btn.style.background = '';
+            }, 1500);
+        }
+
+        // 后备复制方案（execCommand）
+        function fallbackCopy(btn, cmd) {
+            const textarea = document.createElement('textarea');
+            textarea.value = cmd;
+            textarea.style.position = 'fixed';
+            textarea.style.top = '0';
+            textarea.style.left = '0';
+            textarea.style.width = '2em';
+            textarea.style.height = '2em';
+            textarea.style.padding = '0';
+            textarea.style.border = 'none';
+            textarea.style.outline = 'none';
+            textarea.style.boxShadow = 'none';
+            textarea.style.background = 'transparent';
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showCopySuccess(btn);
+                } else {
+                    showCopyFail(btn);
+                }
+            } catch (err) {
+                showCopyFail(btn);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        // 复制失败提示
+        function showCopyFail(btn) {
+            btn.textContent = '复制失败';
+            btn.style.background = '#dc3545';
+            setTimeout(function() {
+                btn.textContent = 'Copy';
+                btn.style.background = '';
+            }, 1500);
         }
     </script>
 </body>
