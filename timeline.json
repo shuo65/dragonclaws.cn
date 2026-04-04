@@ -1,7 +1,43 @@
 {
-  "generated": "2026-04-02T01:53:00.000Z",
-  "total": 12,
+  "generated": "2026-04-05T00:08:00.000Z",
+  "total": 16,
   "versions": [
+    {
+      "version": "v2026.4.2",
+      "date": "2026-04-02",
+      "title": "Task Flow生产级化 + 插件体系全面增强",
+      "description": "质的跨越：Task Flow从实验玩具升级为生产级多Agent协作系统，状态持久化，插件审批钩子上线，8项核心更新",
+      "commit": "4.2-taskflow-prod",
+      "fullCommit": "4.2-taskflow-prod",
+      "author": "openclaw"
+    },
+    {
+      "version": "v2026.3.31",
+      "date": "2026-03-31",
+      "title": "QQ原生接入 + 腾讯生态整合",
+      "description": "原生内置QQ Bot插件，QQ成为首个官方原生支持的国内社交平台，腾讯轻量云代码已合并",
+      "commit": "3.31-qq-integration",
+      "fullCommit": "3.31-qq-integration",
+      "author": "openclaw"
+    },
+    {
+      "version": "v2026.3.28",
+      "date": "2026-03-28",
+      "title": "xAI深度集成 + x_search工具",
+      "description": "Grok搜索迁移至Responses API，新增x_search工具，25+新功能，70+Bug修复，2个Breaking Change",
+      "commit": "3.28-xai-integration",
+      "fullCommit": "3.28-xai-integration",
+      "author": "openclaw"
+    },
+    {
+      "version": "v2026.3.25",
+      "date": "2026-03-25",
+      "title": "关键Bug修复版本",
+      "description": "OpenClaw 3月连发三个大版本，v2026.3.25修复关键bug，提升系统稳定性",
+      "commit": "3.25-bugfix",
+      "fullCommit": "3.25-bugfix",
+      "author": "openclaw"
+    },
     {
       "version": "v2026.3.24",
       "date": "2026-03-24",
