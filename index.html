@@ -847,6 +847,60 @@
             </div>
         </section>
 
+        <!-- 常见问题解决方案 -->
+        <section id="faq-solutions">
+            <h2 class="section-title">🧩 常见问题解决方案</h2>
+            <p class="text-muted mb-3">针对 OpenClaw 使用过程中的常见问题，提供经过验证的解决方案（持续更新）</p>
+            
+            <div class="row g-3 gy-3">
+                <!-- 网关中文路径乱码闪退 -->
+                <div class="col-12">
+                    <div class="solution-card">
+                        <h4 class="solution-title">🦞 网关中文路径乱码闪退</h4>
+                        <div class="solution-meta">
+                            <span class="badge bg-danger">严重</span>
+                            <span class="badge bg-info">Windows</span>
+                            <span class="badge bg-secondary">v2026.3.x-v2026.4.x</span>
+                        </div>
+                        <p class="mt-2"><strong>问题现象</strong>：用户名含中文（如“张硕”）导致网关闪退、<code>openclaw gateway restart</code> 超时、计划任务失败。</p>
+                        <p><strong>解决方案</strong>：使用目录联接（Junction）保持配置路径不变，但实际文件存储到 D 盘英文路径，gateway 启动时无中文路径。</p>
+                        <div class="solution-steps">
+                            <h6>三步骤解决：</h6>
+                            <ol>
+                                <li><strong>创建 Junction</strong>（管理员 CMD）：
+                                    <div class="code-block"><code>mklink /J "C:\Users\用户名\.openclaw" "D:\OpenClaw"
+mklink /J "D:\OpenClaw\openclaw-zh" "C:\Users\用户名\AppData\Roaming\npm\node_modules\@qingchencloud\openclaw-zh"</code></div>
+                                    <small>将 "用户名" 替换为实际用户名（如 张硕）。确保 D:\OpenClaw 目录已创建。</small>
+                                </li>
+                                <li><strong>创建无中文路径的 gateway.cmd</strong>（D:\OpenClaw\gateway.cmd）：
+                                    <div class="code-block"><code>@echo off
+if not exist "D:\OpenClaw\temp" mkdir "D:\OpenClaw\temp"
+set "TMPDIR=D:\OpenClaw\temp"
+set "OPENCLAW_GATEWAY_PORT=18789"
+"C:\Program Files\nodejs\node.exe" "D:\OpenClaw\openclaw-zh\dist\index.js" gateway --port 18789 --allow-unconfigured</code></div>
+                                </li>
+                                <li><strong>覆盖全局脚本并重建计划任务</strong>：
+                                    <div class="code-block"><code>copy /Y "D:\OpenClaw\gateway.cmd" "C:\Users\用户名\AppData\Roaming\npm\gateway.cmd"
+schtasks /delete /tn "OpenClaw Gateway" /f
+schtasks /create /tn "OpenClaw Gateway" /tr "D:\OpenClaw\gateway.cmd" /sc onlogon /ru SYSTEM /rl highest /f</code></div>
+                                </li>
+                            </ol>
+                            <div class="alert alert-success mt-2">
+                                <strong>✅ 验证</strong>：手动运行 <code>D:\OpenClaw\gateway.cmd</code>，应正常启动（显示 <code>listening on ws://127.0.0.1:18789</code>）。
+                            </div>
+                            <details class="mt-2">
+                                <summary class="text-primary">了解更多细节</summary>
+                                <p class="mb-0"><small>此方案不修改 OpenClaw 配置路径（仍用 C:\Users\用户名\.openclaw），通过 Junction 透明重定向到 D 盘。npm 安装环境保持原样，向后兼容。升级后可能需要重新执行步骤 2-3。</small></p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 更多问题解决方案可以在此添加 -->
+                
+            </div>
+        </section>
+
         <!-- 常用指令卡片 (移动端优化) -->
         <section id="quick-start">
             <h2 class="section-title">⚡ 常用指令</h2>
