@@ -602,13 +602,19 @@
                         <a class="nav-link active" aria-current="page" href="#hero">首页</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#history">发展史</a>
+                        <a class="nav-link" href="#contact">站点矩阵</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#versions">版本展示</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">联系我们</a>
+                        <a class="nav-link" href="#history">发展史</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq-solutions">常见问题</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#quick-start">常用指令</a>
                     </li>
                 </ul>
             </div>
@@ -862,41 +868,14 @@
                             <span class="badge bg-info">Windows</span>
                             <span class="badge bg-secondary">v2026.3.x-v2026.4.x</span>
                         </div>
-                        <p class="mt-2"><strong>问题现象</strong>：用户名含中文（如“张硕”）导致网关闪退、<code>openclaw gateway restart</code> 超时、计划任务失败。</p>
-                        <p><strong>解决方案</strong>：使用目录联接（Junction）保持配置路径不变，但实际文件存储到 D 盘英文路径，gateway 启动时无中文路径。</p>
-                        <div class="solution-steps">
-                            <h6>三步骤解决：</h6>
-                            <ol>
-                                <li><strong>创建 Junction</strong>（管理员 CMD）：
-                                    <div class="code-block"><code>mklink /J "C:\Users\用户名\.openclaw" "D:\OpenClaw"
-mklink /J "D:\OpenClaw\openclaw-zh" "C:\Users\用户名\AppData\Roaming\npm\node_modules\@qingchencloud\openclaw-zh"</code></div>
-                                    <small>将 "用户名" 替换为实际用户名（如 张硕）。确保 D:\OpenClaw 目录已创建。</small>
-                                </li>
-                                <li><strong>创建无中文路径的 gateway.cmd</strong>（D:\OpenClaw\gateway.cmd）：
-                                    <div class="code-block"><code>@echo off
-if not exist "D:\OpenClaw\temp" mkdir "D:\OpenClaw\temp"
-set "TMPDIR=D:\OpenClaw\temp"
-set "OPENCLAW_GATEWAY_PORT=18789"
-"C:\Program Files\nodejs\node.exe" "D:\OpenClaw\openclaw-zh\dist\index.js" gateway --port 18789 --allow-unconfigured</code></div>
-                                </li>
-                                <li><strong>覆盖全局脚本并重建计划任务</strong>：
-                                    <div class="code-block"><code>copy /Y "D:\OpenClaw\gateway.cmd" "C:\Users\用户名\AppData\Roaming\npm\gateway.cmd"
-schtasks /delete /tn "OpenClaw Gateway" /f
-schtasks /create /tn "OpenClaw Gateway" /tr "D:\OpenClaw\gateway.cmd" /sc onlogon /ru SYSTEM /rl highest /f</code></div>
-                                </li>
-                            </ol>
-                            <div class="alert alert-success mt-2">
-                                <strong>✅ 验证</strong>：手动运行 <code>D:\OpenClaw\gateway.cmd</code>，应正常启动（显示 <code>listening on ws://127.0.0.1:18789</code>）。
-                            </div>
-                            <details class="mt-2">
-                                <summary class="text-primary">了解更多细节</summary>
-                                <p class="mb-0"><small>此方案不修改 OpenClaw 配置路径（仍用 C:\Users\用户名\.openclaw），通过 Junction 透明重定向到 D 盘。npm 安装环境保持原样，向后兼容。升级后可能需要重新执行步骤 2-3。</small></p>
-                            </details>
+                        <p class="mt-2"><strong>问题</strong>：Windows 用户名含中文（如"用户名"）导致网关闪退、<code>openclaw gateway restart</code> 超时、计划任务失败。</p>
+                        <div class="mt-2">
+                            <a href="faq.html#gateway" class="btn btn-sm btn-primary">了解详情</a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- 更多问题解决方案可以在此添加 -->
+                <!-- 更多问题可在此添加 -->
                 
             </div>
         </section>
