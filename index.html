@@ -611,6 +611,9 @@
                         <a class="nav-link" href="#history">发展史</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#deployment">部署经验</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#faq-solutions">常见问题</a>
                     </li>
                     <li class="nav-item">
@@ -856,6 +859,61 @@
             </div>
         </section>
 
+        <!-- 部署经验 -->
+        <section id="deployment">
+            <h2 class="section-title">🚀 部署经验</h2>
+            <p class="text-muted mb-3">OpenClaw 部署过程中的实用技巧、优化案例和最佳实践（持续更新）</p>
+            
+            <div class="row g-3 gy-3">
+                <!-- GitHub Pages 部署 -->
+                <div class="col-12">
+                    <div class="solution-card">
+                        <h4 class="solution-title">📦 GitHub Pages 部署完整流程</h4>
+                        <div class="solution-meta">
+                            <span class="badge bg-success">部署教程</span>
+                            <span class="badge bg-info">GitHub Pages</span>
+                        </div>
+                        <p class="mt-2"><strong>内容</strong>：首次配置、SSH over 443、常见问题排查、简化脚本</p>
+                        <div class="mt-2">
+                            <a href="OpenClaw使用经验/03-部署经验/GitHub_Pages_部署完整流程.html" target="_blank" class="btn btn-sm btn-primary">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 网络受限环境 -->
+                <div class="col-12">
+                    <div class="solution-card">
+                        <h4 class="solution-title">🌐 网络受限环境部署指南</h4>
+                        <div class="solution-meta">
+                            <span class="badge bg-warning text-dark">网络问题</span>
+                            <span class="badge bg-info">代理配置</span>
+                        </div>
+                        <p class="mt-2"><strong>内容</strong>：手机热点+代理方案、HTTPS 推送、故障排查</p>
+                        <div class="mt-2">
+                            <a href="OpenClaw使用经验/03-部署经验/网络受限环境部署指南.html" target="_blank" class="btn btn-sm btn-primary">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 一键复制功能 -->
+                <div class="col-12">
+                    <div class="solution-card">
+                        <h4 class="solution-title">📋 一键复制功能实现</h4>
+                        <div class="solution-meta">
+                            <span class="badge bg-primary">前端交互</span>
+                            <span class="badge bg-secondary">用户体验</span>
+                        </div>
+                        <p class="mt-2"><strong>内容</strong>：Clipboard API 使用、按钮反馈样式、兼容性处理</p>
+                        <div class="mt-2">
+                            <a href="OpenClaw使用经验/04-使用技巧/一键复制功能实现.html" target="_blank" class="btn btn-sm btn-primary">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 更多经验可在此添加 -->
+            </div>
+        </section>
+
         <!-- 常见问题解决方案 -->
         <section id="faq-solutions">
             <h2 class="section-title">🧩 常见问题解决方案</h2>
@@ -889,13 +947,51 @@
             <p class="text-muted mb-3">通过 OpenClaw 实现具体项目的经验分享，包括网站搭建、架构配置、性能优化等（持续更新）</p>
             
             <div class="row g-3 gy-3">
-                <!-- 占位：项目卡片将在此添加 -->
+                <!-- 已整理项目 -->
                 <div class="col-12">
                     <div class="solution-card">
-                        <h4 class="solution-title">🚧 敬请期待</h4>
-                        <p class="mt-2">更多项目实例正在整理中，敬请关注后续更新...</p>
+                        <h4 class="solution-title">🐉 龙爪中国网站搭建经验</h4>
+                        <div class="solution-meta">
+                            <span class="badge bg-primary">网站开发</span>
+                            <span class="badge bg-info">GitHub Pages</span>
+                            <span class="badge bg-secondary">Bootstrap 5</span>
+                        </div>
+                        <p class="mt-2"><strong>内容</strong>：纯静态方案选择、响应式布局、SEO优化、编码规范、部署流程</p>
+                        <div class="mt-2">
+                            <a href="OpenClaw使用经验/02-项目实例/龙爪中国网站搭建经验.html" target="_blank" class="btn btn-sm btn-primary">查看详情</a>
+                        </div>
                     </div>
                 </div>
+                
+                <div class="col-12">
+                    <div class="solution-card">
+                        <h4 class="solution-title">🤖 多员工架构配置经验</h4>
+                        <div class="solution-meta">
+                            <span class="badge bg-success">架构设计</span>
+                            <span class="badge bg-info">团队协作</span>
+                        </div>
+                        <p class="mt-2"><strong>内容</strong>：机器人员工配置、任务分派流程（串行/并行）、群组协作方案、@机制限制</p>
+                        <div class="mt-2">
+                            <a href="OpenClaw使用经验/02-项目实例/多员工架构配置经验.html" target="_blank" class="btn btn-sm btn-primary">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12">
+                    <div class="solution-card">
+                        <h4 class="solution-title">⚡ 网关内存优化实践</h4>
+                        <div class="solution-meta">
+                            <span class="badge bg-warning text-dark">性能调优</span>
+                            <span class="badge bg-secondary">资源管理</span>
+                        </div>
+                        <p class="mt-2"><strong>内容</strong>：623MB 降至 627MB 优化过程、fallbacks 精简、模型预加载机制</p>
+                        <div class="mt-2">
+                            <a href="OpenClaw使用经验/05-优化案例/网关内存优化实践.html" target="_blank" class="btn btn-sm btn-primary">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 更多项目可在此添加 -->
             </div>
         </section>
 
