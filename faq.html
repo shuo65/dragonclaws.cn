@@ -237,6 +237,8 @@
                     <div class="code-block" id="step2-gateway">
                         <button class="copy-btn" onclick="copyCode('step2-gateway')">复制</button>
                         <pre><code>@echo off
+cd /d D:\OpenClaw
+set "OPENCLAW_HOME=D:\OpenClaw"
 if not exist "D:\OpenClaw\temp" mkdir "D:\OpenClaw\temp"
 set "TMPDIR=D:\OpenClaw\temp"
 set "OPENCLAW_GATEWAY_PORT=18789"
