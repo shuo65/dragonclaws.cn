@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>OpenClaw 汉化版 · 完整踩坑与解决手册（含无效尝试记录）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f6fa;
+            color: #1e2a3a;
+            padding: 1.5rem 1rem;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+            padding: 1.5rem 1.8rem;
+        }
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+        h1 small {
+            font-size: 0.75rem;
+            font-weight: normal;
+            background: #eef2ff;
+            color: #1e40af;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+        }
+        .subhead {
+            color: #4b5563;
+            border-left: 3px solid #3b82f6;
+            padding-left: 0.8rem;
+            margin: 0.5rem 0 1.5rem;
+            font-size: 0.85rem;
+        }
+        .toc {
+            background: #f9fafb;
+            border-radius: 1rem;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.8rem;
+        }
+        .toc h2 {
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+        }
+        .toc ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 0.3rem 1rem;
+            list-style: none;
+            padding-left: 0;
+        }
+        .toc li {
+            margin-bottom: 0.2rem;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #2563eb;
+            font-size: 0.85rem;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            font-size: 1.2rem;
+            margin: 1.6rem 0 0.8rem;
+            padding-bottom: 0.2rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        h3 {
+            font-size: 1rem;
+            margin: 1rem 0 0.5rem;
+            font-weight: 600;
+            color: #2c3e66;
+        }
+        .faq-item {
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            margin-bottom: 1.2rem;
+            background: white;
+            overflow: hidden;
+            transition: all 0.1s;
+        }
+        .faq-question {
+            background: #fefce8;
+            padding: 0.7rem 1.2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #f59e0b;
+        }
+        .faq-question:hover {
+            background: #fff9db;
+        }
+        .faq-question .icon {
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+        .faq-answer {
+            padding: 0 1.2rem 1rem 1.2rem;
+            border-top: 1px solid #e2e8f0;
+            background: #ffffff;
+            display: none;
+        }
+        .faq-answer.open {
+            display: block;
+        }
+        .badge {
+            display: inline-block;
+            background: #e2e8f0;
+            padding: 0.15rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            margin-right: 0.4rem;
+            color: #1f2937;
+        }
+        .badge.solved {
+            background: #dcfce7;
+            color: #15803d;
+        }
+        .badge.warning {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+        .badge.tip {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        pre {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 0.8rem;
+            border-radius: 0.7rem;
+            overflow-x: auto;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.8rem;
+            margin: 0.8rem 0;
+        }
+        .note {
+            background: #eef2ff;
+            border-left: 3px solid #3b82f6;
+            padding: 0.6rem 0.9rem;
+            border-radius: 0.6rem;
+            font-size: 0.85rem;
+            margin: 0.8rem 0;
+        }
+        .invalid {
+            background: #fff5f5;
+            border-left: 3px solid #ef4444;
+            padding: 0.6rem 0.9rem;
+            border-radius: 0.6rem;
+            font-size: 0.85rem;
+            margin: 0.8rem 0;
+        }
+        hr {
+            margin: 1.5rem 0;
+            border: none;
+            border-top: 1px solid #e2e8f0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 1.8rem;
+            font-size: 0.75rem;
+            color: #6c757d;
+            border-top: 1px solid #edf2f7;
+            padding-top: 1.2rem;
+        }
+        @media (max-width: 640px) {
+            .container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .faq-question {
+                padding: 0.6rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>
+        🦞 OpenClaw 汉化版 · 完整踩坑与解决手册
+        <small>@qingchencloud/openclaw-zh · 2026.3</small>
+    </h1>
+    <div class="subhead">
+        从版本升级、飞书失灵、机器人互@、CLI 连不上，到最终攻克 iOS 手机访问 ClawApp —— 每一步的无效尝试与最终有效方案
+    </div>
+
+    <div class="toc">
+        <h2>📖 目录</h2>
+        <ul>
+            <li><a href="#basic">⚙️ 基础环境与版本问题</a></li>
+            <li><a href="#feishu">📢 飞书渠道配置与配对</a></li>
+            <li><a href="#backend">🖥️ 网关后台运行与路径问题</a></li>
+            <li><a href="#ollama">🧠 本地模型与记忆功能</a></li>
+            <li><a href="#agent">🤖 多 Agent 协作与任务分派</a></li>
+            <li><a href="#cli">🛠️ CLI 工具连接故障</a></li>
+            <li><a href="#mobile">📱 手机访问 ClawApp 综合问题（核心难点）</a></li>
+            <li><a href="#final">✅ 最终稳定方案总结</a></li>
+        </ul>
+    </div>
+
+    <!-- ========= 基础环境与版本问题 ========= -->
+    <h2 id="basic">⚙️ 基础环境与版本问题</h2>
+    <div class="faq-item">
+        <div class="faq-question">
+            <span>📌 问题：升级到 zh 版后飞书无响应 / 配对失效</span>
+            <span class="icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            <p><span class="badge warning">❌ 无效尝试</span> 反复 doctor --fix、重装 node_modules、手动改权限未发布版本。</p>
+            <p><span class="badge solved">✅ 最终有效方案</span></p>
+            <ul>
+                <li>删除旧插件目录：<code>Remove-Item -Recurse -Force "$env:USERPROFILE\.openclaw\extensions\feishu-openclaw-plugin"</code></li>
+                <li>编辑 <code>openclaw.json</code>，删除 <code>installs</code> 中的 <code>"feishu": {...}</code> 整个条目。</li>
+                <li>飞书后台 → 权限管理 → 批量开通 <code>im:message</code>, <code>im:message.group_at_msg:readonly</code>, <code>im:message.p2p_msg:readonly</code>, <code>im:message:send_as_bot</code> → 创建新版本并发布。</li>
+                <li>事件订阅 → 改为“长连接”，添加 <code>im.message.receive_v1</code> 事件 → 再次发布版本。</li>
+                <li>私聊机器人获取配对码，用 <code>openclaw pairing approve feishu &lt;配对码&gt;</code> 批准。</li>
+            </ul>
+            <div class="note">✅ 之后飞书长连接稳定，所有机器人正常。</div>
+        </div>
+    </div>
+
+    <!-- ========= 飞书渠道配置与配对 ========= -->
+    <h2 id="feishu">📢 飞书渠道配置与配对</h2>
+    <div class="faq-item">
+        <div class="faq-question">
+            <span>📌 问题：飞书机器人私聊无配对码，群聊不响应</span>
+            <span class="icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            <p><span class="badge warning">❌ 无效尝试</span> 反复开关长连接、重新安装插件、修改配置文件未清理残留。</p>
+            <p><span class="badge solved">✅ 最终有效方案</span> 同“升级后飞书无响应”方案，确保旧插件清理 + 权限发布 + 长连接配置。配对命令：<code>openclaw pairing approve feishu &lt;配对码&gt;</code>。</p>
+        </div>
+    </div>
+
+    <!-- ========= 网关后台运行与路径问题 ========= -->
+    <h2 id="backend">🖥️ 网关后台运行与路径问题</h2>
+    <div class="faq-item">
+        <div class="faq-question">
+            <span>📌 问题：计划任务启动闪退，CMD 乱码，<code>gateway start</code> 失败</span>
+            <span class="icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            <p><span class="badge warning">❌ 无效尝试</span> 重装服务、修改计划任务权限、设置环境变量、用 nssm 注册服务均因中文路径失败。</p>
+            <p><span class="badge solved">✅ 最终有效方案</span></p>
+            <ul>
+                <li>使用目录联接 (junction) 将 <code>C:\Users\张硕\.openclaw</code> 指向 <code>D:\openclaw</code>（无中文路径）。</li>
+                <li>放弃计划任务，改用 VBS + PowerShell 隐藏窗口启动：<br>
+<pre>CreateObject("Wscript.Shell").Run "powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File D:\openclaw\Start-OpenClaw.ps1", 0, False</pre>
+                <li><code>Start-OpenClaw.ps1</code> 内容：<code>openclaw gateway run</code></li>
+                <li>将 VBS 放入启动文件夹 (<code>shell:startup</code>)，开机自启无窗口。</li>
+            </ul>
+            <div class="note">✅ 完美绕开计划任务和中文路径问题，稳定后台运行。</div>
+        </div>
+    </div>
+
+    <!-- ========= 本地模型与记忆功能 ========= -->
+    <h2 id="ollama">🧠 本地模型与记忆功能</h2>
+    <div class="faq-item">
+        <div class="faq-question">
+            <span>📌 问题：Ollama memory_search 不支持，配置 <code>provider: "ollama"</code> 无效</span>
+            <span class="icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            <p><span class="badge warning">❌ 无效尝试</span> 设置 <code>OPENAI_BASE_URL</code> 环境变量、修改 auth-profiles.json、尝试 <code>provider: "local"</code> 均失败。</p>
+            <p><span class="badge solved">✅ 最终有效方案</span> 升级到 <code>@qingchencloud/openclaw-zh</code> (2026.3.13+)，原生支持 ollama。配置：</p>
+<pre>"memorySearch": {
+  "provider": "ollama",
+  "ollama": {
+    "baseUrl": "http://127.0.0.1:11434",
+    "model": "nomic-embed-text"
+  }
+}</pre>
+            <div class="note">✅ 升级后 ollama 集成正常，记忆功能可用。</div>
+        </div>
+    </div>
+
+    <!-- ========= 多 Agent 协作与任务分派 ========= -->
+    <h2 id="agent">🤖 多 Agent 协作与任务分派</h2>
+    <div class="faq-item">
+        <div class="faq-question">
+            <span>📌 问题：主模型在群里 @ 其他机器人，对方无响应</span>
+            <span class="icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            <p><span class="badge warning">❌ 无效尝试</span> 尝试 <code>@_ou_xxx</code>、XML 格式、广播模式均无效。</p>
+            <p><span class="badge solved">✅ 最终有效方案</span> 主模型通过 <code>exec</code> 工具直接调用其他 Agent：</p>
+<pre>openclaw agent --agent coder --message "任务描述"</pre>
+            <p>在主模型 <code>AGENTS.md</code> 中说明使用方式，并在群内回复“我将安排程序员处理”，后台执行命令。</p>
+            <div class="note">✅ 既保留群聊可视化，又稳定可靠。</div>
+        </div>
+    </div>
+
+    <!-- ========= CLI 工具连接故障 ========= -->
+    <h2 id="cli">🛠️ CLI 工具连接故障</h2>
+    <div class="faq-item">
+        <div class="faq-question">
+            <span>📌 问题：<code>openclaw devices list</code> 等命令一直报 gateway connect failed</span>
+            <span class="icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            <p><span class="badge warning">❌ 无效尝试</span> 反复重启网关、改 bind 模式、检查 token、重装软件。</p>
+            <p><span class="badge solved">✅ 最终有效方案</span> <strong>关闭 Tailscale Serve</strong> 后再运行 CLI。Serve 作为代理会干扰 CLI 直连，关闭后 CLI 立即恢复正常。</p>
+            <div class="note">✅ 执行任何需要 CLI 的配对/批准操作时，先关 Serve，操作完再开。</div>
+        </div>
+    </div>
+
+    <!-- ========= 手机访问 ClawApp 综合问题（核心难点） ========= -->
+    <h2 id="mobile">📱 手机访问 ClawApp 综合问题（核心难点）</h2>
+
+    <!-- 子问题1：iOS 强制 HTTPS 限制 -->
+    <div class="faq-item">
+        <div class="faq-question">
+            <span>🔒 子问题：iOS 强制 HTTPS 导致 HTTP 访问失败</span>
+            <span class="icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            <p><span class="badge warning">❌ 无效尝试</span> 直接用 <code>http://电脑TailscaleIP:18789</code> 访问，Safari 报“不安全”，WebSocket 被拒；换用 Chrome 等第三方浏览器同样被系统级拦截。</p>
+            <p><span class="badge solved">✅ 最终有效方案</span> 使用 <strong>Tailscale Serve</strong> 提供 HTTPS 代理：<code>tailscale serve --https=8777 http://127.0.0.1:18789</code>，手机访问 <code>https://电脑名.ts.net:8777</code>。证书警告点“高级”→“继续”。</p>
+            <div class="note">✅ 满足 iOS 安全要求，且 Tailscale Serve 提供 Let's Encrypt 证书。</div>
+        </div>
+    </div>
+
+    <!-- 子问题2：手机一直 pairing required，无配对码 -->
+    <div class="faq-item">
+        <div class="faq-question">
+            <span>🔑 子问题：手机访问 HTTPS 地址一直显示 pairing required，无配对码</span>
+            <span class="icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            <p><span class="badge warning">❌ 无效尝试</span> 反复修改 <code>allowedOrigins</code>、添加 <code>trustedProxies</code>、临时关闭认证、刷新页面均无效。</p>
+            <p><span class="badge solved">✅ 最终有效方案</span> <strong>必须先通过 CLI 批准设备</strong>：</p>
+            <ol>
+                <li>关闭 Tailscale Serve（否则 CLI 连不上）。</li>
+                <li>运行 <code>openclaw devices list</code> → 看到待批准设备 → <code>openclaw devices approve &lt;ID&gt;</code>。</li>
+                <li>重新开启 Tailscale Serve。</li>
+                <li>手机再次访问 HTTPS 地址，直接弹出 token 输入框（不再 pairing required）。</li>
+                <li>输入网关 token 进入 ClawApp。</li>
+            </ol>
+            <div class="note">✅ 批准后设备被记录，后续访问只需 token。</div>
+        </div>
+    </div>
+
+    <!-- 子问题3：Tailscale Serve 与 CLI 冲突导致批准失败 -->
+    <div class="faq-item">
+        <div class="faq-question">
+            <span>⚡ 子问题：Tailscale Serve 运行时 CLI 报错，关闭后正常</span>
+            <span class="icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            <p><span class="badge warning">❌ 无效尝试</span> 尝试 <code>tailscale serve --bg</code> 或修改端口，均无法让 CLI 同时连接。</p>
+            <p><span class="badge solved">✅ 最终有效方案</span> 牢记铁律：<strong>批准设备时关闭 Serve，批准后再打开 Serve</strong>。这是打通手机访问的关键步骤。</p>
+        </div>
+    </div>
+
+    <!-- 子问题4：配置混乱导致电脑本地或手机访问失败 -->
+    <div class="faq-item">
+        <div class="faq-question">
+            <span>📝 子问题：网关配置 <code>bind / allowedOrigins / trustedProxies</code> 混乱</span>
+            <span class="icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            <p><span class="badge warning">❌ 无效尝试</span> 单独改 <code>loopback</code> 导致手机无法访问；<code>allowedOrigins</code> 只写 IP 不写域名；忘记加 <code>trustedProxies</code> 导致代理头不被信任。</p>
+            <p><span class="badge solved">✅ 最终正确配置</span></p>
+<pre>{
+  "gateway": {
+    "bind": "lan",                // 必须监听所有接口，Serve 才能代理
+    "port": 18789,
+    "auth": { "mode": "token", "token": "你的令牌" },
+    "controlUi": { "allowedOrigins": ["*"] },   // 避免跨域，Tailscale 网络内安全
+    "trustedProxies": ["127.0.0.1", "::1", "100.64.0.0/10"]  // 信任 Tailscale 代理头
+  }
+}</pre>
+            <p>电脑本地访问：<code>http://127.0.0.1:18789</code>；手机远程访问：<code>https://电脑名.ts.net:8777</code>。</p>
+        </div>
+    </div>
+
+    <!-- 最终稳定方案总结 -->
+    <hr>
+    <h2 id="final">🎯 最终稳定方案总结（手机访问 ClawApp）</h2>
+    <div class="faq-item">
+        <div class="faq-question">
+            <span>🚀 一键启动 + 永久后台 + 稳定访问</span>
+            <span class="icon">▼</span>
+        </div>
+        <div class="faq-answer">
+            <p><strong>1️⃣ 网关配置</strong>（<code>openclaw.json</code> 按上述最终配置）</p>
+            <p><strong>2️⃣ 启动脚本（VBS 无窗口，开机自启）</strong></p>
+<pre>CreateObject("Wscript.Shell").Run "powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File D:\openclaw\Start-OpenClaw.ps1", 0, False
+CreateObject("Wscript.Shell").Run "tailscale serve --https=8777 http://127.0.0.1:18789", 0, False</pre>
+            <p><code>Start-OpenClaw.ps1</code> 内容：<code>openclaw gateway run</code></p>
+            <p><strong>3️⃣ 首次配对（一次性）</strong></p>
+            <ol>
+                <li>关闭 Tailscale Serve（停止窗口或运行 <code>tailscale serve --https=8777 off</code>）。</li>
+                <li>在电脑运行 <code>openclaw devices list</code> → 看到待批准设备 → <code>openclaw devices approve &lt;ID&gt;</code>。</li>
+                <li>重新开启 Tailscale Serve。</li>
+                <li>手机访问 <code>https://你的电脑名.ts.net:8777</code> → 输入网关 token → 进入 ClawApp。</li>
+            </ol>
+            <p><strong>4️⃣ 日常使用</strong>：手机直接访问 HTTPS 地址（浏览器记住 token），电脑启动后自动运行 Serve 和网关。</p>
+            <div class="note">✅ 完全满足 iOS 安全要求、无需公网暴露、稳定后台运行、一键启动/停止。</div>
+        </div>
+    </div>
+
+    <hr>
+    <footer>
+        🦞 本手册基于实际部署经验整理，时间戳 2026年3月 · OpenClaw 汉化版 @qingchencloud/openclaw-zh<br>
+        所有无效尝试与最终有效方案均经过真实环境验证，可作为日后快速排查参考。
+    </footer>
+</div>
+
+<script>
+    (function() {
+        const questions = document.querySelectorAll('.faq-question');
+        questions.forEach(q => {
+            q.addEventListener('click', () => {
+                const answer = q.nextElementSibling;
+                const icon = q.querySelector('.icon');
+                if (answer.classList.contains('open')) {
+                    answer.classList.remove('open');
+                    icon.textContent = '▼';
+                } else {
+                    answer.classList.add('open');
+                    icon.textContent = '▲';
+                }
+            });
+        });
+    })();
+</script>
+</body>
+</html>

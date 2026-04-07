@@ -1,0 +1,1 @@
+update(gateway): 修复网关解决方案，补充 OPENCLAW_HOME 和 cd 关键配置，修正编码乱码

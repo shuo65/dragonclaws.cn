@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用指令 - 龙爪中国网</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #F5F7FA; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        .navbar { background: #2A5CAA; }
+        .navbar-brand { color: white !important; }
+        .nav-link { color: rgba(255,255,255,0.85) !important; }
+        .section-title { border-left: 4px solid #FF6B35; padding-left: 1rem; margin: 2.5rem 0 1.5rem; color: #2A5CAA; font-weight: 600; }
+        .card-custom { background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); height: 100%; }
+        .card-custom:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
+        .footer { background: #343a40; color: white; padding: 2rem 0; }
+        .footer-links a { color: #88d; margin: 0 0.4rem; text-decoration: none; }
+        .footer-links a:hover { text-decoration: underline; }
+        .breadcrumb { background: transparent; padding: 0; margin-bottom: 1rem; }
+        .btn-copy { background: #0d6efd; color: white; border: none; padding: 6px 12px; font-size: 0.75rem; border-radius: 3px; cursor: pointer; opacity: 0; transition: opacity 0.2s; position: absolute; top: 5px; right: 5px; }
+        .card-custom:hover .btn-copy { opacity: 1; }
+        .btn-copy.success { background: #198754; }
+        @media (max-width: 768px) {
+            .section-title { font-size: 1.5rem; margin: 2rem 0 1rem; }
+            .card-custom { padding: 1rem; position: relative; }
+            .btn-copy { position: static; width: 100%; margin-top: 5px; opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <span>🐉</span>龙爪中国网
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">首页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/deployment/deployment-index.html">部署经验</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/faq/faq-index.html">常见问题</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/projects/projects-index.html">项目实例</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">常用指令</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mt-3">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">首页</a></li>
+                <li class="breadcrumb-item active" aria-current="page">常用指令</li>
+            </ol>
+        </nav>
+
+        <!-- Header -->
+        <h1 class="section-title">⚡ 常用指令</h1>
+        <p class="text-muted mb-4">快速上手 OpenClaw 的常用命令参考</p>
+
+        <!-- 指令分类 -->
+        <div class="row g-3">
+            <!-- 基本指令 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card-custom position-relative">
+                    <h5 class="text-primary mb-3">🔧 基本指令</h5>
+                    <div class="d-grid gap-2">
+                        <div class="mb-1 small text-muted">启动网关</div>
+                        <button class="btn btn-outline-primary btn-sm btn-copy" onclick="copyCmd(this, 'openclaw gateway start')">openclaw gateway start</button>
+                        <div class="mb-1 small text-muted">停止网关</div>
+                        <button class="btn btn-outline-primary btn-sm btn-copy" onclick="copyCmd(this, 'openclaw gateway stop')">openclaw gateway stop</button>
+                        <div class="mb-1 small text-muted">重启网关</div>
+                        <button class="btn btn-outline-primary btn-sm btn-copy" onclick="copyCmd(this, 'openclaw gateway restart')">openclaw gateway restart</button>
+                        <div class="mb-1 small text-muted">查看内存状态</div>
+                        <button class="btn btn-outline-primary btn-sm btn-copy" onclick="copyCmd(this, 'openclaw memory status')">openclaw memory status</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 插件管理 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card-custom position-relative">
+                    <h5 class="text-success mb-3">📦 插件管理</h5>
+                    <div class="d-grid gap-2">
+                        <div class="mb-1 small text-muted">列出所有插件</div>
+                        <button class="btn btn-outline-success btn-sm btn-copy" onclick="copyCmd(this, 'openclaw plugin list')">openclaw plugin list</button>
+                        <div class="mb-1 small text-muted">安装插件</div>
+                        <button class="btn btn-outline-success btn-sm btn-copy" onclick="copyCmd(this, 'openclaw plugin install &lt;plugin&gt;')">openclaw plugin install</button>
+                        <div class="mb-1 small text-muted">卸载插件</div>
+                        <button class="btn btn-outline-success btn-sm btn-copy" onclick="copyCmd(this, 'openclaw plugin uninstall &lt;plugin&gt;')">openclaw plugin uninstall</button>
+                        <div class="mb-1 small text-muted">升级所有插件</div>
+                        <button class="btn btn-outline-success btn-sm btn-copy" onclick="copyCmd(this, 'openclaw plugin upgrade')">openclaw plugin upgrade</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 网络配置 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card-custom position-relative">
+                    <h5 class="text-info mb-3">🌐 网络配置</h5>
+                    <div class="d-grid gap-2">
+                        <div class="mb-1 small text-muted">设置代理服务器</div>
+                        <button class="btn btn-outline-info btn-sm btn-copy" onclick="copyCmd(this, 'openclaw config set proxy http://proxy:port')">openclaw config set proxy</button>
+                        <div class="mb-1 small text-muted">配置 npm 镜像源</div>
+                        <button class="btn btn-outline-info btn-sm btn-copy" onclick="copyCmd(this, 'openclaw config set registry https://registry.npmmirror.com')">openclaw config set registry</button>
+                        <div class="mb-1 small text-muted">网络连接测试</div>
+                        <button class="btn btn-outline-info btn-sm btn-copy" onclick="copyCmd(this, 'openclaw network test')">openclaw network test</button>
+                        <div class="mb-1 small text-muted">重置所有配置</div>
+                        <button class="btn btn-outline-info btn-sm btn-copy" onclick="copyCmd(this, 'openclaw config reset')">openclaw config reset</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 故障排查 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card-custom position-relative">
+                    <h5 class="text-warning mb-3">🔍 故障排查</h5>
+                    <div class="d-grid gap-2">
+                        <div class="mb-1 small text-muted">查看最近100行日志</div>
+                        <button class="btn btn-outline-warning btn-sm btn-copy" onclick="copyCmd(this, 'openclaw logs --tail 100')">openclaw logs --tail 100</button>
+                        <div class="mb-1 small text-muted">系统健康诊断</div>
+                        <button class="btn btn-outline-warning btn-sm btn-copy" onclick="copyCmd(this, 'openclaw doctor')">openclaw doctor</button>
+                        <div class="mb-1 small text-muted">硬重置（危险）</div>
+                        <button class="btn btn-outline-warning btn-sm btn-copy" onclick="copyCmd(this, 'openclaw reset --hard')">openclaw reset --hard</button>
+                        <div class="mb-1 small text-muted">显示版本信息</div>
+                        <button class="btn btn-outline-warning btn-sm btn-copy" onclick="copyCmd(this, 'openclaw version')">openclaw version</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-5">
+        <div class="container text-center">
+            <p class="mb-2">© 2026 龙爪中国网 | OpenClaw 中文爱好者基地</p>
+            <p class="mb-0 small">本站内容供学习交流使用，非 OpenClaw 官方网站</p>
+            <div class="footer-links mt-2">
+                <a href="https://www.dragonclaws.cn">龙爪中国网</a> |
+                <a href="https://www.hotclaw.top">热门Claw</a> |
+                <a href="https://www.freemodel.shop">免费模型商店</a> |
+                <a href="https://www.clawhealth.icu">健康监护室</a> |
+                <a href="https://www.fastclaw.love">快爪爱</a>
+            </div>
+            <small class="text-muted d-block mt-2">📧 <a href="mailto:shuo65@qq.com" class="text-white text-decoration-none">shuo65@qq.com</a>（所有域名出售中）</small>
+        </div>
+    </footer>
+
+    <!-- Copy Script (Simplified version for demo pages) -->
+    <script>
+    function copyCmd(btn, cmd) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(cmd).then(function() {
+                const originalText = btn.textContent;
+                btn.textContent = '✓ 已复制';
+                btn.classList.add('success');
+                setTimeout(function() {
+                    btn.textContent = originalText;
+                    btn.classList.remove('success');
+                }, 1500);
+            }).catch(function() {
+                fallbackCopy(btn, cmd);
+            });
+        } else {
+            fallbackCopy(btn, cmd);
+        }
+    }
+
+    function fallbackCopy(btn, cmd) {
+        const textarea = document.createElement('textarea');
+        textarea.value = cmd;
+        textarea.style.position = 'fixed';
+        textarea.style.top = '0';
+        textarea.style.left = '0';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            const originalText = btn.textContent;
+            btn.textContent = '✓ 已复制';
+            btn.classList.add('success');
+            setTimeout(function() {
+                btn.textContent = originalText;
+                btn.classList.remove('success');
+            }, 1500);
+        } catch (e) {
+            btn.textContent = '复制失败';
+        }
+        document.body.removeChild(textarea);
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+0000000000000000000000000000000000000000 2519df54ee5f91d4b33c6377a7b2663c59f335c8 shuo65 <shuo65@qq.com> 1774415703 +0800	commit (initial): 首次提交网站文件
+2519df54ee5f91d4b33c6377a7b2663c59f335c8 0000000000000000000000000000000000000000 shuo65 <shuo65@qq.com> 1774415766 +0800	Branch: renamed refs/heads/master to refs/heads/main
+0000000000000000000000000000000000000000 2519df54ee5f91d4b33c6377a7b2663c59f335c8 shuo65 <shuo65@qq.com> 1774415766 +0800	Branch: renamed refs/heads/master to refs/heads/main
+2519df54ee5f91d4b33c6377a7b2663c59f335c8 1d88c7bf837c5d3255be9db9ff120e6ac25f330e shuo65 <shuo65@qq.com> 1774416681 +0800	commit (merge): 完成合并
+1d88c7bf837c5d3255be9db9ff120e6ac25f330e 2a20b73b2d696493873ea563127d7b37ea1cafb6 shuo65 <shuo65@qq.com> 1774434040 +0800	commit: 修改标题和页面文字为'龙爪中国-中国人的龙虾'
+2a20b73b2d696493873ea563127d7b37ea1cafb6 1d88c7bf837c5d3255be9db9ff120e6ac25f330e shuo65 <shuo65@qq.com> 1774437079 +0800	reset: moving to HEAD~1
+1d88c7bf837c5d3255be9db9ff120e6ac25f330e 42fcabb9d63365d1d49984e38975e66e5cc5ed97 shuo65 <shuo65@qq.com> 1774443757 +0800	pull origin main --allow-unrelated-histories: Fast-forward
+42fcabb9d63365d1d49984e38975e66e5cc5ed97 53efd6f0d3ff317139949240790292d8fd61c81d shuo65 <shuo65@qq.com> 1774459969 +0800	commit: 修改标题和页面文字为龙爪中国
+53efd6f0d3ff317139949240790292d8fd61c81d 1307a789b759d80bca79e207f36be056c453e90e shuo65 <shuo65@qq.com> 1774629505 +0800	commit: 更新网站标题为最终方案
+1307a789b759d80bca79e207f36be056c453e90e d92dea2842d4b28bc1000561ec47a272dfcb6b5d shuo65 <shuo65@qq.com> 1774633565 +0800	commit: 创建静态首页（Bootstrap响应式）
+d92dea2842d4b28bc1000561ec47a272dfcb6b5d 34d43a193b836eb41d5e222dbf5d5967d6ef10d0 shuo65 <shuo65@qq.com> 1774634311 +0800	commit: 优化页面：修复导航、改进Hero区域、美化Footer
+34d43a193b836eb41d5e222dbf5d5967d6ef10d0 39f5de45d52199084067eec3f0ca77baa04f8fa1 shuo65 <shuo65@qq.com> 1774634790 +0800	commit: 完善发展史：增加真实版本里程碑（v3.7/3.8/汉化版）
+39f5de45d52199084067eec3f0ca77baa04f8fa1 6b1424d926d2e8c267aa28daee298768a0ed4319 shuo65 <shuo65@qq.com> 1774636869 +0800	commit: SEO优化：添加meta description/keywords/OpenGraph/Twitter Card
+6b1424d926d2e8c267aa28daee298768a0ed4319 5e67376504c3d297546fe25b1e5336aea947bea8 shuo65 <shuo65@qq.com> 1774636971 +0800	commit: 添加sitemap.xml
+5e67376504c3d297546fe25b1e5336aea947bea8 e9be6fde4b2c8ee1c32115dcae303be1a6ba9c60 shuo65 <shuo65@qq.com> 1774675657 +0800	commit: SEO improvements: structured data, PWA, dark mode (2026-03-28)
+e9be6fde4b2c8ee1c32115dcae303be1a6ba9c60 13aa30414c04a7d884c5ca279f3a0e97a6d5d0cb shuo65 <shuo65@qq.com> 1774686146 +0800	commit: feat: 动态时间轴集成
+13aa30414c04a7d884c5ca279f3a0e97a6d5d0cb b1a61b59e61044f55a6f4c44dc4fd73d79f5221b shuo65 <shuo65@qq.com> 1774718454 +0800	commit: fix: 优化暗色模式对比度
+b1a61b59e61044f55a6f4c44dc4fd73d79f5221b c36bfa4ea63322d7a83bba91c576764d37b473a8 shuo65 <shuo65@qq.com> 1774719919 +0800	commit: refactor: 暗色模式按钮智能切换
+c36bfa4ea63322d7a83bba91c576764d37b473a8 03ba78eb0d81350f4ce0dd97abe65e31e270c783 shuo65 <shuo65@qq.com> 1774720568 +0800	commit: revert: 恢复静态时间轴 + 方案C智能按钮
+03ba78eb0d81350f4ce0dd97abe65e31e270c783 852417793bc478340e290c4c2ef2f6a1ce7e9ce9 shuo65 <shuo65@qq.com> 1774766956 +0800	commit: 更新：新方案定位调整 + 优化
+852417793bc478340e290c4c2ef2f6a1ce7e9ce9 362c29fab74df9b4e664ce003a238f51a60caf81 shuo65 <shuo65@qq.com> 1774795592 +0800	commit: 修复暗色模式：支持手动切换(data-bs-theme)
+362c29fab74df9b4e664ce003a238f51a60caf81 fcc3e757e0f81d9c8cb20ecae349177b65b47cc0 shuo65 <shuo65@qq.com> 1774799068 +0800	commit: P0修复: 代码块暗色模式+优化Hero高度
+fcc3e757e0f81d9c8cb20ecae349177b65b47cc0 b3773cc9f9a48e3d664e873f480a71c9d6088d29 shuo65 <shuo65@qq.com> 1774800839 +0800	commit: 精确修复: 卡片和timeline背景使用var(--card-bg) 暗色模式完全适配
+b3773cc9f9a48e3d664e873f480a71c9d6088d29 bdf2b78a2bd640d804c5e5e213ff167d19e9fc96 shuo65 <shuo65@qq.com> 1774801238 +0800	commit: P1优化: 创建详情页(版本/汉化专区) + 更新首页链接
+bdf2b78a2bd640d804c5e5e213ff167d19e9fc96 a6980a4f7d644961515255c26b97967ff23aff7a shuo65 <shuo65@qq.com> 1774803925 +0800	commit: P1优化: 创建详情页(版本/汉化专区) + 更新首页链接
+a6980a4f7d644961515255c26b97967ff23aff7a 637babac8f111f904b02633184e856d78ed25a01 shuo65 <shuo65@qq.com> 1774808562 +0800	commit: P2优化: Hero压缩+发展史横版化+丰富常用指令
+637babac8f111f904b02633184e856d78ed25a01 8218602d7c27dcfc3fd52c358266b5e85f0df19b shuo65 <shuo65@qq.com> 1774809271 +0800	commit: P2优化: 版本卡片区分zh/cn+删除企业版卡片+version-detail增加cn章节
+8218602d7c27dcfc3fd52c358266b5e85f0df19b 0f840c9f25e0c81c4eede1f3a96f44d8cae85ea4 shuo65 <shuo65@qq.com> 1774809547 +0800	commit: P2: 移动生态导航到Hero后+丰富官方资源链接
+0f840c9f25e0c81c4eede1f3a96f44d8cae85ea4 29a9d434960f3ee91b739981687ba1f4aaca241e shuo65 <shuo65@qq.com> 1774810289 +0800	commit: P2: 生态导航紧凑化+版本展示增加商业版+发展史紧凑布局
+29a9d434960f3ee91b739981687ba1f4aaca241e 5b1acce1c4d0024ce430953c062fd6ea0993b59b shuo65 <shuo65@qq.com> 1774863227 +0800	commit: P2优化：导航栏统一 + Hero标准化 + 锚点修复
+5b1acce1c4d0024ce430953c062fd6ea0993b59b 54d58999ed78181752105798619397d69e373dfe shuo65 <shuo65@qq.com> 1774887750 +0800	commit: P2优化：手机端卡片紧凑化（一行4个，间距缩小）
+54d58999ed78181752105798619397d69e373dfe 029ee1e79981c13628799832949f340c485f5794 shuo65 <shuo65@qq.com> 1774894851 +0800	commit: 紧急修复：JS语法错误（暗色模式切换）+ 移除Hero按钮
+029ee1e79981c13628799832949f340c485f5794 ae0454c6b86725872ccfd6b44794fc5b366520f7 shuo65 <shuo65@qq.com> 1774923039 +0800	commit: fix: 修复UTF-8编码乱码问题 - 重建index.html
+ae0454c6b86725872ccfd6b44794fc5b366520f7 97303796d4710d2626c919b1eeccb7177618435b shuo65 <shuo65@qq.com> 1774929926 +0800	commit: fix: 重新生成 UTF-8 无 BOM index.html，修复乱码问题
+97303796d4710d2626c919b1eeccb7177618435b 2826ce315f2c31e84e17770fe401e9086457cc31 shuo65 <shuo65@qq.com> 1774931021 +0800	commit: fix: 恢复完整内容 + 布局调整（UTF-8无BOM）
+2826ce315f2c31e84e17770fe401e9086457cc31 512684d8a31f23a71743f776afb22e21055c426a shuo65 <shuo65@qq.com> 1774933147 +0800	commit: fix: 紧急修复 - 从Git历史提取纯净HTML并调整布局
+512684d8a31f23a71743f776afb22e21055c426a a750c8afcb12d1e6cd6e9107fee7c5b660913c27 shuo65 <shuo65@qq.com> 1774934229 +0800	commit: fix: 转换为 UTF-8 无 BOM，修复浏览器显示问题
+a750c8afcb12d1e6cd6e9107fee7c5b660913c27 782d324547f82b6c8f55a1c4d47d1333ae25f41f shuo65 <shuo65@qq.com> 1774935070 +0800	commit: fix: 紧急修复 - 完全重建UTF-8无BOM的index.html，保留history section
+782d324547f82b6c8f55a1c4d47d1333ae25f41f 97303796d4710d2626c919b1eeccb7177618435b shuo65 <shuo65@qq.com> 1774950892 +0800	reset: moving to 9730379
+97303796d4710d2626c919b1eeccb7177618435b 54d58999ed78181752105798619397d69e373dfe shuo65 <shuo65@qq.com> 1774961050 +0800	reset: moving to origin/main
+54d58999ed78181752105798619397d69e373dfe 5c13f4f24c567d411aeccb834e47293ee92a9ee7 shuo65 <shuo65@qq.com> 1774963719 +0800	commit: fix: 紧急恢复 - 使用纯净UTF-8无BOM模板重建index.html
+5c13f4f24c567d411aeccb834e47293ee92a9ee7 54d58999ed78181752105798619397d69e373dfe shuo65 <shuo65@qq.com> 1774968080 +0800	reset: moving to 54d5899
+54d58999ed78181752105798619397d69e373dfe 54d58999ed78181752105798619397d69e373dfe shuo65 <shuo65@qq.com> 1774969538 +0800	reset: moving to origin/main
+54d58999ed78181752105798619397d69e373dfe 54d58999ed78181752105798619397d69e373dfe shuo65 <shuo65@qq.com> 1774976612 +0800	reset: moving to origin/main
+54d58999ed78181752105798619397d69e373dfe 97fad3e17a8470b60b8de3e27822d4ccd045f3c1 shuo65 <shuo65@qq.com> 1775021315 +0800	commit: 准备推送
+97fad3e17a8470b60b8de3e27822d4ccd045f3c1 85d21c516563c45f1e8969232a0364dae6934efc shuo65 <shuo65@qq.com> 1775056351 +0800	commit: 优化移动端界面：常用指令和版本展示卡片缩小，每行2-4个紧凑布局
+85d21c516563c45f1e8969232a0364dae6934efc a9ba679569284484221ad74f0e3ae8b1dccc1f63 shuo65 <shuo65@qq.com> 1775064034 +0800	commit: 优化移动端界面：常用指令和版本展示卡片缩小，每行2-4个紧凑布局
+a9ba679569284484221ad74f0e3ae8b1dccc1f63 f057793ebc7acdef95731bad0f67da2e79b2da3c shuo65 <shuo65@qq.com> 1775067506 +0800	commit: 优化主网站：删除占位符、动态时间轴、丰富指令和版本展示、SEO增强
+f057793ebc7acdef95731bad0f67da2e79b2da3c 97dea463649e86302caed715f879661da4b0f58c shuo65 <shuo65@qq.com> 1775068394 +0800	commit: 修复发展史加载：添加static fallback，网络失败时显示硬编码内容
+97dea463649e86302caed715f879661da4b0f58c 0e13fdaa489424d3476a4034b34bd27f7f9dc118 shuo65 <shuo65@qq.com> 1775156106 +0800	commit: feat(versions): 新增百度、华为、小米、京东等商业版本；扩展所有版本卡片描述；修正阿里版本为JVS Claw和HiClaw并存
+0e13fdaa489424d3476a4034b34bd27f7f9dc118 f057793ebc7acdef95731bad0f67da2e79b2da3c shuo65 <shuo65@qq.com> 1775186628 +0800	reset: moving to f057793
+f057793ebc7acdef95731bad0f67da2e79b2da3c 52da7cdc7c00d4146a1177d28c5f608285896b25 shuo65 <shuo65@qq.com> 1775187087 +0800	commit: refactor(versions): 添加QClaw版本；优化所有商业版卡片描述；新增business-editions详情页
+52da7cdc7c00d4146a1177d28c5f608285896b25 35c49d1533b7d3d02357568fcd57494d20e02630 shuo65 <shuo65@qq.com> 1775197971 +0800	commit: optimize(versions): 扩展商业版卡片为2行描述；新增business-editions.html详情页
+35c49d1533b7d3d02357568fcd57494d20e02630 2f56ca8e71c23556d843464d57f26f266f5dc75e shuo65 <shuo65@qq.com> 1775206588 +0800	commit: redo(versions): 基于正确基准重新优化版本展示
+2f56ca8e71c23556d843464d57f26f266f5dc75e 891fdf515e2c1d9692cbe18bc0b9845480a9b4f1 shuo65 <shuo65@qq.com> 1775227076 +0800	commit: 阶段2完成: 版本卡片描述丰富+zh标题优化+发展史fallback扩展为12版本
+891fdf515e2c1d9692cbe18bc0b9845480a9b4f1 50625f16012eaa5f21a66240939706ec49a65ba8 shuo65 <shuo65@qq.com> 1775233297 +0800	commit: 阶段3优化: 更新全部商业版本链接+描述优化+新增Molili/ClawPro/CoPaw+小艺Claw替换HWClaw
+50625f16012eaa5f21a66240939706ec49a65ba8 801327fdb356ae3e7b6746448c768474a96f5e82 shuo65 <shuo65@qq.com> 1775234163 +0800	commit: 阶段3: 发展史优化-年份分组折叠+移动端适配+防乱码
+801327fdb356ae3e7b6746448c768474a96f5e82 9842bfca5ccc59c3b5fcacbc0f166bee5e188fe5 shuo65 <shuo65@qq.com> 1775234948 +0800	commit: 阶段3: 发展史优化-移动端折叠分组+筛选(动态加载部分)
+9842bfca5ccc59c3b5fcacbc0f166bee5e188fe5 c16f0d1269ec7f83baa7d547131e22af0cb45fdb shuo65 <shuo65@qq.com> 1775237503 +0800	commit: 阶段3完成: 发展史fallback优化-年份筛选+默认折叠
+c16f0d1269ec7f83baa7d547131e22af0cb45fdb 6bba4f83790f28c20b59678bf01ad829e9bd4ff4 shuo65 <shuo65@qq.com> 1775241837 +0800	commit: 阶段4: 常用指令复制功能-12个卡片一键复制+移动端44px触摸区域
+6bba4f83790f28c20b59678bf01ad829e9bd4ff4 317768954bc5722082393c131de5bbe38687d4a5 shuo65 <shuo65@qq.com> 1775244190 +0800	commit: 恢复网站-移除阶段4乱码代码-用户手动恢复版本
+317768954bc5722082393c131de5bbe38687d4a5 1d40b06b6572b17957f9b89a0ef31d94d1078af9 shuo65 <shuo65@qq.com> 1775299000 +0800	commit: feat: 添加一键复制按钮功能
+1d40b06b6572b17957f9b89a0ef31d94d1078af9 f1d00599ab383113b90be3e4b6ea106e178b7d1b shuo65 <shuo65@qq.com> 1775300908 +0800	commit: fix: 更新晴辰中文版名称
+f1d00599ab383113b90be3e4b6ea106e178b7d1b 04305e54fb9fb8244a38eb9aacdebc59b6b52a31 shuo65 <shuo65@qq.com> 1775301350 +0800	commit: fix: 标题改为国旗emoji+CN
+04305e54fb9fb8244a38eb9aacdebc59b6b52a31 8db96bb374abd141e1b89e7ea0e06cdd163e0bbd shuo65 <shuo65@qq.com> 1775302026 +0800	commit: fix: 恢复晴辰中文版原标题
+8db96bb374abd141e1b89e7ea0e06cdd163e0bbd 79582b5e624c9bb1066a6199ec38a5777db2b2de shuo65 <shuo65@qq.com> 1775307613 +0800	commit: feat: SEO深化 - 添加sitemap.xml和JSON-LD结构化数据
+79582b5e624c9bb1066a6199ec38a5777db2b2de 9e78a0327159d96a8d9a6fc9389883053685119b shuo65 <shuo65@qq.com> 1775317439 +0800	commit: fix: 复制功能添加execCommand fallback兼容
+9e78a0327159d96a8d9a6fc9389883053685119b 4d25ca093cc7e8286a8dd7c4225527aaa823621b shuo65 <shuo65@qq.com> 1775323846 +0800	commit: feat: 更新OpenClaw发展史至v2026.4.2 + SEO优化(sitemap+robots+meta)
+4d25ca093cc7e8286a8dd7c4225527aaa823621b 8700dcaa0a3884025245d7282bbab82608fe76ce shuo65 <shuo65@qq.com> 1775326038 +0800	commit: feat: 移动端代码块字体优化 (0.65rem/0.75rem) + Hero响应式 | UTF-8
+8700dcaa0a3884025245d7282bbab82608fe76ce 0d7c6427d25d15e6ea769852fa798fe243e7d82e shuo65 <shuo65@qq.com> 1775326089 +0800	commit (amend): feat: 移动端代码块字体优化 (0.65rem/0.75rem) + Hero响应式 | UTF-8
+0d7c6427d25d15e6ea769852fa798fe243e7d82e 37e989796881abd4fb3b008b9f47a30b079d3606 shuo65 <shuo65@qq.com> 1775482984 +0800	commit: feat(FAQ): 新增常见问题解决方案板块；添加网关中文路径乱码闪退的完整解决方案（三步骤）
+37e989796881abd4fb3b008b9f47a30b079d3606 ab47d7c37d715424bd8db3582d85da7e97469aea shuo65 <shuo65@qq.com> 1775490331 +0800	commit: feat(FAQ): 新增常见问题解决方案独立页面；调整导航栏顺序；首页FAQ板块简化为摘要+跳转
+ab47d7c37d715424bd8db3582d85da7e97469aea ea2ae90c0da04604ea8da15f579e6aacb73ef18e shuo65 <shuo65@qq.com> 1775491760 +0800	commit: fix(nav): 修正站点矩阵链接，从 #contact 改为 #ecosystem
+ea2ae90c0da04604ea8da15f579e6aacb73ef18e c4771d9889e7f6b9513d8ae657512e1b2c83b1bf shuo65 <shuo65@qq.com> 1775491962 +0800	commit: fix(privacy): 移除 faq.html 中的真实用户名示例，全部使用" 用户名\占位符
+c4771d9889e7f6b9513d8ae657512e1b2c83b1bf ecbcbb9ab48432aa67c836e290fbf5c56971d909 shuo65 <shuo65@qq.com> 1775492504 +0800	commit: chore(version): 在FAQ解决方案中添加实测版本标注；更新标签为v2026.4.2+
+ecbcbb9ab48432aa67c836e290fbf5c56971d909 f1d3d43ab403ad622636d6cf6a35c034c866dd4b shuo65 <shuo65@qq.com> 1775493148 +0800	commit: chore(version): 标注为 OpenClaw-zh（晴辰汉化版）v2026.4.2+
+f1d3d43ab403ad622636d6cf6a35c034c866dd4b d508630dabe2ffe23ffd1e58cc8f366f96bb27c2 shuo65 <shuo65@qq.com> 1775493200 +0800	commit: chore(version): 使用具体版本号 v2026.4.2，不再使用 + 后缀
+d508630dabe2ffe23ffd1e58cc8f366f96bb27c2 87b2e5fb1be5c20303d84511a0fcf51c0ffbaa1b shuo65 <shuo65@qq.com> 1775494146 +0800	commit: feat(projects): 新增项目实例板块；更新导航栏；首页添加项目实例占位卡片
+87b2e5fb1be5c20303d84511a0fcf51c0ffbaa1b 63693848f9e053d6b3a4733c8dc97b9e64c713b0 shuo65 <shuo65@qq.com> 1775497606 +0800	commit: chore(navigation): 调整导航顺序为：首页→站点矩阵→版本展示→发展史→部署经验→常见问题→项目实例→常用指令；新增部署经验板块（首页占位）；更新项目实例卡片链接到详细文档
+63693848f9e053d6b3a4733c8dc97b9e64c713b0 13fa1231aa496ea8e08ba579b7bf07c4f744c96f shuo65 <shuo65@qq.com> 1775566890 +0800	commit: update(gateway): 修复网关解决方案，补充 OPENCLAW_HOME 和 cd 关键配置，修正编码乱码

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目实例 - 龙爪中国网</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #F5F7FA; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        .navbar { background: #2A5CAA; }
+        .navbar-brand { color: white !important; }
+        .nav-link { color: rgba(255,255,255,0.85) !important; }
+        .section-title { border-left: 4px solid #FF6B35; padding-left: 1rem; margin: 2.5rem 0 1.5rem; color: #2A5CAA; font-weight: 600; }
+        .solution-card { background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 1rem; }
+        .solution-card:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
+        .badge.bg-primary { background: #2563eb !important; }
+        .badge.bg-info { background: #0ea5e9 !important; }
+        .badge.bg-secondary { background: #6c757d !important; }
+        footer { background: #343a40; color: white; padding: 2rem 0; }
+        .footer-links a { color: #88d; margin: 0 0.4rem; text-decoration: none; }
+        .footer-links a:hover { text-decoration: underline; }
+        .breadcrumb { background: transparent; padding: 0; margin-bottom: 1rem; }
+        @media (max-width: 768px) {
+            .section-title { font-size: 1.5rem; margin: 2rem 0 1rem; }
+            .solution-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <span>🐉</span>龙爪中国网
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">首页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/deployment/deployment-index.html">部署经验</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/faq/faq-index.html">常见问题</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">项目实例</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/quickstart/quickstart-index.html">常用指令</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mt-3">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">首页</a></li>
+                <li class="breadcrumb-item active" aria-current="page">项目实例</li>
+            </ol>
+        </nav>
+
+        <!-- Header -->
+        <h1 class="section-title">💡 项目实例</h1>
+        <p class="text-muted mb-4">通过 OpenClaw 实现具体项目的经验分享</p>
+
+        <!-- 项目卡片 -->
+        <div class="row g-3">
+            <div class="col-12">
+                <div class="solution-card">
+                    <h4 class="solution-title">🐉 龙爪中国网站搭建经验</h4>
+                    <div class="solution-meta mb-2">
+                        <span class="badge bg-primary">网站开发</span>
+                        <span class="badge bg-info">GitHub Pages</span>
+                        <span class="badge bg-secondary">Bootstrap 5</span>
+                    </div>
+                    <p><strong>内容</strong>：纯静态方案选择、响应式布局、SEO优化、编码规范、部署流程</p>
+                    <a href="website.html" class="btn btn-primary btn-sm mt-2">查看详情</a>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="solution-card">
+                    <h4 class="solution-title">🤖 多员工架构配置经验</h4>
+                    <div class="solution-meta mb-2">
+                        <span class="badge bg-success">架构设计</span>
+                        <span class="badge bg-info">团队协作</span>
+                    </div>
+                    <p><strong>内容</strong>：机器人员工配置、任务分派流程（串行/并行）、群组协作方案、@机制限制</p>
+                    <a href="multi-agent.html" class="btn btn-outline-primary btn-sm mt-2">查看详情</a>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="solution-card">
+                    <h4 class="solution-title">⚡ 网关内存优化实践</h4>
+                    <div class="solution-meta mb-2">
+                        <span class="badge bg-warning text-dark">性能调优</span>
+                        <span class="badge bg-secondary">资源管理</span>
+                    </div>
+                    <p><strong>内容</strong>：623MB 降至 627MB 优化过程、fallbacks 精简、模型预加载机制</p>
+                    <a href="performance.html" class="btn btn-outline-primary btn-sm mt-2">查看详情</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-5">
+        <div class="container text-center">
+            <p class="mb-2">© 2026 龙爪中国网 | OpenClaw 中文爱好者基地</p>
+            <p class="mb-0 small">本站内容供学习交流使用，非 OpenClaw 官方网站</p>
+            <div class="footer-links mt-2">
+                <a href="https://www.dragonclaws.cn">龙爪中国网</a> |
+                <a href="https://www.hotclaw.top">热门Claw</a> |
+                <a href="https://www.freemodel.shop">免费模型商店</a> |
+                <a href="https://www.clawhealth.icu">健康监护室</a> |
+                <a href="https://www.fastclaw.love">快爪爱</a>
+            </div>
+            <small class="text-muted d-block mt-2">📧 <a href="mailto:shuo65@qq.com" class="text-white text-decoration-none">shuo65@qq.com</a>（所有域名出售中）</small>
+        </div>
+    </footer>
+</body>
+</html>
