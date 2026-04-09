@@ -6,21 +6,66 @@
     <title>站点矩阵 - 龙爪中国网</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { background: #F5F7FA; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        .navbar { background: #2A5CAA; }
-        .nav-link { color: rgba(255,255,255,0.85) !important; }
-        .section-title { border-left: 4px solid #FF6B35; padding-left: 1rem; margin: 2.5rem 0 1.5rem; color: #2A5CAA; font-weight: 600; }
-        .site-card { background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; transition: transform 0.2s; }
-        .site-card:hover { transform: translateY(-5px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
-        .site-card .icon { font-size: 3rem; margin-bottom: 1rem; }
-        footer { background: #343a40; color: white; padding: 2rem 0; }
-        .footer-links a { color: #88d; margin: 0 0.4rem; text-decoration: none; }
-    </style>
+/* Dark Mode - 支持系统自动和手动切换 */
+:root {
+  --bg-color: #F5F7FA;
+  --text-color: #212529;
+  --muted-color: #6c757d;
+  --card-bg: #ffffff;
+  --link-color: #0d6efd;
+  --border-color: #dee2e6;
+  --primary-color: #2A5CAA;
+}
+
+[data-bs-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f5f5f5;
+  --muted-color: #b0b0b0;
+  --card-bg: #1e1e1e;
+  --link-color: #8ab4f8;
+  --border-color: #333333;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-bs-theme="light"]) {
+    --bg-color: #121212;
+    --text-color: #f5f5f5;
+    --muted-color: #b0b0b0;
+    --card-bg: #1e1e1e;
+    --link-color: #8ab4f8;
+    --border-color: #333333;
+  }
+}
+
+body { background: var(--bg-color); color: var(--text-color); }
+.navbar { background: var(--primary-color) !important; }
+.navbar-brand { color: white !important; }
+.nav-link { color: rgba(255,255,255,0.85) !important; }
+.nav-link:hover { color: white !important; }
+.section-title { border-left: 4px solid #FF6B35; padding-left: 1rem; margin: 2.5rem 0 1.5rem; color: var(--primary-color); font-weight: 600; }
+.card-custom { background: var(--card-bg); border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); height: 100%; border: 1px solid var(--border-color); }
+.card-custom:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
+.text-muted { color: var(--muted-color) !important; }
+a { color: var(--link-color); }
+a:hover { color: #a8c8ff; text-decoration: none; }
+.breadcrumb { background: transparent; padding: 0; margin-bottom: 1rem; }
+.btn-copy { background: #0d6efd; color: white; border: none; padding: 6px 12px; font-size: 0.75rem; border-radius: 3px; cursor: pointer; opacity: 1; transition: opacity 0.2s; position: static; width: 100%; margin-top: 5px; }
+.card-custom:hover .btn-copy { opacity: 0.8; }
+.btn-copy.success { background: #198754; }
+.footer-links a { color: var(--link-color); margin: 0 0.4rem; text-decoration: none; }
+.footer-links a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .section-title { font-size: 1.5rem; margin: 2rem 0 1rem; }
+  .card-custom { padding: 1rem; position: relative; }
+  .btn-copy { position: static; width: 100%; margin-top: 5px; opacity: 1; }
+}
+</style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="../">
+            <a class="navbar-brand" href="../index.html">
                 <span>🐉</span>龙爪中国网
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -28,7 +73,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../">首页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">首页</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#">站点矩阵</a></li>
                     <li class="nav-item"><a class="nav-link" href="../versions/versions-index.html">版本展示</a></li>
                     <li class="nav-item"><a class="nav-link" href="../history/history-index.html">发展史</a></li>
@@ -44,7 +89,7 @@
     <main class="container mt-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../">首页</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">首页</a></li>
                 <li class="breadcrumb-item active" aria-current="page">站点矩阵</li>
             </ol>
         </nav>
@@ -100,19 +145,32 @@
         </div>
     </main>
 
-    <footer class="mt-5">
-        <div class="container text-center">
-            <p class="mb-2">© 2026 龙爪中国网 | OpenClaw 中文爱好者基地</p>
-            <p class="mb-0 small">本站内容供学习交流使用，非 OpenClaw 官方网站</p>
-            <div class="footer-links mt-2">
-                <a href="https://www.dragonclaws.cn">龙爪中国</a> |
-                <a href="https://www.hotclaw.top">热门Claw</a> |
-                <a href="https://www.freemodel.shop">免费模型商店</a> |
-                <a href="https://www.clawhealth.icu">健康监护室</a> |
-                <a href="https://www.fastclaw.love">快爪爱</a>
-            </div>
-            <small class="text-muted d-block mt-2">📧 <a href="mailto:shuo65@qq.com" class="text-white text-decoration-none">shuo65@qq.com</a>（所有域名出售中）</small>
+    <footer id="contact" class="bg-dark text-white py-4 mt-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-3 mb-md-0">
+        <h6 class="mb-1">🐉 龙爪中国网</h6>
+        <p class="small mb-0 text-muted">个人OpenClaw爱好者基地 | 非官方网站</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <h6 class="mb-2">友情链接</h6>
+        <p class="footer-links mb-1">
+          <a href="../index.html">龙爪中国网</a> |
+          <a href="../hotclaw-top/index.html">热门Claw</a> |
+          <a href="../freemodel-shop/index.html">免费模型商店</a> |
+          <a href="../clawhealth-icu/index.html">健康监护室</a> |
+          <a href="../fastclaw-love/index.html">快爪爱</a>
+        </p>
+        <small class="text-muted">📧 <a href="mailto:shuo65@qq.com" class="text-white text-decoration-none">shuo65@qq.com</a>（所有域名出售中）</small>
+        <div class="mt-2">
+          <small class="text-muted"> 🔍 <a href="https://www.google.com/search?q=site:dragonclaws.cn" target="_blank" class="text-white text-decoration-none me-2">Google收录</a>
+          <a href="https://www.baidu.com/s?wd=site:dragonclaws.cn" target="_blank" class="text-white text-decoration-none">百度收录</a> </small>
         </div>
-    </footer>
+      </div>
+    </div>
+    <hr class="my-3 border-secondary">
+    <p class="text-center small mb-0">© 2026 龙爪中国网. All rights reserved.</p>
+  </div>
+</footer>
 </body>
 </html>

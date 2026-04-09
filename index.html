@@ -179,7 +179,9 @@
                 font-size: 0.85rem;
             }
         }
-        .section-title {
+        .section-title a { color: inherit; text-decoration: none; transition: all 0.2s; }
+.section-title a:hover { color: #FF6B35 !important; text-decoration: underline; }
+.section-title {
             border-left: 4px solid var(--accent-color);
             padding-left: 1rem;
             margin: 2.5rem 0 1.5rem 0;
@@ -644,7 +646,7 @@
     <main class="container">
         <!-- 生态导航 (优化: 移到Hero后+仅站群) -->
         <section id="ecosystem">
-            <h2 class="section-title">🌐 站点矩阵</h2>
+            <h2 class="section-title"><a href="ecosystem/ecosystem-index.html" class="text-decoration-none">🌐 站点矩阵</a></h2>
             <p class="text-muted mb-3">一键访问所有龙爪中国网矩阵站点</p>
             <div class="row g-2">
                 <div class="col-6 col-md-3 col-lg-3">
@@ -684,7 +686,7 @@
 
         <!-- Version Showcase (移动端优化) -->
         <section id="versions">
-            <h2 class="section-title">📦 OpenClaw汉化版</h2>
+            <h2 class="section-title"><a href="versions/versions-index.html" class="text-decoration-none">📦 OpenClaw汉化版</a></h2>
             <div class="row g-2 gy-2">
                 <!-- zh/cn 核心版 -->
                 <div class="col-6 col-sm-4 col-md-3">
@@ -850,7 +852,7 @@
 
         <!-- 部署经验 -->
         <section id="deployment">
-            <h2 class="section-title">🚀 部署经验</h2>
+            <h2 class="section-title"><a href="deployment/deployment-index.html" class="text-decoration-none">🚀 部署经验</a></h2>
             <p class="text-muted mb-3">OpenClaw 不同版本（zh、cn、商业版）的部署指南，包括安装前准备、注意事项、镜像源使用、升级迁移等（持续更新）</p>
             
             <div class="row g-3 gy-3">
@@ -903,7 +905,7 @@
 
         <!-- 常见问题解决方案 -->
         <section id="faq-solutions">
-            <h2 class="section-title">🧩 常见问题解决方案</h2>
+            <h2 class="section-title"><a href="faq/faq-index.html" class="text-decoration-none">🧩 常见问题解决方案</a></h2>
             <p class="text-muted mb-3">针对 OpenClaw 使用过程中的常见问题，提供经过验证的解决方案（持续更新）</p>
             
             <div class="row g-3 gy-3">
@@ -918,7 +920,7 @@
                         </div>
                         <p class="mt-2"><strong>问题</strong>：Windows 用户名含中文（如"用户名"）导致网关闪退、<code>openclaw gateway restart</code> 超时、计划任务失败。</p>
                         <div class="mt-2">
-                            <a href="faq.html" class="btn btn-sm btn-primary">查看详情</a>
+                            <a href="faq/faq-index.html" class="btn btn-sm btn-primary">查看详情</a>
                         </div>
                     </div>
                 </div>
@@ -930,7 +932,7 @@
 
         <!-- 项目实例 -->
         <section id="projects-experience">
-            <h2 class="section-title">💡 项目实例</h2>
+            <h2 class="section-title"><a href="projects/projects-index.html" class="text-decoration-none">💡 项目实例</a></h2>
             <p class="text-muted mb-3">通过 OpenClaw 实现具体项目的经验分享，包括网站搭建、架构配置、性能优化等（持续更新）</p>
             
             <div class="row g-3 gy-3">
@@ -945,7 +947,7 @@
                         </div>
                         <p class="mt-2"><strong>内容</strong>：纯静态方案选择、响应式布局、SEO优化、编码规范、部署流程</p>
                         <div class="mt-2">
-                            <a href="projects.html" class="btn btn-sm btn-primary">查看详情</a>
+                            <a href="projects/projects-index.html" class="btn btn-sm btn-primary">查看详情</a>
                         </div>
                     </div>
                 </div>
@@ -959,7 +961,7 @@
                         </div>
                         <p class="mt-2"><strong>内容</strong>：机器人员工配置、任务分派流程（串行/并行）、群组协作方案、@机制限制</p>
                         <div class="mt-2">
-                            <a href="projects.html" class="btn btn-sm btn-primary">查看详情</a>
+                            <a href="projects/projects-index.html" class="btn btn-sm btn-primary">查看详情</a>
                         </div>
                     </div>
                 </div>
@@ -973,7 +975,7 @@
                         </div>
                         <p class="mt-2"><strong>内容</strong>：623MB 降至 627MB 优化过程、fallbacks 精简、模型预加载机制</p>
                         <div class="mt-2">
-                            <a href="projects.html" class="btn btn-sm btn-primary">查看详情</a>
+                            <a href="projects/projects-index.html" class="btn btn-sm btn-primary">查看详情</a>
                         </div>
                     </div>
                 </div>
@@ -984,36 +986,36 @@
 
         <!-- 常用指令卡片 (移动端优化) -->
         <section id="quick-start">
-            <h2 class="section-title">⚡ 常用指令</h2>
+            <h2 class="section-title"><a href="quickstart/quickstart-index.html" class="text-decoration-none">⚡ 常用指令</a></h2>
             <p class="text-muted mb-3">快速上手OpenClaw的常用命令参考，包含更新、升级、插件管理等</p>
             <div class="row g-2 gy-2">
                 <div class="col-6 col-sm-4 col-md-3">
                     <div class="version-card p-2">
-                        <button class="btn-copy" onclick="copyCmd(this,'openclaw start')">Copy</button>
+                        <button class="btn-copy" onclick="copyCmd(this,'openclaw gateway start')">Copy</button>
                         <h6 class="mb-1 small">🚀 启动</h6>
-                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.65rem;"><code>openclaw start</code></pre>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.65rem;"><code>openclaw gateway start</code></pre>
                         <p class="text-muted mb-0 very-small">启动服务</p>
                     </div>
                 </div>
                 <div class="col-6 col-sm-4 col-md-3">
                     <div class="version-card p-2">
-                        <button class="btn-copy" onclick="copyCmd(this,'openclaw stop')">Copy</button>
+                        <button class="btn-copy" onclick="copyCmd(this,'openclaw gateway stop')">Copy</button>
                         <h6 class="mb-1 small">🛑 停止</h6>
-                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.65rem;"><code>openclaw stop</code></pre>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.65rem;"><code>openclaw gateway stop</code></pre>
                         <p class="text-muted mb-0 very-small">停止服务</p>
                     </div>
                 </div>
                 <div class="col-6 col-sm-4 col-md-3">
                     <div class="version-card p-2">
-                        <button class="btn-copy" onclick="copyCmd(this,'openclaw restart')">Copy</button>
+                        <button class="btn-copy" onclick="copyCmd(this,'openclaw gateway restart')">Copy</button>
                         <h6 class="mb-1 small">🔄 重启</h6>
-                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.65rem;"><code>openclaw restart</code></pre>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.65rem;"><code>openclaw gateway restart</code></pre>
                         <p class="text-muted mb-0 very-small">重启服务</p>
                     </div>
                 </div>
                 <div class="col-6 col-sm-4 col-md-3">
                     <div class="version-card p-2">
-                        <button class="btn-copy" onclick="copyCmd(this,'openclaw model add <model>')">Copy</button>
+                        <button class="btn-copy" onclick="copyCmd(this,'openclaw models scan')">Copy</button>
                         <h6 class="mb-1 small">📦 安装模型</h6>
                         <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.65rem;"><code>openclaw model add &lt;model&gt;</code></pre>
                         <p class="text-muted mb-0 very-small">添加模型</p>
@@ -1029,49 +1031,49 @@
                 </div>
                 <div class="col-6 col-sm-4 col-md-3">
                     <div class="version-card p-2">
-                        <button class="btn-copy" onclick="copyCmd(this,'openclaw logs')">Copy</button>
+                        <button class="btn-copy" onclick="copyCmd(this,'openclaw logs --limit 100')">Copy</button>
                         <h6 class="mb-1 small">👀 查看日志</h6>
-                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.65rem;"><code>openclaw logs</code></pre>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.65rem;"><code>openclaw logs --limit 100 --limit 100</code></pre>
                         <p class="text-muted mb-0 very-small">运行日志</p>
                     </div>
                 </div>
                 <div class="col-6 col-sm-4 col-md-3">
                     <div class="version-card p-2">
-                        <button class="btn-copy" onclick="copyCmd(this,'openclaw update')">Copy</button>
+                        <button class="btn-copy" onclick="copyCmd(this,'openclaw update status')">Copy</button>
                         <h6 class="mb-1 small">🆙 更新</h6>
-                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw update</code></pre>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw update status status</code></pre>
                         <p class="text-muted mb-0 very-small">更新OpenClaw</p>
                     </div>
                 </div>
                 <div class="col-6 col-sm-4 col-md-3">
                     <div class="version-card p-2">
-                        <button class="btn-copy" onclick="copyCmd(this,'openclaw model upgrade')">Copy</button>
+                        <button class="btn-copy" onclick="copyCmd(this,'openclaw models list')">Copy</button>
                         <h6 class="mb-1 small">⬆️ 升级模型</h6>
-                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw model upgrade</code></pre>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw models list</code></pre>
                         <p class="text-muted mb-0 very-small">升级所有模型</p>
                     </div>
                 </div>
                 <div class="col-6 col-sm-4 col-md-3">
                     <div class="version-card p-2">
-                        <button class="btn-copy" onclick="copyCmd(this,'openclaw plugin list')">Copy</button>
+                        <button class="btn-copy" onclick="copyCmd(this,'openclaw plugins list')">Copy</button>
                         <h6 class="mb-1 small">🔌 插件列表</h6>
-                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw plugin list</code></pre>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw plugins list</code></pre>
                         <p class="text-muted mb-0 very-small">列出所有插件</p>
                     </div>
                 </div>
                 <div class="col-6 col-sm-4 col-md-3">
                     <div class="version-card p-2">
-                        <button class="btn-copy" onclick="copyCmd(this,'openclaw check-config')">Copy</button>
+                        <button class="btn-copy" onclick="copyCmd(this,'openclaw config validate')">Copy</button>
                         <h6 class="mb-1 small">✅ 配置检查</h6>
-                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw check-config</code></pre>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw config validate</code></pre>
                         <p class="text-muted mb-0 very-small">验证配置</p>
                     </div>
                 </div>
                 <div class="col-6 col-sm-4 col-md-3">
                     <div class="version-card p-2">
-                        <button class="btn-copy" onclick="copyCmd(this,'openclaw health')">Copy</button>
+                        <button class="btn-copy" onclick="copyCmd(this,'openclaw doctor --fix')">Copy</button>
                         <h6 class="mb-1 small">💊 健康检查</h6>
-                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw health</code></pre>
+                        <pre class="bg-light p-1 rounded mb-1" style="font-size: 0.7rem;"><code>openclaw doctor --fix</code></pre>
                         <p class="text-muted mb-0 very-small">系统状态</p>
                     </div>
                 </div>
