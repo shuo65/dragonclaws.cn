@@ -60,6 +60,11 @@ a:hover { color: #a8c8ff; text-decoration: none; }
   .card-custom { padding: 1rem; position: relative; }
   .btn-copy { position: static; width: 100%; margin-top: 5px; opacity: 1; }
 }
+ .site-card, .version-card { background: var(--card-bg); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; height: 100%; border: 1px solid var(--border-color); text-align: center; }
+.site-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.site-card:hover, .version-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
+.site-card h5, .version-card h6 { color: var(--text-color); margin-bottom: 0.5rem; }
+.site-card .btn, .version-card .btn { margin-top: 0.5rem; }
 </style>
 </head>
 <body>
