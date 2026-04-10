@@ -852,7 +852,8 @@
         </section>
 
         <!-- 部署经验 -->
-        <section id="deployment">
+        <div class="section-divider"></div>
+<section id="deployment">
             <h2 class="section-title"><a href="deployment/deployment-index.html" class="text-decoration-none">🚀 部署经验</a></h2>
             <p class="text-muted mb-3">OpenClaw 不同版本（zh、cn、商业版）的部署指南，包括安装前准备、注意事项、镜像源使用、升级迁移等（持续更新）</p>
             
@@ -905,7 +906,8 @@
         </section>
 
         <!-- 常见问题解决方案 -->
-        <section id="faq-solutions">
+        <div class="section-divider"></div>
+<section id="faq-solutions">
             <h2 class="section-title"><a href="faq/faq-index.html" class="text-decoration-none">🧩 常见问题解决方案</a></h2>
             <p class="text-muted mb-3">针对 OpenClaw 使用过程中的常见问题，提供经过验证的解决方案（持续更新）</p>
             
@@ -932,7 +934,8 @@
         </section>
 
         <!-- 项目实例 -->
-        <section id="projects-experience">
+        <div class="section-divider"></div>
+<section id="projects-experience">
             <h2 class="section-title"><a href="projects/projects-index.html" class="text-decoration-none">💡 项目实例</a></h2>
             <p class="text-muted mb-3">通过 OpenClaw 实现具体项目的经验分享，包括网站搭建、架构配置、性能优化等（持续更新）</p>
             
@@ -1564,5 +1567,10 @@ container.innerHTML = `
             }, 1500);
         }
     </script>
+
+<style>
+.section-divider { padding: 1.5rem 0; margin: 1rem 0; border-top: 1px dashed #dee2e6; }
+[data-bs-theme="dark"] .section-divider { border-color: #444; }
+</style>
 </body>
 </html>
