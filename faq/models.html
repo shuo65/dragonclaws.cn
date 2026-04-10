@@ -1,206 +1,49 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>OpenClaw 汉化版 · 完整踩坑与解决手册（含无效尝试记录）</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background: #f4f6fa;
-            color: #1e2a3a;
-            padding: 1.5rem 1rem;
-            line-height: 1.5;
-            font-size: 0.95rem;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            background: #ffffff;
-            border-radius: 1.5rem;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-            overflow: hidden;
-            padding: 1.5rem 1.8rem;
-        }
-        h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: baseline;
-            gap: 0.5rem;
-        }
-        h1 small {
-            font-size: 0.75rem;
-            font-weight: normal;
-            background: #eef2ff;
-            color: #1e40af;
-            padding: 0.2rem 0.6rem;
-            border-radius: 30px;
-        }
-        .subhead {
-            color: #4b5563;
-            border-left: 3px solid #3b82f6;
-            padding-left: 0.8rem;
-            margin: 0.5rem 0 1.5rem;
-            font-size: 0.85rem;
-        }
-        .toc {
-            background: #f9fafb;
-            border-radius: 1rem;
-            padding: 1rem 1.2rem;
-            margin-bottom: 1.8rem;
-        }
-        .toc h2 {
-            font-size: 1.1rem;
-            margin-bottom: 0.6rem;
-        }
-        .toc ul {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 0.3rem 1rem;
-            list-style: none;
-            padding-left: 0;
-        }
-        .toc li {
-            margin-bottom: 0.2rem;
-        }
-        .toc a {
-            text-decoration: none;
-            color: #2563eb;
-            font-size: 0.85rem;
-        }
-        .toc a:hover {
-            text-decoration: underline;
-        }
-        h2 {
-            font-size: 1.2rem;
-            margin: 1.6rem 0 0.8rem;
-            padding-bottom: 0.2rem;
-            border-bottom: 2px solid #e2e8f0;
-        }
-        h3 {
-            font-size: 1rem;
-            margin: 1rem 0 0.5rem;
-            font-weight: 600;
-            color: #2c3e66;
-        }
-        .faq-item {
-            border: 1px solid #e2e8f0;
-            border-radius: 1rem;
-            margin-bottom: 1.2rem;
-            background: white;
-            overflow: hidden;
-            transition: all 0.1s;
-        }
-        .faq-question {
-            background: #fefce8;
-            padding: 0.7rem 1.2rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-left: 4px solid #f59e0b;
-        }
-        .faq-question:hover {
-            background: #fff9db;
-        }
-        .faq-question .icon {
-            font-size: 0.9rem;
-            transition: transform 0.2s;
-        }
-        .faq-answer {
-            padding: 0 1.2rem 1rem 1.2rem;
-            border-top: 1px solid #e2e8f0;
-            background: #ffffff;
-            display: none;
-        }
-        .faq-answer.open {
-            display: block;
-        }
-        .badge {
-            display: inline-block;
-            background: #e2e8f0;
-            padding: 0.15rem 0.5rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            margin-right: 0.4rem;
-            color: #1f2937;
-        }
-        .badge.solved {
-            background: #dcfce7;
-            color: #15803d;
-        }
-        .badge.warning {
-            background: #fee2e2;
-            color: #b91c1c;
-        }
-        .badge.tip {
-            background: #dbeafe;
-            color: #1e40af;
-        }
-        pre {
-            background: #0f172a;
-            color: #e2e8f0;
-            padding: 0.8rem;
-            border-radius: 0.7rem;
-            overflow-x: auto;
-            font-family: 'SF Mono', 'Fira Code', monospace;
-            font-size: 0.8rem;
-            margin: 0.8rem 0;
-        }
-        .note {
-            background: #eef2ff;
-            border-left: 3px solid #3b82f6;
-            padding: 0.6rem 0.9rem;
-            border-radius: 0.6rem;
-            font-size: 0.85rem;
-            margin: 0.8rem 0;
-        }
-        .invalid {
-            background: #fff5f5;
-            border-left: 3px solid #ef4444;
-            padding: 0.6rem 0.9rem;
-            border-radius: 0.6rem;
-            font-size: 0.85rem;
-            margin: 0.8rem 0;
-        }
-        hr {
-            margin: 1.5rem 0;
-            border: none;
-            border-top: 1px solid #e2e8f0;
-        }
-        footer {
-            text-align: center;
-            margin-top: 1.8rem;
-            font-size: 0.75rem;
-            color: #6c757d;
-            border-top: 1px solid #edf2f7;
-            padding-top: 1.2rem;
-        }
-        @media (max-width: 640px) {
-            .container {
-                padding: 1rem;
-            }
-            h1 {
-                font-size: 1.5rem;
-            }
-            .faq-question {
-                padding: 0.6rem 1rem;
-            }
-        }
-    </style>
+  <title>OpenClaw 汉化版 · 完整踩坑与解决手册（含无效尝试记录）</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body { background: #F5F7FA; color: #212529; }
+.navbar { background: #2A5CAA !important; }
+.navbar-brand { color: white !important; }
+.nav-link { color: rgba(255,255,255,0.85) !important; }
+.nav-link:hover { color: white !important; }
+.section-title { border-left: 4px solid #FF6B35; padding-left: 1rem; margin: 1.5rem 0 1rem; color: #2A5CAA; font-weight: 600; }
+.card-custom { background: #fff; border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 1rem; }
+.text-muted { color: #6c757d !important; }
+a { color: #0d6efd; }
+@media (max-width: 768px) { .section-title { font-size: 1.3rem; } }
+</style>
 </head>
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: #2A5CAA;">
+  <div class="container">
+    <a class="navbar-brand" href="../index.html">
+      <span>🐉</span>龙爪中国网
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="../index.html">首页</a></li>
+        <li class="nav-item"><a class="nav-link" href="../ecosystem/ecosystem-index.html">站点矩阵</a></li>
+        <li class="nav-item"><a class="nav-link" href="../versions/versions-index.html">版本展示</a></li>
+        <li class="nav-item"><a class="nav-link" href="../history/history-index.html">发展史</a></li>
+        <li class="nav-item"><a class="nav-link" href="../deployment/deployment-index.html">部署经验</a></li>
+        <li class="nav-item"><a class="nav-link" href="../faq/faq-index.html">常见问题</a></li>
+        <li class="nav-item"><a class="nav-link" href="../projects/projects-index.html">项目实例</a></li>
+        <li class="nav-item"><a class="nav-link" href="../quickstart/quickstart-index.html">常用指令</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container py-4">
+
 <div class="container">
     <h1>
         🦞 OpenClaw 汉化版 · 完整踩坑与解决手册
@@ -427,10 +270,7 @@ CreateObject("Wscript.Shell").Run "tailscale serve --https=8777 http://127.0.0.1
     </div>
 
     <hr>
-    <footer>
-        🦞 本手册基于实际部署经验整理，时间戳 2026年3月 · OpenClaw 汉化版 @qingchencloud/openclaw-zh<br>
-        所有无效尝试与最终有效方案均经过真实环境验证，可作为日后快速排查参考。
-    </footer>
+    
 </div>
 
 <script>
@@ -451,5 +291,30 @@ CreateObject("Wscript.Shell").Run "tailscale serve --https=8777 http://127.0.0.1
         });
     })();
 </script>
+
+</main>
+
+<footer class="bg-dark text-white py-4 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h6>🐉 龙爪中国网</h6>
+        <p class="text-light small mb-0">个人OpenClaw爱好者基地 | 非官方网站</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <h6>友情链接</h6>
+        <p class="small mb-0">
+          <a href="../index.html" class="text-light">龙爪中国</a> |
+          <a href="https://www.hotclaw.top" target="_blank" class="text-light">热门Claw</a> |
+          <a href="https://www.freemodel.shop" target="_blank" class="text-light">免费模型</a> |
+          <a href="https://www.clawhealth.icu" target="_blank" class="text-light">健康监护</a>
+        </p>
+      </div>
+    </div>
+    <hr class="bg-secondary">
+    <p class="text-center text-light small mb-0">（所有域名出售中）</p>
+  </div>
+</footer>
+
 </body>
 </html>
