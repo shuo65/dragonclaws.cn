@@ -1,239 +1,254 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>版本展示 - 龙爪中国网</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-/* Dark Mode - 支持系统自动和手动切换 */
-:root {
-  --bg-color: #F5F7FA;
-  --text-color: #212529;
-  --muted-color: #6c757d;
-  --card-bg: #ffffff;
-  --link-color: #0d6efd;
-  --border-color: #dee2e6;
-  --primary-color: #2A5CAA;
-}
-
-[data-bs-theme="dark"] {
-  --bg-color: #121212;
-  --text-color: #f5f5f5;
-  --muted-color: #b0b0b0;
-  --card-bg: #1e1e1e;
-  --link-color: #8ab4f8;
-  --border-color: #333333;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-bs-theme="light"]) {
-    --bg-color: #121212;
-    --text-color: #f5f5f5;
-    --muted-color: #b0b0b0;
-    --card-bg: #1e1e1e;
-    --link-color: #8ab4f8;
-    --border-color: #333333;
-  }
-}
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>版本展示 - 龙爪中国网</title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" onerror="this.onerror=null;this.href='https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css'">
+<style>
+/* Dark Mode */
+:root { --bg-color: #F5F7FA; --text-color: #212529; --muted-color: #6c757d; --card-bg: #ffffff; --link-color: #0d6efd; --border-color: #dee2e6; --primary-color: #2A5CAA; }
+[data-bs-theme="dark"] { --bg-color: #121212; --text-color: #f5f5f5; --muted-color: #b0b0b0; --card-bg: #1e1e1e; --link-color: #8ab4f8; --border-color: #333333; }
+@media (prefers-color-scheme: dark) { :root:not([data-bs-theme="light"]) { --bg-color: #121212; --text-color: #f5f5f5; --muted-color: #b0b0b0; --card-bg: #1e1e1e; --link-color: #8ab4f8; --border-color: #333333; } }
 body { background: var(--bg-color); color: var(--text-color); }
 .navbar { background: var(--primary-color) !important; }
 .navbar-brand { color: white !important; }
 .nav-link { color: rgba(255,255,255,0.85) !important; }
 .nav-link:hover { color: white !important; }
 .section-title { border-left: 4px solid #FF6B35; padding-left: 1rem; margin: 2.5rem 0 1.5rem; color: var(--primary-color); font-weight: 600; }
-.card-custom { background: var(--card-bg); border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); height: 100%; border: 1px solid var(--border-color); }
-.card-custom:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
+.card-custom, .version-card { background: var(--card-bg); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; height: 100%; border: 1px solid var(--border-color); text-align: center; }
+.version-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
+.version-card h6 { color: var(--text-color); margin-bottom: 0.5rem; }
 .text-muted { color: var(--muted-color) !important; }
 a { color: var(--link-color); }
 a:hover { color: #a8c8ff; text-decoration: none; }
 .breadcrumb { background: transparent; padding: 0; margin-bottom: 1rem; }
-.btn-copy { background: #0d6efd; color: white; border: none; padding: 6px 12px; font-size: 0.75rem; border-radius: 3px; cursor: pointer; opacity: 1; transition: opacity 0.2s; position: static; width: 100%; margin-top: 5px; }
-.card-custom:hover .btn-copy { opacity: 0.8; }
-.btn-copy.success { background: #198754; }
 .footer-links a { color: var(--link-color); margin: 0 0.4rem; text-decoration: none; }
-.footer-links a:hover { text-decoration: underline; }
+@media (max-width: 768px) { .section-title { font-size: 1.5rem; margin: 2rem 0 1rem; } .card-custom, .version-card { padding: 1rem; } }
 
-@media (max-width: 768px) {
-  .section-title { font-size: 1.5rem; margin: 2rem 0 1rem; }
-  .card-custom { padding: 1rem; position: relative; }
-  .btn-copy { position: static; width: 100%; margin-top: 5px; opacity: 1; }
-}
- .site-card, .version-card { background: var(--card-bg); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; height: 100%; border: 1px solid var(--border-color); text-align: center; }
-.site-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
-.site-card:hover, .version-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
-.site-card h5, .version-card h6 { color: var(--text-color); margin-bottom: 0.5rem; }
-.site-card .btn, .version-card .btn { margin-top: 0.5rem; }
+/* 导航栏样式 */
+
+.navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.navbar-brand { font-size: 1.25rem; font-weight: 600; color: white !important; }
+.navbar-brand span { font-size: 1.5rem; }
+.nav-link { color: rgba(255,255,255,0.85) !important; }
+.nav-link:hover { color: white !important; }
+
+
+/* 导航栏样式 */
+.navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.navbar-brand { font-size: 1.25rem; font-weight: 600; color: white !important; }
+.navbar-brand span { font-size: 1.5rem; }
+.nav-link { color: rgba(255,255,255,0.85) !important; font-weight: 500; padding: 0.5rem 1rem !important; transition: opacity 0.2s; }
+.nav-link:hover { color: white !important; }
 </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="../index.html">
-                <span>🐉</span>龙爪中国网
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">首页</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../ecosystem/ecosystem-index.html">站点矩阵</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">版本展示</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../history/history-index.html">发展史</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../deployment/deployment-index.html">部署经验</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../faq/faq-index.html">常见问题</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../projects/projects-index.html">项目实例</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../quickstart/quickstart-index.html">常用指令</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <main class="container mt-3">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../index.html">首页</a></li>
-                <li class="breadcrumb-item active" aria-current="page">版本展示</li>
-            </ol>
-        </nav>
-
-        <h1 class="section-title">📦 OpenClaw 版本展示</h1>
-        <p class="text-muted mb-4">各版本特点与适用场景</p>
-
-        <div class="row g-3">
-            <!-- OpenClaw-zh -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="version-card">
-                    <h6 class="mb-1">OpenClaw-zh</h6>
-                    <p class="text-muted mb-1 small">官方中文版，持续同步更新</p>
-                    <p class="text-muted mb-0 small">个人/企业均可使用</p>
-                    <a href="../history/version.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
-                </div>
-            </div>
-
-            <!-- OpenClaw-CN -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="version-card">
-                    <h6 class="mb-1">OpenClaw-CN</h6>
-                    <p class="text-muted mb-1 small">国内优化版，离线部署</p>
-                    <p class="text-muted mb-0 small">无外网环境首选</p>
-                    <a href="../deployment/cn.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
-                </div>
-            </div>
-
-            <!-- WorkBuddy -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="version-card">
-                    <h6 class="mb-1">WorkBuddy</h6>
-                    <p class="text-muted mb-1 small">团队协作版，多员工</p>
-                    <p class="text-muted mb-0 small">企业团队推荐</p>
-                    <a href="../history/version.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
-                </div>
-            </div>
-
-            <!-- ArkClaw -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="version-card">
-                    <h6 class="mb-1">ArkClaw</h6>
-                    <p class="text-muted mb-1 small">插件系统，高扩展</p>
-                    <p class="text-muted mb-0 small">开发者定制</p>
-                    <a href="../history/version.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
-                </div>
-            </div>
-
-            <!-- 更多版本... -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="version-card">
-                    <h6 class="mb-1">HiClaw</h6>
-                    <p class="text-muted mb-1 small">移动端优化</p>
-                    <p class="text-muted mb-0 small">手机端体验</p>
-                    <a href="../history/version.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
-                </div>
-            </div>
-
-            <!-- EasyClaw -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="version-card">
-                    <h6 class="mb-1">EasyClaw</h6>
-                    <p class="text-muted mb-1 small">极简入门版</p>
-                    <p class="text-muted mb-0 small">新手快速体验</p>
-                    <a href="../history/version.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
-                </div>
-            </div>
-
-            <!-- Molili -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="version-card">
-                    <h6 class="mb-1">🌿 Molili</h6>
-                    <p class="text-muted mb-1 small">当贝出品，零门槛</p>
-                    <p class="text-muted mb-0 small">169元/年</p>
-                    <a href="../history/version.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
-                </div>
-            </div>
-
-            <!-- ClawPro -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="version-card">
-                    <span class="badge bg-primary mb-1">腾讯云</span>
-                    <h6 class="mb-1">☁️ ClawPro</h6>
-                    <p class="text-muted mb-1 small">企业级平台</p>
-                    <p class="text-muted mb-0 small">云原生架构</p>
-                    <a href="../history/version.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
-                </div>
-            </div>
-
-            <!-- CoPaw -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="version-card">
-                    <span class="badge bg-success mb-1">阿里</span>
-                    <h6 class="mb-1">🐱 CoPaw</h6>
-                    <p class="text-muted mb-1 small">阿里开源分支</p>
-                    <p class="text-muted mb-0 small">通义千问集成</p>
-                    <a href="../history/version.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
-                </div>
-            </div>
-
-            <!-- QClaw -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="version-card">
-                    <span class="badge bg-primary mb-1">腾讯</span>
-                    <h6 class="mb-1">💬 QClaw</h6>
-                    <p class="text-muted mb-1 small">微信/QQ直联</p>
-                    <p class="text-muted mb-0 small">混元模型</p>
-                    <a href="../history/version.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer id="contact" class="bg-dark text-white py-4 mt-5">
+<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-6 mb-3 mb-md-0">
-        <h6 class="mb-1">🐉 龙爪中国网</h6>
-        <p class="small mb-0 text-muted">个人OpenClaw爱好者基地 | 非官方网站</p>
-      </div>
-      <div class="col-md-6 text-md-end">
-        <h6 class="mb-2">友情链接</h6>
-        <p class="footer-links mb-1">
-          <a href="../index.html">龙爪中国网</a> |
-          <a href="../hotclaw-top/index.html">热门Claw</a> |
-          <a href="../freemodel-shop/index.html">免费模型商店</a> |
-          <a href="../clawhealth-icu/index.html">健康监护室</a> |
-          <a href="../fastclaw-love/index.html">快爪爱</a>
-        </p>
-        <small class="text-muted">📧 <a href="mailto:shuo65@qq.com" class="text-white text-decoration-none">shuo65@qq.com</a>（所有域名出售中）</small>
-        <div class="mt-2">
-          <small class="text-muted"> 🔍 <a href="https://www.google.com/search?q=site:dragonclaws.cn" target="_blank" class="text-white text-decoration-none me-2">Google收录</a>
-          <a href="https://www.baidu.com/s?wd=site:dragonclaws.cn" target="_blank" class="text-white text-decoration-none">百度收录</a> </small>
-        </div>
-      </div>
+    <a class="navbar-brand" href="../index.html"><span>🐉</span>龙爪中国网</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="../index.html">首页</a></li>
+<li class="nav-item"><a class="nav-link" href="../ecosystem/ecosystem-index.html">站点矩阵</a></li>
+<li class="nav-item"><a class="nav-link" href="../versions/versions-index.html">版本展示</a></li>
+<li class="nav-item"><a class="nav-link" href="../history/history-index.html">发展史</a></li>
+<li class="nav-item"><a class="nav-link" href="../deployment/deployment-index.html">部署经验</a></li>
+<li class="nav-item"><a class="nav-link" href="../faq/faq-index.html">常见问题</a></li>
+<li class="nav-item"><a class="nav-link" href="../projects/projects-index.html">项目实例</a></li>
+<li class="nav-item"><a class="nav-link" href="../quickstart/quickstart-index.html">常用指令</a></li>
+</ul>
     </div>
-    <hr class="my-3 border-secondary">
-    <p class="text-center small mb-0">© 2026 龙爪中国网. All rights reserved.</p>
   </div>
+</nav>
+<main class="container mt-3">
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="../index.html">首页</a></li>
+<li class="breadcrumb-item active" aria-current="page">版本展示</li>
+</ol>
+</nav>
+<h1 class="section-title">📦 OpenClaw 版本展示</h1>
+<p class="text-muted mb-4">各版本特点与适用场景</p>
+
+<h5 class="mb-3">🇨🇳 中文版本</h5>
+<div class="row g-3 mb-4">
+<div class="col-6 col-md-4 col-lg-3">
+<div class="version-card">
+<span class="badge badge-custom mb-1">zh</span>
+<h6 class="mb-1">🇨🇳 晴辰中文版</h6>
+<p class="text-muted mb-1 small">深度汉化，本地化完善</p>
+<p class="text-muted mb-0 small">适合国内用户，持续维护更新</p>
+<a href="../history/version.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
+</div>
+</div>
+<div class="col-6 col-md-4 col-lg-3">
+<div class="version-card">
+<span class="badge bg-info mb-1">cn</span>
+<h6 class="mb-1">🌐 社区汉化版</h6>
+<p class="text-muted mb-1 small">开源免费，社区驱动</p>
+<p class="text-muted mb-0 small">适合DIY玩家和技术爱好者</p>
+<a href="../deployment/cn.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
+</div>
+</div>
+</div>
+
+<h5 class="mb-3">💼 商业版本</h5>
+<div class="row g-3 mb-4">
+<div class="col-6 col-md-4 col-lg-3">
+<div class="version-card">
+<span class="badge bg-warning text-dark mb-1">商业版</span>
+<h6 class="mb-1">💼 企业版总览</h6>
+<p class="text-muted mb-1 small">全部商业版本集合</p>
+<p class="text-muted mb-0 small">适合企业级部署</p>
+<a href="../history/version.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
+</div>
+</div>
+<div class="col-6 col-md-4 col-lg-3">
+<div class="version-card">
+<span class="badge bg-primary mb-1">腾讯</span>
+<h6 class="mb-1">🏢 WorkBuddy</h6>
+<p class="text-muted mb-1 small">企业微信/QQ/钉钉多端协同</p>
+<p class="text-muted mb-0 small">聚焦办公自动化，云原生部署</p>
+<a href="https://www.codebuddy.cn/work/" target="_blank" class="btn btn-sm btn-outline-primary mt-2">了解</a>
+</div>
+</div>
+<div class="col-6 col-md-4 col-lg-3">
+<div class="version-card">
+<span class="badge bg-info mb-1">字节</span>
+<h6 class="mb-1">📱 ArkClaw</h6>
+<p class="text-muted mb-1 small">火山引擎云原生SaaS</p>
+<p class="text-muted mb-0 small">飞书深度集成，字节跳动出品</p>
+<a href="https://console.volcengine.com/ark/claw" target="_blank" class="btn btn-sm btn-outline-primary mt-2">了解</a>
+</div>
+</div>
+<div class="col-6 col-md-4 col-lg-3">
+<div class="version-card">
+<span class="badge bg-success mb-1">阿里</span>
+<h6 class="mb-1">🔧 HiClaw</h6>
+<p class="text-muted mb-1 small">钉钉深度集成</p>
+<p class="text-muted mb-0 small">Manager-Worker架构，阿里云百炼</p>
+<a href="https://www.aliyun.com/product/bailian" target="_blank" class="btn btn-sm btn-outline-primary mt-2">了解</a>
+</div>
+</div>
+<div class="col-6 col-md-4 col-lg-3">
+<div class="version-card">
+<span class="badge bg-danger mb-1">百度</span>
+<h6 class="mb-1">🌐 DuClaw</h6>
+<p class="text-muted mb-1 small">零部署网页版</p>
+<p class="text-muted mb-0 small">文心一言4.0模型，新用户送200元</p>
+<a href="https://yiyan.baidu.com" target="_blank" class="btn btn-sm btn-outline-primary mt-2">了解</a>
+</div>
+</div>
+<div class="col-6 col-md-4 col-lg-3">
+<div class="version-card">
+<span class="badge bg-secondary mb-1">华为</span>
+<h6 class="mb-1">📱 小艺Claw</h6>
+<p class="text-muted mb-1 small">鸿蒙生态原生AI助手</p>
+<p class="text-muted mb-0 small">深度集成HarmonyOS，多设备协同</p>
+<a href="https://developer.huawei.com/consumer/cn/" target="_blank" class="btn btn-sm btn-outline-primary mt-2">了解</a>
+</div>
+</div>
+<div class="col-6 col-md-4 col-lg-3">
+<div class="version-card">
+<span class="badge bg-primary mb-1">智谱</span>
+<h6 class="mb-1">🤖 AutoClaw</h6>
+<p class="text-muted mb-1 small">Windows一键安装</p>
+<p class="text-muted mb-0 small">内置GLM模型，浏览器自动化专家</p>
+<a href="https://autoglm.zhipuai.cn/autoclaw" target="_blank" class="btn btn-sm btn-outline-primary mt-2">了解</a>
+</div>
+</div>
+<div class="col-6 col-md-4 col-lg-3">
+<div class="version-card">
+<span class="badge bg-info mb-1">Moonshot</span>
+<h6 class="mb-1">🌙 Kimi Claw</h6>
+<p class="text-muted mb-1 small">超长上下文窗口</p>
+<p class="text-muted mb-0 small">40GB云存储，适合科研/法律/金融</p>
+<a href="https://kimi.com/" target="_blank" class="btn btn-sm btn-outline-primary mt-2">了解</a>
+</div>
+</div>
+<div class="col-6 col-md-4 col-lg-3">
+<div class="version-card">
+<span class="badge bg-warning text-dark mb-1">MiniMax</span>
+<h6 class="mb-1">⚡ MaxClaw</h6>
+<p class="text-muted mb-1 small">10秒极速云端部署</p>
+<p class="text-muted mb-0 small">39元/月起，固定订阅</p>
+<a href="https://www.minimaxi.com" target="_blank" class="btn btn-sm btn-outline-primary mt-2">了解</a>
+</div>
+</div>
+<div class="col-6 col-md-4 col-lg-3">
+<div class="version-card">
+<span class="badge bg-secondary mb-1">中兴</span>
+<h6 class="mb-1">🏛️ Co-Claw</h6>
+<p class="text-muted mb-1 small">政企专属</p>
+<p class="text-muted mb-0 small">高安全性，信创兼容</p>
+<a href="https://www.zte.com.cn" target="_blank" class="btn btn-sm btn-outline-primary mt-2">了解</a>
+</div>
+</div>
+</div>
+
+<h5 class="mb-3">🔧 更多版本</h5>
+<div class="row g-3">
+<div class="col-6 col-md-4 col-lg-3">
+<div class="version-card">
+<h6 class="mb-1">OpenClaw-zh</h6>
+<p class="text-muted mb-1 small">官方中文版</p>
+<p class="text-muted mb-0 small">持续同步更新</p>
+<a href="../history/version.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
+</div>
+</div>
+<div class="col-6 col-md-4 col-lg-3">
+<div class="version-card">
+<h6 class="mb-1">OpenClaw-CN</h6>
+<p class="text-muted mb-1 small">国内优化版</p>
+<p class="text-muted mb-0 small">离线部署首选</p>
+<a href="../deployment/cn.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
+</div>
+</div>
+<div class="col-6 col-md-4 col-lg-3">
+<div class="version-card">
+<h6 class="mb-1">EasyClaw</h6>
+<p class="text-muted mb-1 small">极简入门版</p>
+<p class="text-muted mb-0 small">新手快速体验</p>
+<a href="../history/version.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
+</div>
+</div>
+<div class="col-6 col-md-4 col-lg-3">
+<div class="version-card">
+<h6 class="mb-1">🌿 Molili</h6>
+<p class="text-muted mb-1 small">当贝出品</p>
+<p class="text-muted mb-0 small">169元/年</p>
+<a href="../history/version.html" class="btn btn-sm btn-outline-primary mt-2">详情</a>
+</div>
+</div>
+</div>
+
+</main>
+<footer id="contact" class="bg-dark text-white py-4 mt-5">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-md-6 mb-3 mb-md-0">
+<h6 class="mb-1">🐉 龙爪中国网</h6>
+<p class="small mb-0 text-muted">个人OpenClaw爱好者基地 | 非官方网站</p>
+</div>
+<div class="col-md-6 text-md-end">
+<h6 class="mb-2">友情链接</h6>
+<p class="footer-links mb-1">
+<a href="../index.html">龙爪中国</a> |
+<a href="https://www.hotclaw.top" target="_blank">热门Claw</a> |
+<a href="https://www.freemodel.shop" target="_blank">免费模型</a> |
+<a href="https://www.clawhealth.icu" target="_blank">健康监护</a>
+</p>
+<small class="text-muted">📧 shuo65@qq.com（所有域名出售中）</small>
+</div>
+</div>
+<hr class="my-3 border-secondary">
+<p class="text-center small mb-0">© 2026 龙爪中国网. All rights reserved.</p>
+</div>
 </footer>
 </body>
 </html>

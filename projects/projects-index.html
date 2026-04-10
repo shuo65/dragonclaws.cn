@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>项目实例 - 龙爪中国网</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" onerror="this.onerror=null;this.href='https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css'">
     <style>
 /* Dark Mode - 支持系统自动和手动切换 */
 :root {
@@ -60,6 +61,22 @@ a:hover { color: #a8c8ff; text-decoration: none; }
   .card-custom { padding: 1rem; position: relative; }
   .btn-copy { position: static; width: 100%; margin-top: 5px; opacity: 1; }
 }
+
+/* 导航栏样式 */
+
+.navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.navbar-brand { font-size: 1.25rem; font-weight: 600; color: white !important; }
+.navbar-brand span { font-size: 1.5rem; }
+.nav-link { color: rgba(255,255,255,0.85) !important; }
+.nav-link:hover { color: white !important; }
+
+
+/* 导航栏样式 */
+.navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.navbar-brand { font-size: 1.25rem; font-weight: 600; color: white !important; }
+.navbar-brand span { font-size: 1.5rem; }
+.nav-link { color: rgba(255,255,255,0.85) !important; font-weight: 500; padding: 0.5rem 1rem !important; transition: opacity 0.2s; }
+.nav-link:hover { color: white !important; }
 </style>
 </head>
 <body>
@@ -74,15 +91,15 @@ a:hover { color: #a8c8ff; text-decoration: none; }
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">首页</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../ecosystem/ecosystem-index.html">站点矩阵</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../versions/versions-index.html">版本展示</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../history/history-index.html">发展史</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../deployment/deployment-index.html">部署经验</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../faq/faq-index.html">常见问题</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">项目实例</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../quickstart/quickstart-index.html">常用指令</a></li>
-                </ul>
+<li class="nav-item"><a class="nav-link" href="../index.html">首页</a></li>
+<li class="nav-item"><a class="nav-link" href="../ecosystem/ecosystem-index.html">站点矩阵</a></li>
+<li class="nav-item"><a class="nav-link" href="../versions/versions-index.html">版本展示</a></li>
+<li class="nav-item"><a class="nav-link" href="../history/history-index.html">发展史</a></li>
+<li class="nav-item"><a class="nav-link" href="../deployment/deployment-index.html">部署经验</a></li>
+<li class="nav-item"><a class="nav-link" href="../faq/faq-index.html">常见问题</a></li>
+<li class="nav-item"><a class="nav-link" href="../projects/projects-index.html">项目实例</a></li>
+<li class="nav-item"><a class="nav-link" href="../quickstart/quickstart-index.html">常用指令</a></li>
+</ul>
             </div>
         </div>
     </nav>

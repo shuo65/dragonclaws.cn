@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <title>OpenClaw 发展史</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>发展史时间轴 - 龙爪中国网</title>
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" onerror="this.onerror=null;this.href='https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css'">
 <style>
 body { background: #F5F7FA; color: #212529; }
 .navbar { background: #2A5CAA !important; }
@@ -11,81 +13,173 @@ body { background: #F5F7FA; color: #212529; }
 .nav-link { color: rgba(255,255,255,0.85) !important; }
 .nav-link:hover { color: white !important; }
 .section-title { border-left: 4px solid #FF6B35; padding-left: 1rem; margin: 1.5rem 0 1rem; color: #2A5CAA; font-weight: 600; }
-.card-custom { background: #fff; border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 1rem; }
 .text-muted { color: #6c757d !important; }
 a { color: #0d6efd; }
+.timeline { position: relative; padding-left: 30px; }
+.timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: #dee2e6; }
+.version { position: relative; margin-bottom: 1.5rem; padding: 1rem; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.version::before { content: ''; position: absolute; left: -24px; top: 20px; width: 12px; height: 12px; background: #FF6B35; border-radius: 50%; border: 2px solid #fff; }
+.version-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; }
+.version-badge { background: #FF6B35; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; font-weight: bold; }
+.date { color: #6c757d; font-size: 0.85rem; }
+.version-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+.version-desc { color: #6c757d; margin-bottom: 0.5rem; }
+.commit-info { font-size: 0.8rem; color: #6c757d; }
+.commit-hash { font-family: monospace; background: #f0f0f0; padding: 1px 4px; border-radius: 3px; }
 @media (max-width: 768px) { .section-title { font-size: 1.3rem; } }
+
+/* 导航栏样式 */
+
+.navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.navbar-brand { font-size: 1.25rem; font-weight: 600; color: white !important; }
+.navbar-brand span { font-size: 1.5rem; }
+.nav-link { color: rgba(255,255,255,0.85) !important; }
+.nav-link:hover { color: white !important; }
+
+
+/* 导航栏样式 */
+.navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.navbar-brand { font-size: 1.25rem; font-weight: 600; color: white !important; }
+.navbar-brand span { font-size: 1.5rem; }
+.nav-link { color: rgba(255,255,255,0.85) !important; font-weight: 500; padding: 0.5rem 1rem !important; transition: opacity 0.2s; }
+.nav-link:hover { color: white !important; }
 </style>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-dark" style="background: #2A5CAA;">
-  <div class="container">
-    <a class="navbar-brand" href="../index.html">
-      <span>🐉</span>龙爪中国网
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="../index.html">首页</a></li>
-        <li class="nav-item"><a class="nav-link" href="../ecosystem/ecosystem-index.html">站点矩阵</a></li>
-        <li class="nav-item"><a class="nav-link" href="../versions/versions-index.html">版本展示</a></li>
-        <li class="nav-item"><a class="nav-link" href="../history/history-index.html">发展史</a></li>
-        <li class="nav-item"><a class="nav-link" href="../deployment/deployment-index.html">部署经验</a></li>
-        <li class="nav-item"><a class="nav-link" href="../faq/faq-index.html">常见问题</a></li>
-        <li class="nav-item"><a class="nav-link" href="../projects/projects-index.html">项目实例</a></li>
-        <li class="nav-item"><a class="nav-link" href="../quickstart/quickstart-index.html">常用指令</a></li>
-      </ul>
-    </div>
-  </div>
+<div class="container">
+<a class="navbar-brand" href="../index.html"><span>🐉</span>龙爪中国网</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="../index.html">首页</a></li>
+<li class="nav-item"><a class="nav-link" href="../ecosystem/ecosystem-index.html">站点矩阵</a></li>
+<li class="nav-item"><a class="nav-link" href="../versions/versions-index.html">版本展示</a></li>
+<li class="nav-item"><a class="nav-link active" href="history-index.html">发展史</a></li>
+<li class="nav-item"><a class="nav-link" href="../deployment/deployment-index.html">部署经验</a></li>
+<li class="nav-item"><a class="nav-link" href="../faq/faq-index.html">常见问题</a></li>
+<li class="nav-item"><a class="nav-link" href="../projects/projects-index.html">项目实例</a></li>
+<li class="nav-item"><a class="nav-link" href="../quickstart/quickstart-index.html">常用指令</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<main class="container py-4">
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="../index.html">首页</a></li>
+<li class="breadcrumb-item"><a href="history-index.html">发展史</a></li>
+<li class="breadcrumb-item active" aria-current="page">时间轴</li>
+</ol>
 </nav>
 
-<main class="container py-4">
+<h1 class="section-title">📜 OpenClaw 发展史时间轴</h1>
+<p class="text-muted mb-4">按时间倒序列出所有重要版本和里程碑，最新在前</p>
 
-  <div class="container">
-    <h1>🐉 OpenClaw 发展史</h1>
-    <div class="timeline">
-      
-      <div class="version">
-        <div class="version-header">
-          <span class="version-badge">v3.7</span>
-          <span class="date">2026-03-28</span>
-        </div>
-        <h3 class="version-title">完善发展史：增加真实版本里程碑（v3.7/3.8/汉化版）</h3>
-        <p class="version-desc">完善发展史：增加真实版本里程碑（v3.7/3.8/汉化版）</p>
-        <div class="commit-info">
-          <span class="commit-hash">39f5de4</span> · shuo65
-        </div>
-      </div>
-      
-    </div>
-  </div>
+<div class="timeline">
+<!-- 2026年 -->
+<div class="version">
+<div class="version-header">
+<span class="version-badge">v3.8</span>
+<span class="date">2026-04</span>
+</div>
+<h3 class="version-title">多语言支持增强 + 新版UI</h3>
+<p class="version-desc">全面支持多语言界面，优化移动端体验，新增深色模式自动切换</p>
+<div class="commit-info"><span class="commit-hash">latest</span> · OpenClaw Team</div>
+</div>
+
+<div class="version">
+<div class="version-header">
+<span class="version-badge">v3.7</span>
+<span class="date">2026-03-28</span>
+</div>
+<h3 class="version-title">完善发展史：增加真实版本里程碑（v3.7/3.8/汉化版）</h3>
+<p class="version-desc">增加真实版本里程碑，完善汉化版本对比与下载指引</p>
+<div class="commit-info"><span class="commit-hash">39f5de4</span> · shuo65</div>
+</div>
+
+<div class="version">
+<div class="version-header">
+<span class="version-badge">v3.6</span>
+<span class="date">2026-03</span>
+</div>
+<h3 class="version-title">插件系统升级</h3>
+<p class="version-desc">插件市场正式上线，支持第三方Skill安装与管理</p>
+<div class="commit-info"><span class="commit-hash">-</span> · OpenClaw Team</div>
+</div>
+
+<div class="version">
+<div class="version-header">
+<span class="version-badge">v3.5</span>
+<span class="date">2026-02</span>
+</div>
+<h3 class="version-title">多员工架构正式版</h3>
+<p class="version-desc">支持多个AI Agent协同工作，群组协作能力增强</p>
+<div class="commit-info"><span class="commit-hash">-</span> · OpenClaw Team</div>
+</div>
+
+<!-- 2025年 -->
+<div class="version">
+<div class="version-header">
+<span class="version-badge">v3.0</span>
+<span class="date">2025-12</span>
+</div>
+<h3 class="version-title">OpenClaw 3.0 发布</h3>
+<p class="version-desc">全新架构，基于Node.js 22+，支持更多IM平台集成</p>
+<div class="commit-info"><span class="commit-hash">-</span> · OpenClaw Team</div>
+</div>
+
+<div class="version">
+<div class="version-header">
+<span class="version-badge">v2.x</span>
+<span class="date">2025</span>
+</div>
+<h3 class="version-title">快速发展期</h3>
+<p class="version-desc">支持微信、企业微信、钉钉、飞书等主流IM平台</p>
+<div class="commit-info"><span class="commit-hash">-</span> · OpenClaw Team</div>
+</div>
+
+<!-- 早期版本 -->
+<div class="version">
+<div class="version-header">
+<span class="version-badge">v1.0</span>
+<span class="date">2024</span>
+</div>
+<h3 class="version-title">OpenClaw 正式发布</h3>
+<p class="version-desc">首个公开版本，支持Telegram基本功能</p>
+<div class="commit-info"><span class="commit-hash">-</span> · OpenClaw Team</div>
+</div>
+</div>
+
+<div class="mt-4 p-3 bg-light rounded">
+<h5>📋 版本统计</h5>
+<p class="mb-1">当前最新版本: <strong>v3.8</strong> (2026-04)</p>
+<p class="mb-0">记录版本数: <strong>7+</strong> 个主要版本</p>
+</div>
 
 </main>
-
 <footer class="bg-dark text-white py-4 mt-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h6>🐉 龙爪中国网</h6>
-        <p class="text-light small mb-0">个人OpenClaw爱好者基地 | 非官方网站</p>
-      </div>
-      <div class="col-md-6 text-md-end">
-        <h6>友情链接</h6>
-        <p class="small mb-0">
-          <a href="../index.html" class="text-light">龙爪中国</a> |
-          <a href="https://www.hotclaw.top" target="_blank" class="text-light">热门Claw</a> |
-          <a href="https://www.freemodel.shop" target="_blank" class="text-light">免费模型</a> |
-          <a href="https://www.clawhealth.icu" target="_blank" class="text-light">健康监护</a>
-        </p>
-      </div>
-    </div>
-    <hr class="bg-secondary">
-    <p class="text-center text-light small mb-0">（所有域名出售中）</p>
-  </div>
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+<h6>🐉 龙爪中国网</h6>
+<p class="text-light small mb-0">个人OpenClaw爱好者基地 | 非官方网站</p>
+</div>
+<div class="col-md-6 text-md-end">
+<h6>友情链接</h6>
+<p class="small mb-0">
+<a href="../index.html" class="text-light">龙爪中国</a> |
+<a href="https://www.hotclaw.top" target="_blank" class="text-light">热门Claw</a> |
+<a href="https://www.freemodel.shop" target="_blank" class="text-light">免费模型</a> |
+<a href="https://www.clawhealth.icu" target="_blank" class="text-light">健康监护</a>
+</p>
+</div>
+</div>
+<hr class="bg-secondary">
+<p class="text-center text-light small mb-0">（所有域名出售中）</p>
+</div>
 </footer>
-
 </body>
 </html>
