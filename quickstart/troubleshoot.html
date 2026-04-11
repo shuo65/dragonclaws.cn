@@ -109,12 +109,159 @@ a { color: #0d6efd; }
 </nav>
 
 <main class="container py-4">
-
-    <div class="container mt-4">
-        <h1>故障诊断与排查</h1>
-        <div class="alert alert-info">内容正在整理中，敬请期待</div>
+  <div class="container mt-4">
+    <h1 class="mb-4">💓 心跳检查机制说明</h1>
+    
+    <h1>💓 OpenClaw 心跳检查机制</h1>
+    
+    <p class="date"><strong>配置时间：</strong>2026-04-02 | <strong>适用版本：</strong>OpenClaw-zh v2026.4.2+</p>
+    
+    <div class="info">
+        <h4>📋 心跳检查是什么？</h4>
+        <p>心跳检查是 OpenClaw 主动执行的例行系统健康检查，每 30 分钟自动运行一次，用于：</p>
+        <ul>
+            <li>📊 监控记忆系统状态（压缩风险检测）</li>
+            <li>🔄 扫描自改进模块是否有新的学习需要记录</li>
+            <li>📝 自动更新心跳状态日志</li>
+        </ul>
     </div>
+    
+    <h2>⚙️ 检查流程</h2>
+    
+    <p>当收到心跳轮询消息（<code>Read HEARTBEAT.md if it exists...</code>）时，执行以下检查：</p>
+    
+    <div class="check-item">
+        <h4>1. Memory Management 检查</h4>
+        <ul>
+            <li>计算 <code>~/.openclaw/workspace/memory</code> 文件夹总大小</li>
+            <li>预期值：<strong>10 KB ~ 200 KB</strong>（超过 500 KB 需压缩）</li>
+            <li>输出当前记忆大小，无异常则继续</li>
+        </ul>
+    </div>
+    
+    <div class="check-item">
+        <h4>2. Self-Improving Check</h4>
+        <ul>
+            <li>扫描 <code>~/self-improving/</code> 目录</li>
+            <li>读取 <code>heartbeat-state.md</code> 中的 <code>last_reviewed_change_at</code></li>
+            <li>查找自上次检查后是否有新增/修改的文件（排除 heartbeat-state.md）</li>
+            <li>如有新纠正或反思，追加到对应文件（corrections.md / memory.md / domains/ / projects/）</li>
+        </ul>
+    </div>
+    
+    <div class="check-item">
+        <h4>3. 更新心跳状态</h4>
+        <ul>
+            <li>更新 <code>~/self-improving/heartbeat-state.md</code> 中的 <code>last_heartbeat_started_at</code></li>
+            <li>记录 <code>last_heartbeat_result</code> 为 <strong>HEARTBEAT_OK</strong></li>
+            <li>添加本次检查摘要到 <code>Last actions</code> 列表</li>
+        </ul>
+    </div>
+    
+    <div class="check-item">
+        <h4>4. 回复心跳确认</h4>
+        <ul>
+            <li>如果一切正常 → 回复 <code>HEARTBEAT_OK</code></li>
+            <li>如果有问题 → 回复问题描述（不包含 HEARTBEAT_OK）</li>
+        </ul>
+    </div>
+    
+    <h2>📁 关键文件</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>文件</th>
+                <th>路径</th>
+                <th>用途</th>
+            </tr>
+        </thead>
+        <tr>
+            <td><code>HEARTBEAT.md</code></td>
+            <td><code>C:\Users\用户名\.openclaw\workspace\</code></td>
+            <td>心跳任务定义（PowerShell 脚本、检查清单）</td>
+        </tr>
+        <tr>
+            <td><code>heartbeat-state.md</code></td>
+            <td><code>C:\Users\用户名\self-improving\</code></td>
+            <td>心跳执行状态记录（时间戳、动作历史）</td>
+        </tr>
+        <tr>
+            <td><code>memory-manager</code></td>
+            <td><code>~/.openclaw/skills/memory-manager/</code></td>
+            <td>记忆压缩检测和快照脚本</td>
+        </tr>
+    </table>
+    
+    <h2>🔧 自定义检查清单</h2>
+    
+    <p>修改 <code>HEARTBEAT.md</code> 可以添加自定义检查任务。示例：</p>
+    <pre><code># Email Check (每小时)
+# 检查未读邮件
+openclaw email unread --limit 10
 
+# Calendar Check (每天 2 次)
+# 检查未来 24 小时日程
+openclaw calendar events --from now --to "24h"
+
+# Weather Check (需要时)
+# 获取所在地天气
+weather "河南洛阳"</code></pre>
+    
+    <h2>⏰ 执行时间</h2>
+    
+    <ul>
+        <li><strong>默认间隔：</strong> 30 分钟</li>
+        <li><strong>自动调度：</strong> OpenClaw 内部定时器触发</li>
+        <li><strong>执行方式：</strong> 每次完整检查后等待 30 分钟，再次执行</li>
+        <li><strong>日志记录：</strong> 每次检查结果追加到 <code>heartbeat-state.md</code></li>
+    </ul>
+    
+    <h2>📊 状态输出示例</h2>
+    
+    <p><strong>正常情况（回复 HEARTBEAT_OK）：</strong></p>
+    <pre><code>✅ 心跳检查完成！状态：**HEARTBEAT_OK**
+
+## 📊 检查总结（2026-04-07 00:28）
+
+### Memory Management
+- 记忆总大小：**139.73 KB**（持续稳定）
+- 无压缩风险
+
+### Self-Improving
+- 扫描 `~/self-improving/`：**无变化**（自 23:58 后）
+- 无需追加纠正或反思</code></pre>
+    
+    <p><strong>发现问题（不回复 HEARTBEAT_OK）：</strong></p>
+    <pre><code>⚠️ 发现记忆压缩风险！
+
+当前记忆大小：523 KB，超过建议阈值 200 KB。
+建议立即运行 `memory-manager snapshot` 保存快照，并清理过时记录。</code></pre>
+    
+    <h2>⚠️ 注意事项</h2>
+    
+    <ul>
+        <li><strong>不要频繁修改 HEARTBEAT.md：</strong> 此文件由系统自动读取，添加任务时需确保语法正确。</li>
+        <li><strong>心跳占用资源极少：</strong> 主要为磁盘 I/O 和文件统计，CPU 消耗可忽略。</li>
+        <li><strong>时间可调整：</strong> 如需更频繁或更稀疏的检查，可修改 OpenClaw 配置中的心跳间隔。</li>
+        <li><strong>时区敏感：</strong> heartbeat-state.md 中的时间戳使用 UTC+8（Asia/Shanghai）。</li>
+        <li><strong>手动触发：</strong> 可通过发送心跳轮询消息手动触发检查（用于测试）。</li>
+    </ul>
+    
+    <div class="warning">
+        <h4>📌 最佳实践</h4>
+        <ul>
+            <li>每天至少检查一次 <code>heartbeat-state.md</code>，确认心跳正常运行</li>
+            <li>如果超过 24 小时无心跳记录，需排查 OpenClaw 是否异常退出</li>
+            <li>记忆大小超过 300 KB 时，手动运行 <code>memory-manager snapshot</code></li>
+            <li><code>self-improving/</code> 目录中的 corrections.md 是宝贵的学习记录，不要删除</li>
+        </ul>
+    </div>
+    
+    <hr style="margin-top: 3rem;">
+    <p class="text-muted small"><strong>记录日期：</strong>2026-04-07 | <strong>整理人：</strong>小龙女-CEO</p>
+
+  </div>
 </main>
 
 <footer class="bg-dark text-white py-4 mt-5">

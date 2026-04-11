@@ -109,12 +109,239 @@ a { color: #0d6efd; }
 </nav>
 
 <main class="container py-4">
-
-    <div class="container mt-4">
-        <h1>基本指令</h1>
-        <div class="alert alert-info">内容正在整理中，敬请期待</div>
+  <div class="container mt-4">
+    <h1 class="mb-4">⚡ 常用指令速查</h1>
+    
+    <h1>⚡ OpenClaw 常用指令速查</h1>
+    <p class="date"><strong>更新日期：</strong>2026-04-07 | <strong>适用版本：</strong>OpenClaw-zh v2026.4.2</p>
+    
+    <div class="tip">
+        <h4>💡 使用提示</h4>
+        <p>以下指令基于 <strong>Windows 系统</strong>，在 <strong>CMD</strong> 或 <strong>PowerShell</strong> 中执行。点击"复制"按钮可直接复制到剪贴板。</p>
     </div>
+    
+    <div class="category">
+        <h2>🚀 启动与停止</h2>
+        
+        <div class="cmd">
+            <code>openclaw start</code>
+            <button class="copy-btn" onclick="copy(this,'openclaw start')">复制</button>
+        </div>
+        <p><small>启动 OpenClaw 网关服务</small></p>
+        
+        <div class="cmd">
+            <code>openclaw stop</code>
+            <button class="copy-btn" onclick="copy(this,'openclaw stop')">复制</button>
+        </div>
+        <p><small>停止网关服务</small></p>
+        
+        <div class="cmd">
+            <code>openclaw gateway restart</code>
+            <button class="copy-btn" onclick="copy(this,'openclaw gateway restart')">复制</button>
+        </div>
+        <p><small>重启网关（常用配置更改后）</small></p>
+    </div>
+    
+    <div class="category">
+        <h2>📦 插件管理</h2>
+        
+        <div class="cmd">
+            <code>openclaw plugins list</code>
+            <button class="copy-btn" onclick="copy(this,'openclaw plugins list')">复制</button>
+        </div>
+        <p><small>查看已安装插件列表</small></p>
+        
+        <div class="cmd">
+            <code>openclaw plugins install &lt;插件名&gt;</code>
+            <button class="copy-btn" onclick="copy(this,'openclaw plugins install <插件名>')">复制</button>
+        </div>
+        <p><small>安装新插件</small></p>
+        
+        <div class="cmd">
+            <code>openclaw plugins uninstall &lt;插件名&gt;</code>
+            <button class="copy-btn" onclick="copy(this,'openclaw plugins uninstall <插件名>')">复制</button>
+        </div>
+        <p><small>卸载插件</small></p>
+        
+        <div class="cmd">
+            <code>openclaw plugins update</code>
+            <button class="copy-btn" onclick="copy(this,'openclaw plugins update')">复制</button>
+        </div>
+        <p><small>更新所有插件</small></p>
+    </div>
+    
+    <div class="category">
+        <h2>🔧 系统维护</h2>
+        
+        <div class="cmd">
+            <code>openclaw update</code>
+            <button class="copy-btn" onclick="copy(this,'openclaw update')">复制</button>
+        </div>
+        <p><small>检查并更新 OpenClaw 核心</small></p>
+        
+        <div class="cmd">
+            <code>openclaw upgrade</code>
+            <button class="copy-btn" onclick="copy(this,'openclaw upgrade')">复制</button>
+        </div>
+        <p><small>执行 OpenClaw 升级（推荐定期执行）</small></p>
+        
+        <div class="cmd">
+            <code>openclaw doctor</code>
+            <button class="copy-btn" onclick="copy(this,'openclaw doctor')">复制</button>
+        </div>
+        <p><small>系统健康检查，诊断常见问题</small></p>
+        
+        <div class="cmd">
+            <code>openclaw logs tail</code>
+            <button class="copy-btn" onclick="copy(this,'openclaw logs tail')">复制</button>
+        </div>
+        <p><small>查看实时日志流</small></p>
+    </div>
+    
+    <div class="category">
+        <h2>👥 员工管理（多机器人架构）</h2>
+        
+        <div class="cmd">
+            <code>openclaw agent list</code>
+            <button class="copy-btn" onclick="copy(this,'openclaw agent list')">复制</button>
+        </div>
+        <p><small>列出所有已配置的机器人员工</small></p>
+        
+        <div class="cmd">
+            <code>openclaw agent --agent coder --message "任务描述"</code>
+            <button class="copy-btn" onclick="copy(this,'openclaw agent --agent coder --message \"任务描述\"')">复制</button>
+        </div>
+        <p><small>通过 CEO 调用指定员工执行任务</small></p>
+        
+        <div class="cmd">
+            <code>openclaw agent --agent writer --status</code>
+            <button class="copy-btn" onclick="copy(this,'openclaw agent --agent writer --status')">复制</button>
+        </div>
+        <p><small>检查员工状态</small></p>
+    </div>
+    
+    <div class="category">
+        <h2>🌍 网络与代理配置</h2>
+        
+        <div class="cmd">
+            <code>git config --global http.proxy http://127.0.0.1:端口</code>
+            <button class="copy-btn" onclick="copy(this,'git config --global http.proxy http://127.0.0.1:端口')">复制</button>
+        </div>
+        <p><small>设置 Git HTTP 代理（用于 GitHub 推送）</small></p>
+        
+        <div class="cmd">
+            <code>git config --global --unset http.proxy</code>
+            <button class="copy-btn" onclick="copy(this,'git config --global --unset http.proxy')">复制</button>
+        </div>
+        <p><small>取消 Git 代理配置</small></p>
+        
+        <div class="cmd">
+            <code>ssh -T git@github.com</code>
+            <button class="copy-btn" onclick="copy(this,'ssh -T git@github.com')">复制</button>
+        </div>
+        <p><small>测试 SSH 连接（端口22）</small></p>
+        
+        <div class="cmd">
+            <code>ssh -T -p 443 git@ssh.github.com</code>
+            <button class="copy-btn" onclick="copy(this,'ssh -T -p 443 git@ssh.github.com')">复制</button>
+        </div>
+        <p><small>测试 SSH over 443 连接</small></p>
+    </div>
+    
+    <div class="category">
+        <h2>💾 Git 基本操作</h2>
+        
+        <div class="cmd">
+            <code>git status</code>
+            <button class="copy-btn" onclick="copy(this,'git status')">复制</button>
+        </div>
+        <p><small>查看当前状态（修改、新增、删除的文件）</small></p>
+        
+        <div class="cmd">
+            <code>git add .</code>
+            <button class="copy-btn" onclick="copy(this,'git add .')">复制</button>
+        </div>
+        <p><small>添加所有变更到暂存区</small></p>
+        
+        <div class="cmd">
+            <code>git commit -m "更新描述"</code>
+            <button class="copy-btn" onclick="copy(this,'git commit -m \"更新描述\"')">复制</button>
+        </div>
+        <p><small>提交变更</small></p>
+        
+        <div class="cmd">
+            <code>git push origin main</code>
+            <button class="copy-btn" onclick="copy(this,'git push origin main')">复制</button>
+        </div>
+        <p><small>推送到 GitHub</small></p>
+        
+        <div class="cmd">
+            <code>git pull origin main</code>
+            <button class="copy-btn" onclick="copy(this,'git pull origin main')">复制</button>
+        </div>
+        <p><small>拉取最新变更（多设备同步时使用）</small></p>
+        
+        <div class="cmd">
+            <code>git log --oneline -5</code>
+            <button class="copy-btn" onclick="copy(this,'git log --oneline -5')">复制</button>
+        </div>
+        <p><small>查看最近 5 条提交记录</small></p>
+    </div>
+    
+    <div class="category">
+        <h2>🔍 调试与排查</h2>
+        
+        <div class="cmd">
+            <code>openclaw config list</code>
+            <button class="copy-btn" onclick="copy(this,'openclaw config list')">复制</button>
+        </div>
+        <p><small>查看当前配置</small></p>
+        
+        <div class="cmd">
+            <code>openclaw doctor --verbose</code>
+            <button class="copy-btn" onclick="copy(this,'openclaw doctor --verbose')">复制</button>
+        </div>
+        <p><small>详细健康检查（包含日志）</small></p>
+        
+        <div class="cmd">
+            <code>Test-NetConnection github.com -Port 443</code>
+            <button class="copy-btn" onclick="copy(this,'Test-NetConnection github.com -Port 443')">复制</button>
+        </div>
+        <p><small>PowerShell：测试 443 端口连通性</small></p>
+        
+        <div class="cmd">
+            <code>curl -I https://github.com</code>
+            <button class="copy-btn" onclick="copy(this,'curl -I https://github.com')">复制</button>
+        </div>
+        <p><small>测试 HTTPS 连接（需安装 curl）</small></p>
+        
+        <div class="cmd">
+            <code>ssh -vvv git@github.com</code>
+            <button class="copy-btn" onclick="copy(this,'ssh -vvv git@github.com')">复制</button>
+        </div>
+        <p><small>SSH 调试日志（查看详细连接过程）</small></p>
+    </div>
+    
+    
+<script>
+function copy(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    const original = btn.textContent;
+    btn.textContent = '✓ 已复制';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
 
+    
+    <hr style="margin-top: 3rem;">
+    <p class="text-muted small"><strong>整理日期：</strong>2026-04-07 | <strong>整理人：小龙女-CEO</strong>小龙女-CEO</p>
+
+  </div>
 </main>
 
 <footer class="bg-dark text-white py-4 mt-5">
