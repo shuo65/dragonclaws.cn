@@ -2,142 +2,65 @@
 <html lang="zh-CN">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>商业版部署指南 | 龙爪中国网</title>
-  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" onerror="this.onerror=null;this.href='https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css'">
-
+<title>商业版部署指南 | 龙爪中国网</title>
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" onerror="this.onerror=null;this.href='https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css'">
 <style>
-
-/* 暗色模式CSS变量 */
-:root {
-  --bg-color: #F5F7FA;
-  --text-color: #212529;
-  --muted-color: #6c757d;
-  --card-bg: #ffffff;
-  --link-color: #0d6efd;
-  --border-color: #dee2e6;
-  --primary-color: #2A5CAA;
-}
-[data-bs-theme="dark"] {
-  --bg-color: #121212;
-  --text-color: #f5f5f5;
-  --muted-color: #b0b0b0;
-  --card-bg: #1e1e1e;
-  --link-color: #8ab4f8;
-  --border-color: #333333;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-bs-theme="light"]) {
-    --bg-color: #121212;
-    --text-color: #f5f5f5;
-    --muted-color: #b0b0b0;
-    --card-bg: #1e1e1e;
-    --link-color: #8ab4f8;
-    --border-color: #333333;
-  }
-}
+:root { --bg-color: #F5F7FA; --text-color: #212529; --muted-color: #6c757d; --card-bg: #ffffff; --link-color: #0d6efd; --border-color: #dee2e6; --primary-color: #2A5CAA; }
+[data-bs-theme="dark"] { --bg-color: #121212; --text-color: #f5f5f5; --muted-color: #b0b0b0; --card-bg: #1e1e1e; --link-color: #8ab4f8; --border-color: #333333; }
+@media (prefers-color-scheme: dark) { :root:not([data-bs-theme="light"]) { --bg-color: #121212; --text-color: #f5f5f5; --muted-color: #b0b0b0; --card-bg: #1e1e1e; --link-color: #8ab4f8; --border-color: #333333; } }
 body { background: var(--bg-color); color: var(--text-color); }
-.text-muted { color: var(--muted-color) !important; }
-a { color: var(--link-color); }
-body { background: #F5F7FA; color: #212529; }
-.navbar { background: #2A5CAA !important; }
+.navbar { background: var(--primary-color) !important; }
 .navbar-brand { color: white !important; }
 .nav-link { color: rgba(255,255,255,0.85) !important; }
 .nav-link:hover { color: white !important; }
-.section-title { border-left: 4px solid #FF6B35; padding-left: 1rem; margin: 1.5rem 0 1rem; color: #2A5CAA; font-weight: 600; }
-.card-custom { background: #fff; border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 1rem; }
-.text-muted { color: #6c757d !important; }
-a { color: #0d6efd; }
-@media (max-width: 768px) { .section-title { font-size: 1.3rem; } }
-
-/* 导航栏样式 */
-
-.navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-.navbar-brand { font-size: 1.25rem; font-weight: 600; color: white !important; }
-.navbar-brand span { font-size: 1.5rem; }
-.nav-link { color: rgba(255,255,255,0.85) !important; }
-.nav-link:hover { color: white !important; }
-
-
-/* 导航栏样式 */
-.navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-.navbar-brand { font-size: 1.25rem; font-weight: 600; color: white !important; }
-.navbar-brand span { font-size: 1.5rem; }
-.nav-link { color: rgba(255,255,255,0.85) !important; font-weight: 500; padding: 0.5rem 1rem !important; transition: opacity 0.2s; }
-.nav-link:hover { color: white !important; }
+.coming-soon { background: var(--card-bg); border-left: 4px solid #198754; padding: 2rem; margin: 2rem 0; border-radius: 0 0.5rem 0.5rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.coming-soon h4 { color: var(--primary-color); margin-bottom: 1rem; }
+.coming-soon ul { margin-top: 1rem; }
 </style>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-dark">
-  <div class="container">
-    <a class="navbar-brand" href="../index.html">
-      <span>🐉</span>龙爪中国网
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="../index.html">首页</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../ecosystem/ecosystem-index.html">站点矩阵</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../versions/versions-index.html">版本展示</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../history/history-index.html">发展史</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../deployment/deployment-index.html">部署经验</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../faq/faq-index.html">常见问题</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../projects/projects-index.html">项目实例</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../quickstart/quickstart-index.html">常用指令</a>
-        </li>
-      </ul>
-    </div>
-  </div>
+<div class="container">
+<a class="navbar-brand" href="../index.html"><span>🐉</span>龙爪中国网</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="../index.html">首页</a></li>
+<li class="nav-item"><a class="nav-link" href="../ecosystem/ecosystem-index.html">站点矩阵</a></li>
+<li class="nav-item"><a class="nav-link" href="../versions/versions-index.html">版本展示</a></li>
+<li class="nav-item"><a class="nav-link" href="../history/history-index.html">发展史</a></li>
+<li class="nav-item"><a class="nav-link" href="../deployment/deployment-index.html">部署经验</a></li>
+<li class="nav-item"><a class="nav-link" href="../faq/faq-index.html">常见问题</a></li>
+<li class="nav-item"><a class="nav-link" href="../projects/projects-index.html">项目实例</a></li>
+<li class="nav-item"><a class="nav-link" href="../quickstart/quickstart-index.html">常用指令</a></li>
+</ul>
+</div>
+</div>
 </nav>
-
-<main class="container py-4">
-
-    <div class="container mt-4">
-        <h1>商业版部署指南</h1>
-        <div class="alert alert-info">内容正在整理中，敬请期待</div>
-    </div>
-
+<main class="container py-4" style="margin-top: 5rem;">
+<div class="container">
+<h1 class="mb-4">💼 商业版部署指南</h1>
+<div class="coming-soon">
+<h4>📝 内容正在整理中</h4>
+<p class="mb-0">OpenClaw 商业版的企业级部署指南即将推出，敬请期待...</p>
+<p class="mt-3 mb-0"><strong>预计包含：</strong></p>
+<ul>
+<li>企业环境配置与集群部署</li>
+<li>安全加固与权限管理</li>
+<li>监控告警与日志分析</li>
+<li>高可用与负载均衡</li>
+</ul>
+<a href="deployment-index.html" class="btn btn-sm btn-outline-primary mt-3">← 返回部署经验</a>
+</div>
+</div>
 </main>
-
-<footer class="bg-dark text-white py-4 mt-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h6>🐉 龙爪中国网</h6>
-        <p class="text-light small mb-0">个人OpenClaw爱好者基地 | 非官方网站</p>
-      </div>
-      <div class="col-md-6 text-md-end">
-        <h6>友情链接</h6>
-        <p class="small mb-0">
-          <a href="../index.html" class="text-light">龙爪中国</a> |
-          <a href="https://www.hotclaw.top" target="_blank" class="text-light">热门Claw</a> |
-          <a href="https://www.freemodel.shop" target="_blank" class="text-light">免费模型</a> |
-          <a href="https://www.clawhealth.icu" target="_blank" class="text-light">健康监护</a>
-        </p>
-      </div>
-    </div>
-    <hr class="bg-secondary">
-    <p class="text-center text-light small mb-0">（所有域名出售中）</p>
-  </div>
+<footer class="text-center py-4 mt-5" style="background: var(--card-bg); border-top: 1px solid var(--border-color);">
+<div class="container">
+<p class="mb-0 text-muted">© 2026 龙爪中国网 | <a href="../index.html">返回首页</a></p>
+<p class="mb-0 very-small text-muted">（所有域名出售中）</p>
+</div>
 </footer>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

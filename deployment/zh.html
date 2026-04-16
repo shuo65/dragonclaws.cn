@@ -1,143 +1,89 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OpenClaw-zh 部署指南 | 龙爪中国网</title>
-  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" onerror="this.onerror=null;this.href='https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css'">
 
-<style>
-
-/* 暗色模式CSS变量 */
-:root {
-  --bg-color: #F5F7FA;
-  --text-color: #212529;
-  --muted-color: #6c757d;
-  --card-bg: #ffffff;
-  --link-color: #0d6efd;
-  --border-color: #dee2e6;
-  --primary-color: #2A5CAA;
-}
-[data-bs-theme="dark"] {
-  --bg-color: #121212;
-  --text-color: #f5f5f5;
-  --muted-color: #b0b0b0;
-  --card-bg: #1e1e1e;
-  --link-color: #8ab4f8;
-  --border-color: #333333;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-bs-theme="light"]) {
-    --bg-color: #121212;
-    --text-color: #f5f5f5;
-    --muted-color: #b0b0b0;
-    --card-bg: #1e1e1e;
-    --link-color: #8ab4f8;
-    --border-color: #333333;
-  }
-}
-body { background: var(--bg-color); color: var(--text-color); }
-.text-muted { color: var(--muted-color) !important; }
-a { color: var(--link-color); }
-body { background: #F5F7FA; color: #212529; }
-.navbar { background: #2A5CAA !important; }
-.navbar-brand { color: white !important; }
-.nav-link { color: rgba(255,255,255,0.85) !important; }
-.nav-link:hover { color: white !important; }
-.section-title { border-left: 4px solid #FF6B35; padding-left: 1rem; margin: 1.5rem 0 1rem; color: #2A5CAA; font-weight: 600; }
-.card-custom { background: #fff; border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 1rem; }
-.text-muted { color: #6c757d !important; }
-a { color: #0d6efd; }
-@media (max-width: 768px) { .section-title { font-size: 1.3rem; } }
-
-/* 导航栏样式 */
-
-.navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-.navbar-brand { font-size: 1.25rem; font-weight: 600; color: white !important; }
-.navbar-brand span { font-size: 1.5rem; }
-.nav-link { color: rgba(255,255,255,0.85) !important; }
-.nav-link:hover { color: white !important; }
-
-
-/* 导航栏样式 */
-.navbar { background-color: var(--primary-color); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-.navbar-brand { font-size: 1.25rem; font-weight: 600; color: white !important; }
-.navbar-brand span { font-size: 1.5rem; }
-.nav-link { color: rgba(255,255,255,0.85) !important; font-weight: 500; padding: 0.5rem 1rem !important; transition: opacity 0.2s; }
-.nav-link:hover { color: white !important; }
-</style>
-</head>
-<body>
-
-<nav class="navbar navbar-expand-lg navbar-dark">
-  <div class="container">
-    <a class="navbar-brand" href="../index.html">
-      <span>🐉</span>龙爪中国网
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="../index.html">首页</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../ecosystem/ecosystem-index.html">站点矩阵</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../versions/versions-index.html">版本展示</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../history/history-index.html">发展史</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../deployment/deployment-index.html">部署经验</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../faq/faq-index.html">常见问题</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../projects/projects-index.html">项目实例</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../quickstart/quickstart-index.html">常用指令</a>
-        </li>
-      </ul>
-    </div>
-  </div>
+</div>
 </nav>
-
-<main class="container py-4">
-
-    <div class="container mt-4">
-        <h1>OpenClaw-zh 部署指南</h1>
-        <div class="alert alert-info">内容正在整理中，敬请期待</div>
-    </div>
-
+<main class="container py-4" style="margin-top: 5rem;">
+<div class="container">
+<h1 class="mb-4">🇨🇳 OpenClaw-zh 部署指南</h1>
+<div class="row g-4">
+<div class="col-12">
+<div class="card">
+<div class="card-header bg-primary text-white">
+<h5 class="mb-0">📋 目录</h5>
+</div>
+<ul class="list-group list-group-flush">
+<li class="list-group-item"><a href="#prep">1. 环境准备</a></li>
+<li class="list-group-item"><a href="#install">2. 安装OpenClaw-CN（汉化版）</a></li>
+<li class="list-group-item"><a href="#init">3. 初始化配置向导</a></li>
+<li class="list-group-item"><a href="#chinese">4. 解决中文用户名导致的编码问题</a></li>
+<li class="list-group-item"><a href="#model">5. 免费模型配置（硅基流动）</a></li>
+<li class="list-group-item"><a href="#skills">6. 核心功能与技能</a></li>
+<li class="list-group-item"><a href="#multiagent">7. 多Agent协同配置（进阶）</a></li>
+<li class="list-group-item"><a href="#mobile">8. 手机远程访问</a></li>
+<li class="list-group-item"><a href="#commands">9. 常用命令速查</a></li>
+<li class="list-group-item"><a href="#faq">10. 常见问题与解决方案</a></li>
+</ul>
+</div>
+</div>
+<div class="col-12">
+<h2 id="prep">📦 1. 环境准备</h2>
+<p>在安装 OpenClaw-CN 之前，需要确保系统满足以下要求：</p>
+<ul>
+<li><strong>操作系统：</strong> Windows 10/11（推荐），macOS，Linux</li>
+<li><strong>Node.js：</strong> v18 或更高版本</li>
+<li><strong>内存：</strong> 至少 8GB RAM（推荐 16GB）</li>
+<li><strong>网络：</strong> 需要访问 GitHub 和模型API</li>
+</ul>
+</div>
+<div class="col-12">
+<h2 id="install">💻 2. 安装OpenClaw-CN（汉化版）</h2>
+<pre class="bg-dark text-light p-3 rounded"><code>npm install -g @openclaw/zh</code></pre>
+<p>或使用一键安装脚本：</p>
+<pre class="bg-dark text-light p-3 rounded"><code>curl -sL https://get.openclaw.cn/zh | bash</code></pre>
+</div>
+<div class="col-12">
+<h2 id="init">⚙️ 3. 初始化配置向导</h2>
+<p>运行初始化命令，按照提示完成配置：</p>
+<pre class="bg-dark text-light p-3 rounded"><code>openclaw init</code></pre>
+</div>
+<div class="col-12">
+<h2 id="chinese">🐛 4. 解决中文用户名导致的编码问题</h2>
+<div class="alert alert-warning">
+<strong>常见问题：</strong> Windows 用户名含中文导致网关闪退
+</div>
+<p>解决方案：修改 OpenClaw 数据目录到无中文路径</p>
+<pre class="bg-dark text-light p-3 rounded"><code>set OPENCLAW_DATA=D:\openclaw-data</code></pre>
+</div>
+<div class="col-12">
+<h2 id="model">🤖 5. 免费模型配置（硅基流动）</h2>
+<p>推荐使用硅基流动（SiliconFlow）的免费模型：</p>
+<ol>
+<li>访问 <a href="https://cloud.siliconflow.cn" target="_blank">硅基流动官网</a></li>
+<li>注册账号并获取 API Key</li>
+<li>在配置文件中添加模型</li>
+</ol>
+</div>
+<div class="col-12">
+<h2 id="commands">⌨️ 常用命令速查</h2>
+<table class="table table-striped">
+<tr><th>命令</th><th>说明</th></tr>
+<tr><td><code>openclaw gateway start</code></td><td>启动网关</td></tr>
+<tr><td><code>openclaw gateway stop</code></td><td>停止网关</td></tr>
+<tr><td><code>openclaw status</code></td><td>查看状态</td></tr>
+<tr><td><code>openclaw models list</code></td><td>列出模型</td></tr>
+</table>
+</div>
+<div class="col-12 mt-4">
+<a href="deployment-index.html" class="btn btn-outline-primary">← 返回部署经验</a>
+</div>
+</div>
+</div>
 </main>
-
-<footer class="bg-dark text-white py-4 mt-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h6>🐉 龙爪中国网</h6>
-        <p class="text-light small mb-0">个人OpenClaw爱好者基地 | 非官方网站</p>
-      </div>
-      <div class="col-md-6 text-md-end">
-        <h6>友情链接</h6>
-        <p class="small mb-0">
-          <a href="../index.html" class="text-light">龙爪中国</a> |
-          <a href="https://www.hotclaw.top" target="_blank" class="text-light">热门Claw</a> |
-          <a href="https://www.freemodel.shop" target="_blank" class="text-light">免费模型</a> |
-          <a href="https://www.clawhealth.icu" target="_blank" class="text-light">健康监护</a>
-        </p>
-      </div>
-    </div>
-    <hr class="bg-secondary">
-    <p class="text-center text-light small mb-0">（所有域名出售中）</p>
-  </div>
+<footer class="text-center py-4 mt-5" style="background: var(--card-bg); border-top: 1px solid var(--border-color);">
+<div class="container">
+<p class="mb-0 text-muted">© 2026 龙爪中国网 | <a href="../index.html">返回首页</a></p>
+<p class="mb-0 very-small text-muted">（所有域名出售中）</p>
+</div>
 </footer>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
