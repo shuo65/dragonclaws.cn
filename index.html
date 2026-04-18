@@ -121,6 +121,7 @@
             --primary-color: #2A5CAA;
             --accent-color: #FF6B35;
             --bg-color: #F5F7FA;
+  --card-bg: #ffffff;
         }
         body {
             background-color: var(--bg-color);
@@ -164,14 +165,7 @@
             font-size: 0.9rem;
             opacity: 0.95;
         }
-            .hero .btn {
-            padding: 0.4rem 1rem;
-            font-size: 0.9rem;
-        }
-        .hero .btn {
-            font-size: 1rem;
-            padding: 0.6rem 1.5rem;
-        }
+            .hero .btn { font-size: 1rem; padding: 0.6rem 1.5rem; border: 2px solid rgba(255,255,255,0.6); border-radius: 4px; transition: all 0.2s ease; } .hero .btn:hover { background: rgba(255,255,255,0.15); border-color: #fff; box-shadow: 0 0 10px rgba(255,255,255,0.4); }
         /* 移动端Hero按钮优化 */
         @media (max-width: 768px) {
             .hero .btn {
@@ -225,14 +219,7 @@
         .timeline-content small {
             font-size: 0.75rem;
         }
-        .timeline-content:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-        }
-        .timeline-content:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-        }
+        .timeline-content:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
         .timeline-item:nth-child(odd) .timeline-content {
             margin-left: auto;
         }
