@@ -1,0 +1,454 @@
+.navbar-brand { text-decoration: none !important; }
+.nav-link { text-decoration: none !important; }
+
+/* 龙爪中国网 - 公共样式 (2026-04-23) */
+/* 从内联样式迁移，确保所有页面样式统一 */
+
+/* ========== CSS 变量 ========== */
+:root {
+  --primary-color: #2A5CAA;
+  --accent-color: #FF6B35;
+  --bg-color: #F5F7FA;
+  --text-color: #212529;
+  --muted-color: #6c757d;
+  --card-bg: #ffffff;
+  --link-color: #0d6efd;
+  --border-color: #dee2e6;
+  --code-bg: #f8f9fa;
+  --code-color: #c7254e;
+}
+
+/* 暗色模式变量 */
+[data-bs-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --muted-color: #a0a0a0;
+  --card-bg: #1e1e1e;
+  --link-color: #8ab4f8;
+  --border-color: #333333;
+  --code-bg: #2d2d2d;
+  --code-color: #ff7b72;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-bs-theme="light"]) {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --muted-color: #a0a0a0;
+    --card-bg: #1e1e1e;
+    --link-color: #8ab4f8;
+    --border-color: #333333;
+    --code-bg: #2d2d2d;
+    --code-color: #ff7b72;
+  }
+}
+
+/* ========== 全局重置 ========== */
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ========== 导航栏 ========== */
+.navbar {
+  background-color: var(--primary-color);
+  box-shadow: none;
+  margin-bottom: 0;
+}
+.navbar-brand {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff !important;
+  text-decoration: none;
+}
+.navbar-brand:hover {
+  text-decoration: none;
+}
+.navbar-brand span {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+.nav-link {
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  color: rgba(255,255,255,0.85) !important;
+}
+.nav-link:hover {
+  color: white !important;
+}
+
+/* ========== Hero 区域 ========== */
+.hero {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.8rem 0.3rem;
+  margin-bottom: 0.6rem;
+  margin-top: 0;
+  border-top: none;
+  box-shadow: none;
+}
+.hero h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.hero .lead {
+  font-size: 0.9rem;
+  opacity: 0.95;
+}
+.hero .btn {
+  font-size: 1rem;
+  padding: 0.6rem 1.5rem;
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 4px;
+  background: transparent;
+  color: #fff;
+}
+.hero .btn:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: #fff;
+}
+@media (max-width: 768px) {
+  .hero .btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+  }
+  .hero .lead {
+    font-size: 0.85rem;
+  }
+}
+
+/* ========== 章节标题（渐变美化） ========== */
+.section-title {
+  border-left: 4px solid var(--accent-color);
+  padding-left: 1rem;
+  margin: 2.5rem 0 1.5rem 0;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-title a {
+  color: inherit;
+  text-decoration: none;
+}
+.section-title a:hover {
+  color: #FF6B35 !important;
+}
+
+/* ========== 时间轴 ========== */
+.timeline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+.timeline::before {
+  display: none;
+}
+.timeline-item {
+  flex: 1 1 280px;
+  max-width: 320px;
+  margin: 0;
+  position: relative;
+}
+.timeline-content {
+  background: var(--card-bg);
+  padding: 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  width: 100%;
+  border: 1px solid var(--border-color);
+}
+.timeline-content h5 {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+  color: var(--text-color);
+}
+.timeline-content p {
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+  color: var(--muted-color);
+}
+.timeline-content small {
+  font-size: 0.75rem;
+  color: var(--muted-color);
+}
+.timeline-content:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* ========== 版本卡片 ========== */
+.version-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  height: 100%;
+  border: 1px solid var(--border-color);
+  position: relative;
+}
+.version-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* ========== 按钮 ========== */
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  border-radius: 4px;
+  padding: 0.5rem 1.25rem;
+  font-weight: 500;
+}
+.btn-outline-primary:hover:not(:disabled) {
+  background-color: var(--primary-color);
+  color: white;
+}
+.btn-outline-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ========== 复制按钮 ========== */
+.btn-copy {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  padding: 2px 8px;
+  font-size: 0.65rem;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.version-card:hover .btn-copy {
+  opacity: 1;
+}
+.btn-copy:active {
+  background: #1e4a8a;
+}
+
+/* ========== 链接（通用） ========== */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ========== 文字 ========== */
+.text-muted {
+  color: var(--muted-color) !important;
+}
+.very-small {
+  font-size: 0.75rem;
+}
+
+/* ========== 页脚 ========== */
+footer {
+  background-color: var(--primary-color);
+  color: rgba(255,255,255,0.9);
+  padding: 1.5rem 0;
+  margin-top: 2rem;
+}
+footer .text-muted {
+  color: rgba(255,255,255,0.7) !important;
+}
+.footer-links a {
+  color: #0d6efd !important;
+  text-decoration: none;
+  margin: 0 0.4rem;
+  font-size: 0.9rem;
+}
+.footer-links a:hover {
+  color: #0a58ca !important;
+  text-decoration: underline;
+}
+
+/* ========== 暗色模式切换按钮（固定定位） ========== */
+.dark-mode-toggle {
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 1000;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.dark-mode-toggle.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.dark-mode-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* ========== 返回顶部按钮（固定定位） ========== */
+.back-to-top {
+  position: fixed;
+  bottom: 140px;
+  right: 20px;
+  z-index: 999;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ========== 提示框 ========== */
+.coming-soon {
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+  padding: 1rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1.5rem 0;
+}
+
+/* ========== 分割线（渐变美化） ========== */
+hr {
+  border-color: var(--border-color);
+}
+.section-divider {
+  padding: 1.5rem 0;
+  margin: 1rem 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color), transparent);
+  border-radius: 2px;
+  border: none;
+}
+
+/* ========== 解决方案卡片（新版美化） ========== */
+.solution-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--primary-color);
+  transition: all 0.3s ease;
+}
+.solution-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(42, 92, 170, 0.15);
+  border-left-color: var(--accent-color);
+}
+.solution-title {
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+.solution-meta {
+  margin-bottom: 0.5rem;
+}
+.solution-meta .badge {
+  padding: 0.4em 0.8em;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-right: 0.25rem;
+}
+.solution-meta .badge:hover {
+  transform: scale(1.1);
+}
+
+/* ========== 按钮悬停效果 ========== */
+.btn-primary {
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  transform: scale(1.02);
+}
+
+/* ========== 代码块（使用CSS变量） ========== */
+code {
+  background-color: var(--code-bg);
+  color: var(--code-color);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+[data-bs-theme="dark"] pre,
+[data-bs-theme="dark"] .bg-light {
+  background-color: #2d2d2d !important;
+  color: #e0e0e0;
+}
+pre {
+  background-color: var(--code-bg);
+  color: var(--text-color);
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  border: 1px solid var(--border-color);
+}
+pre code {
+  background: none;
+  padding: 0;
+  border: none;
+  color: inherit;
+}
+
+/* ========== 徽章（美化） ========== */
+.badge-custom, .badge {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 0.4em 0.8em;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.badge:hover {
+  transform: scale(1.1);
+}
+
+/* 按钮链接无下划线 */
+.btn {
+  text-decoration: none !important;
+}
+.btn:hover {
+  text-decoration: none !important;
+}
+.btn:focus {
+  text-decoration: none !important;
+}

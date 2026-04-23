@@ -1,0 +1,453 @@
+
+        :root {
+            --primary-color: #2A5CAA;
+            --accent-color: #FF6B35;
+            --bg-color: #F5F7FA;
+  --card-bg: #ffffff;
+        }
+        body {
+            background-color: var(--bg-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .navbar-brand span {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            transition: opacity 0.2s;
+        }
+        .nav-link:hover {
+            opacity: 0.85;
+        }
+        .nav-link.active {
+            background-color: rgba(255,255,255,0.15);
+            border-radius: 4px;
+        }
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), #1e3d6f);
+            color: white;
+            padding: 0.8rem 0.3rem;
+            margin-bottom: 0.6rem;
+        }
+        .hero h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .hero .lead {
+            font-size: 0.9rem;
+            opacity: 0.95;
+        }
+            .hero .btn { font-size: 1rem; padding: 0.6rem 1.5rem; border: 2px solid rgba(255,255,255,0.6); border-radius: 4px; transition: all 0.2s ease; } .hero .btn:hover { background: rgba(255,255,255,0.15); border-color: #fff; box-shadow: 0 0 10px rgba(255,255,255,0.4); }
+        /* 移动端Hero按钮优化 */
+        @media (max-width: 768px) {
+            .hero .btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+            .hero .lead {
+                font-size: 0.85rem;
+            }
+        }
+        .section-title a { color: inherit; text-decoration: none; transition: all 0.2s; }
+.section-title a:hover { color: #FF6B35 !important; text-decoration: underline; }
+.section-title {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+            margin: 2.5rem 0 1.5rem 0;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .timeline {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+        .timeline::before {
+            display: none;
+        }
+        .timeline-item {
+            flex: 1 1 280px;
+            max-width: 320px;
+            margin: 0;
+            position: relative;
+        }
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 0.75rem;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .timeline-content h5 {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+        .timeline-content p {
+            font-size: 0.8rem;
+            margin-bottom: 0.25rem;
+        }
+        .timeline-content small {
+            font-size: 0.75rem;
+        }
+        .timeline-content:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: auto;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--accent-color);
+            z-index: 1;
+        }
+        .version-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            height: 100%;
+        }
+        .version-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+        .badge-custom {
+            background-color: var(--accent-color);
+            color: white;
+            font-weight: 500;
+        }
+        .btn-outline-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .footer-links a {
+            color: #88d;
+            text-decoration: none;
+            margin: 0 0.4rem;
+            font-size: 0.9rem;
+        }
+        .footer-links a:hover {
+            color: #aaf;
+            text-decoration: underline;
+        }
+        .coming-soon {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+
+        /* Timeline Filters (移动端优化) */
+        .timeline-filters {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding: 0.5rem 0;
+            margin-bottom: 1rem;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+        .timeline-filters::-webkit-scrollbar {
+            display: none;
+        }
+        .timeline-filters .filter-btn {
+            padding: 0.25rem 0.75rem;
+            font-size: 0.85rem;
+            border: 1px solid #ddd;
+            border-radius: 1rem;
+            background: #fff;
+            color: #666;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        .timeline-filters .filter-btn.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        .timeline-filters .filter-btn:hover {
+            border-color: var(--accent-color);
+        }
+
+        /* Timeline Groups (折叠分组) */
+        .timeline-group {
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--card-bg);
+        }
+        .group-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            user-select: none;
+            background: var(--card-bg);
+            transition: background 0.2s;
+        }
+        .group-header:hover {
+            background: rgba(0,0,0,0.03);
+        }
+        .group-header .year-label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .group-header .badge {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+        }
+        .group-items {
+            padding: 0 1rem 1rem 1rem;
+        }
+        .group-items.collapsed {
+            display: none;
+        }
+        .group-toggle-icon {
+            margin-left: 0.5rem;
+            transition: transform 0.2s;
+        }
+        .group-items.collapsed + .group-header .group-toggle-icon,
+        .group-header[data-expanded="false"] .group-toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        /* Dark Mode - 支持系统自动和手动切换 */
+        :root {
+            --bg-color: #F5F7FA;          /* 浅色背景 */
+            --text-color: #212529;        /* 深色文字 */
+            --muted-color: #6c757d;       /* 次级文字 */
+            --card-bg: #ffffff;           /* 卡片背景 */
+            --link-color: #0d6efd;        /* 蓝色链接 */
+            --border-color: #dee2e6;      /* 边框颜色 */
+        }
+
+        /* 手动暗色模式 (data-bs-theme="dark") */
+        [data-bs-theme="dark"] {
+            --bg-color: #121212;          /* 更深的背景 */
+            --text-color: #f5f5f5;        /* 接近白色，高对比度 */
+            --muted-color: #b0b0b0;       /* 次级文字，保持可读 */
+            --card-bg: #1e1e1e;          /* 卡片背景，比背景稍亮 */
+            --link-color: #8ab4f8;        /* 蓝色链接，在暗色清晰 */
+            --border-color: #333333;      /* 边框颜色 */
+        }
+
+        /* 系统自动暗色模式 (兼容) */
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-bs-theme="light"]) {
+                --bg-color: #121212;
+                --text-color: #f5f5f5;
+                --muted-color: #b0b0b0;
+                --card-bg: #1e1e1e;
+                --link-color: #8ab4f8;
+                --border-color: #333333;
+            }
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            background-color: var(--primary-color);
+        }
+        .nav-link {
+            color: rgba(255,255,255,0.85) !important;
+        }
+        .nav-link:hover {
+            color: white !important;
+        }
+
+        /* Hero区域 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), #1e3d6f);
+            color: white;
+        }
+
+        /* 标题 */
+        .section-title {
+            color: var(--primary-color);
+        }
+
+        /* 时间轴卡片 */
+        .timeline-content,
+        .version-card {
+            background: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* 链接 */
+        a {
+            color: var(--link-color);
+        }
+        a:hover {
+            color: #a8c8ff;
+            text-decoration: none;
+        }
+
+        /* 弱化文字 */
+        .text-muted {
+            color: var(--muted-color) !important;
+        }
+
+        /* 标签页 */
+        .badge {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* 分割线 */
+        hr {
+            border-color: var(--border-color);
+        }
+
+        /* Footer */
+        .footer-links a {
+            color: var(--link-color);
+        }
+        .footer-links a:hover {
+            color: #a8c8ff;
+        }
+
+        /* 开发提示框 */
+        .coming-soon {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+            color: var(--text-color);
+        }
+
+        /* 按钮 */
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .btn-outline-primary:hover:not(:disabled) {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .btn-outline-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .btn-xs {
+            padding: 0.2rem 0.5rem;
+            font-size: 0.7rem;
+        }
+        .very-small {
+            font-size: 0.75rem;
+        }
+
+        /* Dark Mode Toggle Button - 方案C：默认隐藏，手动切换后显示 */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.2s, opacity 0.3s;
+            opacity: 0; /* 默认隐藏 */
+            visibility: hidden;
+        }
+        .dark-mode-toggle.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 140px;
+            right: 20px;
+            z-index: 999;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Sticky Navbar */
+        .navbar {
+            transition: transform 0.3s;
+        }
+        .navbar.navbar-hidden {
+            transform: translateY(-100%);
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero .lead { font-size: 1rem; }
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 50px;
+                margin-right: 0;
+                width: calc(100% - 70px);
+            }
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+    
+        /* 代码块暗色模式适配 */
+        pre, code {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+    
