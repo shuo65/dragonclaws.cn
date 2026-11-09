@@ -16,18 +16,26 @@ header p{font-size:12px;opacity:.9;margin-top:6px}
 #wrap{padding:8px 8px 0}
 
 /* 树节点：折叠=白底灰边；展开=左侧蓝竖线 + 浅蓝标题 + 淡阴影 */
-details{background:#fff;margin-bottom:5px;border-radius:7px;overflow:hidden;border:1px solid #e6e9ef;border-left:3px solid #d5dbe6;}
-details[open]{border-left-color:#2b5cff;background:#fbfcff;}
-summary{display:flex;align-items:center;gap:6px;padding:10px 10px 10px 8px;cursor:pointer;list-style:none;min-height:44px}
-summary::-webkit-details-marker{display:none}
-details[open]>summary{background:#eef3ff}
+.n{background:#fff;margin-bottom:5px;border-radius:7px;overflow:hidden;border:1px solid #e6e9ef;border-left:3px solid #d5dbe6;}
+.n.open{border-left-color:#2b5cff;background:#fbfcff;}
+.n>.inner{display:none}
+.n.open>.inner{display:block}
+.hd{display:flex;align-items:center;gap:6px;padding:10px 10px 10px 8px;cursor:pointer;-webkit-tap-highlight-color:transparent;min-height:44px}
+.n.open>.hd{background:#eef3ff}
 .tw{flex:0 0 11px;color:#a9b0bb;font-size:9px;transition:transform .18s}
-details[open]>summary .tw{transform:rotate(90deg);color:#2b5cff}
+.n.open>.hd .tw{transform:rotate(90deg);color:#2b5cff}
 .nm{flex:1;font-weight:600;font-size:14px;word-break:break-all;line-height:1.35}
-details[open]>summary .nm{color:#1b3fd8}
+.n.open>.hd .nm{color:#1b3fd8}
 .mt{flex:0 0 auto;text-align:right;font-size:10px;color:#8a9099;line-height:1.45}
 .mt b{display:block;font-weight:600;color:#2b5cff;font-size:11px}
 .inner{padding:4px 6px 6px 14px}
+.hide{display:none!important}
+.n.hit>.hd{background:#fff8e1}
+.leaf.hit{background:#fff8e1;border-radius:4px}
+.srch{position:sticky;top:0;z-index:9;display:flex;gap:6px;padding:8px;background:#fff;border-bottom:1px solid #e6e9ef}
+.srch input{flex:1;min-width:0;font-size:16px;padding:8px 10px;border:1px solid #d9dee8;border-radius:7px;outline:none;background:#fbfcff}
+.srch button{font-size:12px;padding:0 12px;border:1px solid #d9dee8;background:#f7f9fc;border-radius:7px;min-height:44px}
+#sc{font-size:11px;color:#8a9099;padding:6px 12px;background:#fff;border-bottom:1px solid #eef1f6}
 
 /* 链接行：整条链接可点击跳转，右侧同行小复制按钮 */
 .lk{margin:0 8px 8px;background:#f2f7ff;border:1px solid #dbe6ff;border-radius:6px;padding:6px 7px;display:flex;align-items:center;gap:6px}
@@ -55,9 +63,11 @@ details[open]>summary .nm{color:#1b3fd8}
 <body>
 <header>
   <h1>夸克网盘资源目录（含分享链接）</h1>
-  <p>合计 26.06 TB · 898,666 个项目 · 15 个区按用户手查口径(2026-11-10) · 客户端已用≈25.9TB · 生成于 2026-11-10 01:07</p>
+  <p>合计 26.06 TB · 898,666 个项目 · 15 个区按用户手查口径(2026-11-10) · 客户端已用≈25.9TB · 生成于 2026-11-10 01:12</p>
   <div class="hs" id="hs"></div>
 </header>
+<div class="srch"><input id="kw" type="search" placeholder="关键词查询：输入 口袋神探 / 奥数 / 英语 等" autocomplete="off" autocorrect="off" autocapitalize="off"><button type="button" onclick="clrKw()">清空</button></div>
+<div id="sc">输入关键词可快速定位资源夹；每一层标题都可单独点开或收起</div>
 <div id="wrap"></div>
 <div class="note">展开的目录左侧变蓝、标题底色变浅蓝，折叠的保持灰边；链接可直接点开，右侧「复制」按钮可复制链接。全部链接公开·永久·无提取码。</div>
 <div class="bar">
@@ -97,13 +107,17 @@ function mkLk(url,leftPad){
 }
 function esc(s){return String(s).replace(/[&<>"]/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[x]))}
 function mk(level,name,node){
-  const d=document.createElement('details');d.className='lv'+level;
-  const sm=document.createElement('summary');
+  const d=document.createElement('div');d.className='n lv'+level;
+  const hd=document.createElement('div');hd.className='hd';
   let mt='<b>'+h(node.size)+'</b>'+c(node.files)+'文件';
   if(node.folders!==undefined&&node.folders!==null&&level<2)mt+='<br>'+node.folders+'资源夹';
-  sm.innerHTML='<span class="tw">▸</span><span class="nm">'+esc(name)+'</span><span class="mt">'+mt+'</span>';
-  d.appendChild(sm);
-  if(LINKED&&node.url)sm.appendChild(mkLk2(node.url));
+  hd.innerHTML='<span class="tw">▸</span><span class="nm">'+esc(name)+'</span><span class="mt">'+mt+'</span>';
+  d.appendChild(hd);
+  hd.addEventListener('click',function(ev){
+    if(ev.target.closest('a,button'))return;
+    d.classList.toggle('open');
+  });
+  if(LINKED&&node.url)hd.appendChild(mkLk2(node.url));
   return d;
 }
 function leaf(name,node,pad){
@@ -147,11 +161,51 @@ DATA.forEach(z=>{
   d0.appendChild(i0);wrap.appendChild(d0);
 });
 function toLv(mx){
-  var ds=document.querySelectorAll('details'),i=0,n=ds.length,c,m,lv;
-  for(;i<n;i++){m=ds[i].className.match(/lv(\d)/);lv=m?+m[1]:9;ds[i].open=(lv<=mx);}
+  var ns=document.querySelectorAll('.n'),i=0,n=ns.length,m,lv;
+  for(;i<n;i++){m=ns[i].className.match(/lv(\d)/);lv=m?+m[1]:9;ns[i].classList.toggle('open',lv<=mx);}
   var b=document.getElementById('bnOpen');
-  if(mx===3&&b){b.textContent='全部展开';}
+  if(b)b.textContent=(mx>=3?'全部展开':'全部展开');
 }
+var q='';
+function clrKw(){var k=document.getElementById('kw');if(k)k.value='';doSearch('')}
+function doSearch(v){
+  q=String(v||'').trim().toLowerCase();
+  var sc=document.getElementById('sc');
+  if(!q){
+    var all=document.querySelectorAll('.n,.leaf');
+    for(var i=0;i<all.length;i++){all[i].classList.remove('hide');all[i].classList.remove('hit');}
+    toLv(2);
+    if(sc)sc.textContent='已收起全部搜索结果，恢复到资源夹层级';
+    return;
+  }
+  var hits=0;
+  function walk(el){
+    var self=false,kid=false;
+    if(el.classList.contains('n')){
+      var nm=el.querySelector('.hd .nm');
+      self=nm?(nm.textContent.toLowerCase().indexOf(q)>=0):false;
+      var box=el.querySelector('.inner');
+      if(box){for(var j=0;j<box.children.length;j++){if(walk(box.children[j]))kid=true;}}
+    }else{
+      var nm2=el.querySelector('.nm2');
+      self=nm2?(nm2.textContent.toLowerCase().indexOf(q)>=0):false;
+    }
+    var show=self||kid;
+    el.classList.toggle('hide',!show);
+    el.classList.toggle('hit',self);
+    if(show&&el.classList.contains('n'))el.classList.add('open');
+    if(self)hits++;
+    return show;
+  }
+  var root=document.getElementById('wrap');
+  for(var r=0;r<root.children.length;r++)walk(root.children[r]);
+  if(sc)sc.textContent=hits?('命中 '+hits+' 项 · 已自动展开对应层级，点标题可单独收起'):'没有找到包含「'+v+'」的资源夹，换个词试试';
+}
+(function(){
+  var k=document.getElementById('kw'),tm=null;
+  if(k)k.addEventListener('input',function(){var v=this.value;clearTimeout(tm);tm=setTimeout(function(){doSearch(v)},260)});
+})();
+toLv(2);
 </script>
 </body>
 </html>
